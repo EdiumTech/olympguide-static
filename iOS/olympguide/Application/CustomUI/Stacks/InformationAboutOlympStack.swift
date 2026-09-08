@@ -33,6 +33,7 @@ final class InformationAboutOlympStack: UIStackView {
         setupSelf()
         configureOlympiadNameLabel()
         configureOlympiadInformation()
+        addCalendarButton(olympiadID: olympiad.olympiadID)
         configureProgramsLabel()
         configureFilterSortView(filterSortView)
     }

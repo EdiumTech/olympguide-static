@@ -9,13 +9,20 @@ from urllib.parse import parse_qs, unquote, urlsplit
 from catalog import Catalog, DEFAULT_CATALOG, ROOT
 
 
-def make_handler(catalog):
+def make_handler(catalog, api_url="https://api.olympguide.ru/api/v1"):
+    from backend_proxy import forward
     bootstrap = json.dumps(catalog.bootstrap, ensure_ascii=False).encode()
     static = ROOT / "static"
 
     class Handler(BaseHTTPRequestHandler):
         def do_GET(self):
             self.respond()
+
+        def do_POST(self):
+            self.respond()
+
+        do_PUT = do_POST
+        do_DELETE = do_POST
 
         def do_HEAD(self):
             self.respond(head=True)
@@ -36,6 +43,10 @@ def make_handler(catalog):
                     pass
 
         def respond(self, head=False):
+            if self.path.startswith("/backend/"):
+                return forward(self, api_url, head=head)
+            if self.command not in ("GET", "HEAD"):
+                return self.send_error(405)
             url = urlsplit(self.path)
             path = unquote(url.path)
             if path == "/api/catalog":
@@ -53,9 +64,9 @@ def make_handler(catalog):
                     if file.is_relative_to(catalog.path.parent.resolve()) and file.is_file():
                         return self.send_data(file.read_bytes(), mimetypes.guess_type(file.name)[0] or "application/octet-stream", head)
                 return self.send_error(404)
-            if path in ("/app.js", "/styles.css", "/favicon.svg"):
+            if path in ("/personal.js", "/diplomas.js", "/scholarships.js", "/app.js", "/styles.css", "/favicon.svg"):
                 file = static / path[1:]
-            elif path == "/" or path in ("/universities", "/olympiads", "/fields", "/favorites") or any(path.startswith(prefix) for prefix in ("/universities/", "/olympiads/", "/fields/", "/programs/", "/units/")):
+            elif path == "/" or path in ("/universities", "/olympiads", "/fields", "/favorites", "/calendar", "/diplomas") or any(path.startswith(prefix) for prefix in ("/universities/", "/olympiads/", "/fields/", "/programs/", "/units/")):
                 file = static / "index.html"
             else:
                 return self.send_error(404)
@@ -70,12 +81,13 @@ def main():
     parser.add_argument("--port", type=int, default=8765)
     parser.add_argument("--host", default="127.0.0.1")
     parser.add_argument("--catalog", type=Path, default=DEFAULT_CATALOG)
+    parser.add_argument("--api-url", default="https://api.olympguide.ru/api/v1")
     args = parser.parse_args()
     if not args.catalog.is_file():
         parser.exit(1, "Dataset is not installed. From the repository root run:\n"
                        "  python -m data_loader.admissions download\n")
     catalog = Catalog(args.catalog)
-    server = ThreadingHTTPServer((args.host, args.port), make_handler(catalog))
+    server = ThreadingHTTPServer((args.host, args.port), make_handler(catalog, args.api_url))
     print(f"OlympGuide: http://{args.host}:{server.server_port} | {len(catalog.rules)} rules", flush=True)
     try:
         server.serve_forever()

@@ -35,6 +35,7 @@ final class InformationAboutUniStack: UIStackView {
         configureUniversityView(university)
         configureWebSiteButton()
         configureEmailButton()
+        addScholarshipsButton(universityID: university.universityID)
         configureProgramLabel()
         configureSegmentedControl()
         configureFilterSortView(filterSortView)

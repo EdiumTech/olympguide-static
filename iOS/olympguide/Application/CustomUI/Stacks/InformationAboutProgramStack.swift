@@ -68,6 +68,8 @@ final class InformationAboutProgramStack: UIStackView {
         configurePaidLabel()
         configureCostLabel()
         configureQuantityDetails()
+        addCalendarButton(programID: { [weak self] in self?.program?.programID })
+        addScholarshipsButton(universityID: university?.universityID, program: { [weak self] in self?.program?.programID })
         configureSubjectsStack()
         configureBenefitsLabel()
         configureLastSpace()

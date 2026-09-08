@@ -35,7 +35,7 @@ def explicit_codes(scope):
 
 
 class Catalog:
-    def __init__(self, path=DEFAULT_CATALOG, *, quantities=True):
+    def __init__(self, path=DEFAULT_CATALOG, *, quantities=True, personal=True):
         self.path = Path(path)
         source = json.loads(self.path.read_text(encoding="utf-8"))
         self.sources = {s["id"]: s for s in source["sources"]}
@@ -172,6 +172,10 @@ class Catalog:
             release = json.loads(MANIFEST.read_text(encoding='utf-8'))['release_tag']
             for q in self.quantity_data['programs']:
                 self.programs[q['id']].update(q, quantity_release=release)
+        self.personal_data = None
+        if personal and (self.path.parent.parent / "2026-personal/catalog.json").is_file():
+            from admissions.personal import load as load_personal
+            self.personal_data = load_personal(self.path.parent.parent / "2026-personal")
         self.bootstrap = {
             "admission_year": source["admission_year"], "collected_on": source["collected_on"],
             "rule_count": len(self.rules), "source_count": len(self.sources),
@@ -180,6 +184,7 @@ class Catalog:
             "olympiads": sorted(self.olympiads.values(), key=lambda x: normalized(x["name"])),
             "fields": sorted(self.fields.values(), key=lambda x: x["code"]),
             "programs": sorted(self.programs.values(), key=lambda x: (x["field_id"] or "zz", normalized(x["name"]))),
+            "scholarships": self.personal_data["scholarships"] if self.personal_data else [],
             "quantity_coverage": self.quantity_data['coverage'] if self.quantity_data else None,
         }
 

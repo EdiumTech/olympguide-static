@@ -15,3 +15,16 @@
 @media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
 
 .program-quantities { display: flex; flex-wrap: wrap; gap: 6px 18px; margin-top: 10px; font-size: 14px; color: var(--text); }
+
+.personal-form{display:grid;gap:16px;margin-top:18px;max-width:760px}.personal-form label{display:grid;gap:6px;font-size:14px}.personal-form input,.personal-form select,.personal-form textarea{width:100%;padding:11px;border:1px solid #dce1ef;border-radius:8px;background:#fff;color:#16233b;font:inherit}.personal-form textarea{min-height:72px}.personal-form .check{display:flex;align-items:center}.personal-form .check input{width:auto}.form-error{color:#a12830}.payment-amount{font-size:20px;font-weight:600}.actions{display:flex;gap:16px;flex-wrap:wrap}[hidden]{display:none!important}
+.exam-row { display:flex; gap:12px; flex-wrap:wrap; align-items:end; padding:16px 0; border-bottom:1px solid #e4e7ee; }
+.exam-row label { flex:1; min-width:110px; }
+.assessment-status { padding:10px 14px; border-radius:10px; background:#f0f1f6; }
+.assessment-status.eligible { background:#e3f4e9; color:#195b39; }
+.assessment-status.confirmation_required { background:#fff1d3; color:#784e0c; }
+.assessment-status.ineligible { background:#ffe8e5; color:#8e2e24; }
+.condition-checks { padding-left:22px; }
+.condition-checks li { margin-bottom:12px; }
+.recommendation details { margin-top:16px; padding-top:12px; border-top:1px solid #e4e7ee; }
+
+.calendar-date-filter{display:flex;align-items:center;gap:10px;font-size:13px;color:var(--muted)}.calendar-date-filter input{padding:11px;border:1px solid #dce1ef;border-radius:8px;background:white;color:#16233b;font:inherit}
