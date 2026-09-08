@@ -87,7 +87,7 @@ class NavigationBarViewController : UINavigationController {
         navigationBar.barTintColor = .white
         navigationBar.shadowImage = UIImage()
         let appearance = UINavigationBarAppearance()
-        
+
         appearance.configureWithOpaqueBackground()
         appearance.backgroundColor = .white
         appearance.titleTextAttributes = [
@@ -110,45 +110,45 @@ class NavigationBarViewController : UINavigationController {
     
     private func configureSearchButton() {
         navigationBar.addSubview(searchButton)
-        
+
         searchButton.alpha = 1.0
-        
+
         searchButton.setWidth(Constants.Dimensions.searchButtonSize)
         searchButton.setHeight(Constants.Dimensions.searchButtonSize)
-        
+
         searchButton.pinBottom(to: navigationBar.bottomAnchor, Constants.Dimensions.searchButtonBottomMargin)
         searchButton.pinRight(to: navigationBar.trailingAnchor, Constants.Dimensions.searchButtonRightMargin)
-        
+
         searchButton.addTarget(self, action: #selector(searchButtonPressed(_:)), for: .touchUpInside)
     }
     
     private func configureBookMarkButton() {
         navigationBar.addSubview(bookMarkButton)
-        
+
         bookMarkButton.alpha = 0.0
         bookMarkButton.isHidden = true
-        
+
         bookMarkButton.setWidth(Constants.Dimensions.bookMarkkButtonSize)
         bookMarkButton.setHeight(Constants.Dimensions.bookMarkkButtonSize)
-        
+
         bookMarkButton.pinBottom(to: navigationBar.bottomAnchor, Constants.Dimensions.searchButtonBottomMargin)
         bookMarkButton.pinRight(to: navigationBar.trailingAnchor, Constants.Dimensions.searchButtonRightMargin)
-        
+
         bookMarkButton.addTarget(self, action: #selector(bookMarkButtonPressed(_:)), for: .touchUpInside)
     }
     
     private func configurePlusButton() {
         navigationBar.addSubview(plusButton)
-        
+
         plusButton.alpha = 0.0
         plusButton.isHidden = true
-        
+
         plusButton.setWidth(Constants.Dimensions.bookMarkkButtonSize)
         plusButton.setHeight(Constants.Dimensions.bookMarkkButtonSize)
-        
+
         plusButton.pinBottom(to: navigationBar.bottomAnchor, Constants.Dimensions.searchButtonBottomMargin)
         plusButton.pinRight(to: navigationBar.trailingAnchor, Constants.Dimensions.searchButtonRightMargin)
-        
+
         plusButton.addTarget(self, action: #selector(plusButtonPressed(_:)), for: .touchUpInside)
     }
     
