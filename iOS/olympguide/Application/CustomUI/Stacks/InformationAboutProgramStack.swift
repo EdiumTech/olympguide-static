@@ -236,9 +236,9 @@ final class InformationAboutProgramStack: UIStackView {
             .replacingOccurrences(of: "https://www.", with: "")
             .replacingOccurrences(of: "https://", with: "")
         webSiteButton.setTitle(link, for: .normal)
-        budgtetLabel.setBoldText(String(program.budgetPlaces))
-        paidLabel.setBoldText(String(program.paidPlaces))
-        costLabel.setBoldText(formatNumber(program.cost))
+        budgtetLabel.setBoldText(program.admissionMetadata?.placesKnown == false ? "Нет данных" : String(program.budgetPlaces))
+        paidLabel.setBoldText(program.admissionMetadata?.placesKnown == false ? "Нет данных" : String(program.paidPlaces))
+        costLabel.setBoldText(program.admissionMetadata?.costKnown == false ? "Нет данных" : formatNumber(program.cost))
         subjectsStack.configure(
             requiredSubjects: program.requiredSubjects,
             optionalSubjects: program.optionalSubjects ?? [],

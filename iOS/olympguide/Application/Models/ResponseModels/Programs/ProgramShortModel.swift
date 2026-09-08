@@ -16,8 +16,10 @@ struct ProgramShortModel : Codable {
     let optionalSubjects: [String]?
     var like: Bool
     let link: String
+    var admissionMetadata: ProgramAdmissionMetadata? = nil
     
     enum CodingKeys : String, CodingKey {
+        case admissionMetadata = "admission_metadata"
         case programID = "program_id"
         case budgetPlaces = "budget_places"
         case paidPlaces = "paid_places"
@@ -36,7 +38,9 @@ struct ProgramShortModel : Codable {
             cost: cost,
             like: like,
             requiredSubjects: requiredSubjects,
-            optionalSubjects: optionalSubjects
+            optionalSubjects: optionalSubjects,
+            placesKnown: admissionMetadata?.placesKnown ?? true,
+            costKnown: admissionMetadata?.costKnown ?? true
         )
     }
 }
@@ -48,5 +52,15 @@ extension ProgramShortModel : Equatable {
 
     static func == (lhs: ProgramShortModel, rhs: ProgramViewModel) -> Bool {
         lhs.programID == rhs.programID
+    }
+}
+
+
+struct ProgramAdmissionMetadata: Codable {
+    let placesKnown: Bool
+    let costKnown: Bool
+    enum CodingKeys: String, CodingKey {
+        case placesKnown = "places_known"
+        case costKnown = "cost_known"
     }
 }

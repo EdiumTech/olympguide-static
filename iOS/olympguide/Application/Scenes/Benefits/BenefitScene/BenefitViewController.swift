@@ -21,12 +21,14 @@ final class BenefitViewController: UIViewController {
     }
     
     struct Benefit {
-        let minClass: Int
-        let minDiplomaLevel: Int
+        let minClass: Int?
+        let minDiplomaLevel: Int?
         let isBVI: Bool
         
         let confirmationSubjects: [BenefitModel.ConfirmationSubject]?
         let fullScoreSubjects: [String]?
+        var admissionRule: AdmissionRule? = nil
+        var sourceRelation: String? = nil
     }
     
     var program: Program?
@@ -49,7 +51,9 @@ final class BenefitViewController: UIViewController {
             minDiplomaLevel: viewModel.minDiplomaLevel,
             isBVI: viewModel.isBVI,
             confirmationSubjects: viewModel.confirmationSubjects,
-            fullScoreSubjects: viewModel.fullScoreSubjects
+            fullScoreSubjects: viewModel.fullScoreSubjects,
+            admissionRule: viewModel.admissionRule,
+            sourceRelation: viewModel.sourceRelation
         )
         
         super.init(nibName: nil, bundle: nil)
@@ -69,7 +73,9 @@ final class BenefitViewController: UIViewController {
             minDiplomaLevel: benefitInformation.minDiplomaLevel,
             isBVI: benefitInformation.isBVI,
             confirmationSubjects: benefitInformation.confirmationSubjects,
-            fullScoreSubjects: benefitInformation.fullScoreSubjects
+            fullScoreSubjects: benefitInformation.fullScoreSubjects,
+            admissionRule: benefitInformation.admissionRule,
+            sourceRelation: benefitInformation.sourceRelation
         )
         super.init(nibName: nil, bundle: nil)
     }
@@ -109,20 +115,56 @@ final class BenefitViewController: UIViewController {
         configureOlympiadInformation()
         configureBenefitInformationStack()
         configurationConfirmationSubjects()
+        configureSourceConditions()
     }
     
     private func configureInformatonStack() {
-        view.addSubview(informationStackView)
+        let scrollView = UIScrollView()
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+        informationStackView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(scrollView)
+        scrollView.addSubview(informationStackView)
         informationStackView.axis = .vertical
         informationStackView.spacing = 17
-        informationStackView.distribution = .fill
-        informationStackView.alignment = .leading
-        
-        informationStackView.pinTop(to: view.safeAreaLayoutGuide.topAnchor, 20)
-        informationStackView.pinLeft(to: view.safeAreaLayoutGuide.leadingAnchor, 20)
-        informationStackView.pinRight(to: view.safeAreaLayoutGuide.trailingAnchor, 20)
+        informationStackView.alignment = .fill
+        NSLayoutConstraint.activate([
+            scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            scrollView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            informationStackView.topAnchor.constraint(equalTo: scrollView.contentLayoutGuide.topAnchor, constant: 20),
+            informationStackView.bottomAnchor.constraint(equalTo: scrollView.contentLayoutGuide.bottomAnchor, constant: -20),
+            informationStackView.leadingAnchor.constraint(equalTo: scrollView.contentLayoutGuide.leadingAnchor, constant: 20),
+            informationStackView.trailingAnchor.constraint(equalTo: scrollView.contentLayoutGuide.trailingAnchor, constant: -20),
+            informationStackView.widthAnchor.constraint(equalTo: scrollView.frameLayoutGuide.widthAnchor, constant: -40)
+        ])
     }
-    
+
+    private func configureSourceConditions() {
+        guard let rule = benefit?.admissionRule else { return }
+        let text = UILabel()
+        text.numberOfLines = 0
+        text.font = .preferredFont(forTextStyle: .body)
+        let relation = benefit?.sourceRelation == "school_conditions"
+            ? "Условия физтех-школы. Применимость к конкурсной группе определяется текстом правила."
+            : "Условия применяются совместно; учитывайте область действия и исключения."
+        text.text = "Приём \(rule.admissionYear)\n\n\(relation)\n\n\(rule.details)"
+        informationStackView.addArrangedSubview(text)
+        let source = UIButton(type: .system)
+        source.setTitle("Открыть официальный источник", for: .normal)
+        source.addTarget(self, action: #selector(openOfficialSource), for: .touchUpInside)
+        informationStackView.addArrangedSubview(source)
+    }
+
+    @objc private func openOfficialSource() {
+        guard let rule = benefit?.admissionRule,
+              var components = URLComponents(string: rule.sourceURL),
+              components.scheme == "https" else { return }
+        if let page = rule.location?["page"] { components.fragment = "page=\(page)" }
+        guard let url = components.url else { return }
+        UIApplication.shared.open(url)
+    }
+
     private func configureOlympiadTitleLabel() {
         let olympiadTitleLabel: UILabel = UILabel()
         olympiadTitleLabel.font = FontManager.shared.font(for: .tableTitle)
@@ -198,7 +240,7 @@ final class BenefitViewController: UIViewController {
     }
     
     private func configureLevelLabel(_ stack: UIStackView) {
-        guard let olympiad = self.olympiad else { return }
+        guard let olympiad = self.olympiad, olympiad.level > 0 else { return }
 
         let levelLabel: UILabel = UILabel()
         levelLabel.font = FontManager.shared.font(for: .additionalInformation)
@@ -221,17 +263,17 @@ final class BenefitViewController: UIViewController {
     }
     
     private func configureClassLebel(_ stack: UIStackView) {
-        guard let benefit = self.benefit else { return }
+        guard let benefit = self.benefit, let grade = benefit.minClass else { return }
         let classLabel: UILabel = UILabel()
         classLabel.font = FontManager.shared.font(for: .additionalInformation)
         classLabel.textColor = UIColor(hex: "#787878")
-        classLabel.text = "Класс: \(benefit.minClass)"
+        classLabel.text = "Класс: \(grade)"
         
         stack.addArrangedSubview(classLabel)
     }
     
     private func configureMinDiplomaLabel(_ stack: UIStackView) {
-        guard let benefit = self.benefit else { return }
+        guard let benefit = self.benefit, benefit.minDiplomaLevel != nil else { return }
         let minDiplomaLabel = UILabel()
         minDiplomaLabel.font = FontManager.shared.font(for: .additionalInformation)
         minDiplomaLabel.textColor = UIColor(hex: "#787878")
@@ -277,7 +319,7 @@ final class BenefitViewController: UIViewController {
         
         let benefitText = benefit.isBVI ? "БВИ" : "100 баллов за ЕГЭ по одному из следующих предметов:"
         
-        benefitLabel.text = "Льгота: \(benefitText)"
+        benefitLabel.text = benefit.admissionRule?.summary ?? "Льгота: \(benefitText)"
         
         return benefitLabel
     }

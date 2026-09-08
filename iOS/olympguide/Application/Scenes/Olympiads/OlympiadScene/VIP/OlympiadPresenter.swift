@@ -59,7 +59,9 @@ extension OlympiadPresenter : BenefitsByProgramsPresentationLogic {
                     minDiplomaLevel: benefit.minDiplomaLevel,
                     isBVI: benefit.isBVI,
                     confirmationSubjects: benefit.confirmationSubjects,
-                    fullScoreSubjects: benefit.fullScoreSubjects
+                    fullScoreSubjects: benefit.fullScoreSubjects,
+                    admissionRule: benefit.admissionRule,
+                    sourceRelation: benefit.sourceRelation
                 )
             }
             

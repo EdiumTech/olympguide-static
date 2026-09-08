@@ -91,3 +91,22 @@ expectFailure(notFound, "Empty 404 must not count as successful authentication")
 }
 
 print("Network configuration and HTTP response tests passed.")
+
+
+// Source rules retain joint conditions instead of inventing numerical minima.
+let admissionJSON = #"""
+{"min_class":null,"min_diploma_level":null,"is_bvi":true,"confirmation_subjects":null,"full_score_subjects":null,
+ "source_relation":"school_conditions","admission_rule":{"admission_year":2026,"benefit_types":["bvi","100_points"],
+ "values":{"grades":"11; исключения за 10 класс","program_scope":"Все, кроме 01.03.01","benefit":"БВИ при совместном выполнении условий"},
+ "conditions":["Альтернативы применяются совместно"],"source_url":"https://example.org/official.pdf","location":{"page":2}}}
+"""#.data(using: .utf8)!
+let sourceBenefit = try JSONDecoder().decode(BenefitModel.self, from: admissionJSON)
+expect(sourceBenefit.minClass == nil && sourceBenefit.minDiplomaLevel == nil, "Do not invent admission minima")
+expect(sourceBenefit.sourceRelation == "school_conditions", "Keep school scope distinct")
+expect(sourceBenefit.admissionRule?.benefitTypes.count == 2, "Keep both benefit types")
+expect(sourceBenefit.admissionRule?.details.contains("Все, кроме 01.03.01") == true, "Display exclusions")
+expect(sourceBenefit.admissionRule?.details.contains("Альтернативы применяются совместно") == true, "Display conditions")
+let legacyJSON = #"{"min_class":10,"min_diploma_level":3,"is_bvi":true}"#.data(using: .utf8)!
+let legacyBenefit = try JSONDecoder().decode(BenefitModel.self, from: legacyJSON)
+expect(legacyBenefit.minClass == 10 && legacyBenefit.admissionRule == nil, "Continue decoding legacy benefits")
+print("Admission response checks passed")
