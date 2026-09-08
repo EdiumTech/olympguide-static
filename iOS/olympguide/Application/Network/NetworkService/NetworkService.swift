@@ -37,14 +37,9 @@ final class NetworkService: NetworkServiceProtocol {
 
     static let shared = NetworkService()
     
-    private let baseURL: String
     private let cache = NSCache<NSString, NSData>()
     
     private init() {
-        guard let baseURLString = Bundle.main.object(forInfoDictionaryKey: "BASE_URL") as? String else {
-            fatalError("BASE_URL is not set in Info.plist!")
-        }
-        self.baseURL = baseURLString
         setupAuthBindings()
     }
     
@@ -55,13 +50,15 @@ final class NetworkService: NetworkServiceProtocol {
         queryItems: [URLQueryItem]?,
         body: [String: Any]?
     ) -> URLRequest? {
-        var urlComponents = URLComponents(string: baseURL + endpoint)
-        urlComponents?.queryItems = queryItems
-        guard let url = urlComponents?.url else { return nil }
+        guard let url = APIConfiguration.url(for: endpoint, queryItems: queryItems) else { return nil }
         
         var request = URLRequest(url: url)
         request.httpMethod = method.rawValue
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.setValue("application/json", forHTTPHeaderField: "Accept")
+        // URLSession.shared handles the server's Secure/HttpOnly session cookie.
+        request.httpShouldHandleCookies = true
+        request.cachePolicy = .reloadIgnoringLocalCacheData
         
         if let body = body {
             do {
@@ -107,56 +104,13 @@ final class NetworkService: NetworkServiceProtocol {
                 return
             }
             
-            guard let data = data else {
-                completion(.failure(.noData))
-                return
-            }
-            
-            if method == .get && shouldCache && (200...299).contains(httpResponse.statusCode) {
+            let result: Result<T, NetworkError> = HTTPResponseDecoder.decode(
+                data: data, statusCode: httpResponse.statusCode
+            )
+            if case .success = result, method == .get, shouldCache, let data = data {
                 self.cache(data: data, for: request)
             }
-            
-            do {
-                guard !data.isEmpty else {
-                    if T.self == BaseServerResponse.self,
-                       let emptyResponse = BaseServerResponse(message: nil, type: nil, time: nil, token: nil) as? T
-                    {
-                        completion(.success(emptyResponse))
-                    }
-                    else {
-                        completion(.failure(.decodingError))
-                    }
-                    return
-                }
-
-                let decodedData = try JSONDecoder().decode(T.self, from: data)
-                if !(200...299).contains(httpResponse.statusCode) {
-                    if httpResponse.statusCode >= 500 {
-                        completion(.failure(.internalServerError))
-                        return 
-                    }
-                    if let errorData = decodedData as? BaseServerResponse {
-                        if errorData.type == "PreviousCodeNotExpired",
-                           let time = errorData.time {
-                            completion(.failure(.previousCodeNotExpired(time: time)))
-                            return
-                        }
-                        if let networkError = NetworkError(
-                            serverType: errorData.type ?? "",
-                            time: errorData.time,
-                            message: errorData.message
-                        ) {
-                            completion(.failure(networkError))
-                        } else {
-                            completion(.failure(.unknown(message: "Unrecognized error: \(String(describing: errorData.type))")))
-                        }
-                        return
-                    }
-                }
-                completion(.success(decodedData))
-            } catch {
-                completion(.failure(.decodingError))
-            }
+            completion(result)
         }
     }
 
@@ -205,23 +159,10 @@ final class NetworkService: NetworkServiceProtocol {
         body: [String: Any]?,
         bearerToken: String
     ) -> URLRequest? {
-        var urlComponents = URLComponents(string: baseURL + endpoint)
-        urlComponents?.queryItems = queryItems
-        guard let url = urlComponents?.url else { return nil }
-        
-        var request = URLRequest(url: url)
-        request.httpMethod = method.rawValue
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        
+        guard var request = prepareRequest(
+            endpoint: endpoint, method: method, queryItems: queryItems, body: body
+        ) else { return nil }
         request.setValue("Bearer \(bearerToken)", forHTTPHeaderField: "Authorization")
-        
-        if let body = body {
-            do {
-                request.httpBody = try JSONSerialization.data(withJSONObject: body, options: [])
-            } catch {
-                return nil
-            }
-        }
         return request
     }
 
@@ -271,11 +212,10 @@ final class NetworkService: NetworkServiceProtocol {
     
     private func setupAuthBindings() {
         authManager.isAuthenticatedPublisher
-            .receive(on: DispatchQueue.main)
-            .sink { [weak self] isAuth in
-                if isAuth {
-                    self?.cache.removeAllObjects()
-                }
+            .removeDuplicates()
+            .sink { [weak self] _ in
+                // Clear synchronously before observers request data for the next session.
+                self?.cache.removeAllObjects()
             }.store(in: &cancellables)
     }
 }

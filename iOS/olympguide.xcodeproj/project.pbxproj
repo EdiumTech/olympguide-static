@@ -9,12 +9,10 @@
 /* Begin PBXBuildFile section */
 		F344C07B2DA12A62007D52F2 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = F344C07A2DA12A62007D52F2 /* GoogleSignIn */; };
 		F344C07D2DA12A62007D52F2 /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = F344C07C2DA12A62007D52F2 /* GoogleSignInSwift */; };
-		F398E1582DA60068003BDEC1 /* Secrets.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = F398E1572DA60068003BDEC1 /* Secrets.xcconfig */; };
-		F3D6B78F2D90108E003106CC /* Debug.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = F3D6B78D2D90108E003106CC /* Debug.xcconfig */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		F37DB2382D315AB6005E5508 /* olympguide.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = olympguide.xcodeproj; path = olympguide/Application/FilterAndSort/olympguide.xcodeproj; sourceTree = SOURCE_ROOT; };
+		A1C0F1603090000000000001 /* App.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = App.xcconfig; sourceTree = "<group>"; };
 		F398E1572DA60068003BDEC1 /* Secrets.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Secrets.xcconfig; sourceTree = "<group>"; };
 		F3D6B78D2D90108E003106CC /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
 		F3D861E62D17851800809C5A /* olympguide.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = olympguide.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -54,16 +52,10 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		F37DB23B2D315AB6005E5508 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		F3D6B78E2D90108E003106CC /* Config */ = {
 			isa = PBXGroup;
 			children = (
+				A1C0F1603090000000000001 /* App.xcconfig */,
 				F3D6B78D2D90108E003106CC /* Debug.xcconfig */,
 				F398E1572DA60068003BDEC1 /* Secrets.xcconfig */,
 			);
@@ -94,7 +86,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F3D861F92D17851900809C5A /* Build configuration list for PBXNativeTarget "olympguide" */;
 			buildPhases = (
-				F398D6C52DA5EA19003BDEC1 /* ShellScript */,
 				F3D861E22D17851800809C5A /* Sources */,
 				F3D861E32D17851800809C5A /* Frameworks */,
 				F3D861E42D17851800809C5A /* Resources */,
@@ -146,12 +137,6 @@
 			preferredProjectObjectVersion = 77;
 			productRefGroup = F3D861E72D17851800809C5A /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = F37DB23B2D315AB6005E5508 /* Products */;
-					ProjectRef = F37DB2382D315AB6005E5508 /* olympguide.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				F3D861E52D17851800809C5A /* olympguide */,
@@ -164,33 +149,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F3D6B78F2D90108E003106CC /* Debug.xcconfig in Resources */,
-				F398E1582DA60068003BDEC1 /* Secrets.xcconfig in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		F398D6C52DA5EA19003BDEC1 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 12;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(SRCROOT)/iOS/Config/Secrets.xcconfig",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "#!/bin/bash\nif [ -z \"$CI\" ]; then\n    echo \"Локальная сборка: пропускаем генерацию Secrets.xcconfig\"\n    exit 0\nfi\n\nif [ -z \"$GOOGLE_CLIENT_ID\" ]; then\n    echo \"Ошибка: Переменная GOOGLE_CLIENT_ID не установлена в секрете Xcode Cloud.\"\n    exit 1\nfi\n\nif [ -z \"$GOOGLE_CLIENT_REVERSED_ID\" ]; then\n    echo \"Ошибка: Переменная GOOGLE_CLIENT_REVERSED_ID не установлена в секрете Xcode Cloud.\"\n    exit 1\nfi\n\nif [ -z \"$BASE_URL\" ]; then\n    echo \"Ошибка: Переменная BASE_URL не установлена в секрете Xcode Cloud.\"\n    exit 1\nfi\n\nCONFIG_DIR=\"${SRCROOT}/iOS/Config\"\nmkdir -p \"$CONFIG_DIR\"\nXC_CONFIG_FILE=\"$CONFIG_DIR/Secrets.xcconfig\"\n\necho \"Генерируем $XC_CONFIG_FILE с данными из секретов...\"\n\ncat <<EOF > \"$XC_CONFIG_FILE\"\n// Этот файл автоматически сгенерирован на Xcode Cloud\nGOOGLE_CLIENT_ID = ${GOOGLE_CLIENT_ID}\nGOOGLE_CLIENT_REVERSED_ID = ${GOOGLE_CLIENT_REVERSED_ID}\nBASE_URL = ${BASE_URL}\nEOF\n\necho \"Secrets.xcconfig успешно создан.\"\n";
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		F3D861E22D17851800809C5A /* Sources */ = {
@@ -205,7 +167,7 @@
 /* Begin XCBuildConfiguration section */
 		F3D861FA2D17851900809C5A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F398E1572DA60068003BDEC1 /* Secrets.xcconfig */;
+			baseConfigurationReference = A1C0F1603090000000000001 /* App.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -243,7 +205,7 @@
 		};
 		F3D861FB2D17851900809C5A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F398E1572DA60068003BDEC1 /* Secrets.xcconfig */;
+			baseConfigurationReference = A1C0F1603090000000000001 /* App.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -281,7 +243,7 @@
 		};
 		F3D861FC2D17851900809C5A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F398E1572DA60068003BDEC1 /* Secrets.xcconfig */;
+			baseConfigurationReference = A1C0F1603090000000000001 /* App.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -346,7 +308,7 @@
 		};
 		F3D861FD2D17851900809C5A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F398E1572DA60068003BDEC1 /* Secrets.xcconfig */;
+			baseConfigurationReference = A1C0F1603090000000000001 /* App.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;

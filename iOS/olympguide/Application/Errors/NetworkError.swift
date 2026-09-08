@@ -13,6 +13,7 @@ enum NetworkError: LocalizedError {
     case decodingError
     case serverError
     case internalServerError
+    case unauthorized
     case uniqueViolation
     case userNotFound
     case invalidPassword
@@ -27,6 +28,7 @@ enum NetworkError: LocalizedError {
         "DecodingError": .decodingError,
         "ServerError": .serverError,
         "InternalServerError": .internalServerError,
+        "Unauthorized": .unauthorized,
         "UniqueViolation": .uniqueViolation,
         "UserNotFound": .userNotFound,
         "InvalidPassword": .invalidPassword,
@@ -61,7 +63,9 @@ enum NetworkError: LocalizedError {
         case .previousCodeNotExpired:
             return "Previous code is still valid"
         case .internalServerError:
-            return "ААААААА СЕНЯЯ ПОЧИНИИИИИ\n(напишите пожалуйста о произошеддшем нам, мы всё починим...)"
+            return "Сервер временно недоступен. Попробуйте позже."
+        case .unauthorized:
+            return "Войдите в аккаунт, чтобы продолжить."
         case .uniqueViolation:
             return "Пользователь с такой почтой уже существует"
         case .userNotFound:

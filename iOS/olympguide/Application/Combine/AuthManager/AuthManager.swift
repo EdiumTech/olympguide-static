@@ -24,15 +24,9 @@ class AuthManager : AuthManagerProtocol {
             $isAuthenticated.eraseToAnyPublisher()
     }
     
-    private let baseURL: String
     private var cancellables = Set<AnyCancellable>()
     
-    private init() {
-        guard let baseURLString = Bundle.main.object(forInfoDictionaryKey: "BASE_URL") as? String else {
-            fatalError("BASE_URL is not set in Info.plist!")
-        }
-        self.baseURL = baseURLString
-    }
+    private init() {}
     
     func login(
         email: String,
@@ -179,8 +173,6 @@ class AuthManager : AuthManagerProtocol {
         let body: [String: String] = [
             "token": token
         ]
-        print()
-        print(token)
         networkService.request(
             endpoint: Constants.appleEndpoint,
             method: .post,
