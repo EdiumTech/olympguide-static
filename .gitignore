@@ -1,5 +1,7 @@
 # docker data
 data/
+!web/data/
+!web/data/fields.json
 
 # Environment files
 .env
@@ -87,6 +89,16 @@ test-output/
 # load_service
 *.pdf
 *.csv
+
+# Downloaded release snapshots and locally rebuilt datasets.
+/data_loader/admissions/snapshots/
+/tmp/
+data_loader/admissions/staging/
+data_loader/admissions/output/
+data_loader/admissions/snapshots/*/sources/*_sample.png
+*.sqlite
+*.sqlite3
+*.db
 
 __pycache__/
 

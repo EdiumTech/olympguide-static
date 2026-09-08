@@ -10,9 +10,10 @@ from PyPDF2 import PdfReader
 from Entities.Benefit import Benefit
 
 def load_benefits():
-    url = "https://abit.itmo.ru/file_storage/file/pages/82/rsosh_bvi_2025.pdf"
-    pdf_filename = "rsosh_bvi_2025.pdf"
-    response = requests.get(url)
+    url = "https://abit.itmo.ru/file_storage/file/pages/82/rsosh_bvi_2026.pdf"
+    pdf_filename = "rsosh_bvi_2026.pdf"
+    response = requests.get(url, timeout=60)
+    response.raise_for_status()
     with open(pdf_filename, "wb") as f:
         f.write(response.content)
     print("PDF успешно скачан!")
@@ -156,59 +157,64 @@ def process_olympiads_names(table):
             table = np.delete(table, i, axis=0)
     return table
 
-current_educations = []
-pdf_path = "rsosh_bvi_2025.pdf"
+def main():
+    current_educations = []
+    pdf_path = "rsosh_bvi_2026.pdf"
 
-reader = PdfReader(pdf_path)
-numbers_of_pages = len(reader.pages)
-all_dataframes = []
+    reader = PdfReader(pdf_path)
+    numbers_of_pages = len(reader.pages)
+    all_dataframes = []
 
-columns = ['Направление подготовки', 'Название олипиады', 'Профиль олимпиады',
-           'Предмет подтверждающий результаты (не менее 75 баллов)',
-           'Уровень олимпиады','Дипломы']
+    columns = ['Направление подготовки', 'Название олипиады', 'Профиль олимпиады',
+               'Предмет подтверждающий результаты (не менее 75 баллов)',
+               'Уровень олимпиады','Дипломы']
 
-for page_number in range(numbers_of_pages):
-    raw_data = extract_complex_table(pdf_path, page_number)
+    for page_number in range(numbers_of_pages):
+        raw_data = extract_complex_table(pdf_path, page_number)
 
-    if page_number == 0:
-        raw_data.pop(0)
+        if page_number == 0:
+            raw_data.pop(0)
 
-    df = pd.DataFrame(raw_data, columns=columns)
-    all_dataframes.append(df)
+        df = pd.DataFrame(raw_data, columns=columns)
+        all_dataframes.append(df)
 
-combined_df = pd.concat(all_dataframes, ignore_index=True)
-combined_df = combined_df.fillna('').astype(str)
-combined_df = combined_df.applymap(lambda x: x.replace('\n', ' '))
-data = np.array(combined_df, dtype=str)
-data = process_fields(data)
-data = process_diploma_level(data)
-data = process_subject(data)
-data = process_level(data)
+    combined_df = pd.concat(all_dataframes, ignore_index=True)
+    combined_df = combined_df.fillna('').astype(str)
+    combined_df = combined_df.applymap(lambda x: x.replace('\n', ' '))
+    data = np.array(combined_df, dtype=str)
+    data = process_fields(data)
+    data = process_diploma_level(data)
+    data = process_subject(data)
+    data = process_level(data)
 
-data = process_olympiads_names(data)
+    data = process_olympiads_names(data)
 
-result = []
-count = 0
-for row in data:
-    programs = row[0].split(',')
-    olympiads = row[1].split(',')
-    for program in programs:
-        for olympiad in olympiads:
-            subject = {
-                'subject_id': int(row[3]),
-                'min_score': 75
-            }
-            benefit = Benefit(
-                olympiad_id=int(olympiad),
-                program_id=int(program),
-                is_bvi=True,
-                min_diploma_level=int(row[5]),
-                min_class=10,
-                confirmation_subjects=[subject],
-                full_score_subjects=[int(row[3])])
-            upload_benefit(benefit)
-            print(benefit)
-            count += 1
-            print(count)
+    result = []
+    count = 0
+    for row in data:
+        programs = row[0].split(',')
+        olympiads = row[1].split(',')
+        for program in programs:
+            for olympiad in olympiads:
+                subject = {
+                    'subject_id': int(row[3]),
+                    'score': 75
+                }
+                benefit = Benefit(
+                    olympiad_id=int(olympiad),
+                    program_id=int(program),
+                    is_bvi=True,
+                    min_diploma_level=int(row[5]),
+                    min_class=10,
+                    confirmation_subjects=[subject],
+                    full_score_subjects=[int(row[3])])
+                upload_benefit(benefit)
+                print(benefit)
+                count += 1
+                print(count)
 
-print(count)
+    print(count)
+
+
+if __name__ == "__main__":
+    main()
