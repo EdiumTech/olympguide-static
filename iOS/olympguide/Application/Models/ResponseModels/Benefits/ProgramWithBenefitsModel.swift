@@ -37,7 +37,9 @@ struct ProgramWithBenefitsModel : Codable {
                     minDiplomaLevel: $0.minDiplomaLevel,
                     isBVI: $0.isBVI,
                     confirmationSubjects: $0.confirmationSubjects,
-                    fullScoreSubjects: $0.fullScoreSubjects
+                    fullScoreSubjects: $0.fullScoreSubjects,
+                    admissionRule: $0.admissionRule,
+                    sourceRelation: $0.sourceRelation
                 )
             }
         )

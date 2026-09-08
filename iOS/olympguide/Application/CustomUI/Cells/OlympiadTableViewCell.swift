@@ -121,7 +121,7 @@ class OlympiadTableViewCell: UICellWithFavoriteButton {
         isFaforiteButtonVisible: Bool = true
     ) {
         nameLabel.text = viewModel.name
-        levelAndProfileLabel.text = "\(viewModel.level) уровень | \(viewModel.profile)"
+        levelAndProfileLabel.text = viewModel.level > 0 ? "\(viewModel.level) уровень | \(viewModel.profile)" : viewModel.profile
         benefitLabel.text = nil
         shimmerLayer.isHidden = true
         shimmerLayer.stopAnimating()
@@ -140,13 +140,14 @@ class OlympiadTableViewCell: UICellWithFavoriteButton {
         with viewModel: OlympiadWithBenefitViewModel
     ) {
         nameLabel.text = viewModel.olympiadName
-        let level = "\(String(repeating: "I", count: viewModel.olympiadLevel)) уровень"
+        let level = viewModel.olympiadLevel > 0 ? "\(String(repeating: "I", count: viewModel.olympiadLevel)) уровень" : "Уровень в условиях"
         levelAndProfileLabel.text = "\(level) | \(viewModel.olympiadProfile)"
         let diploma = viewModel.minDiplomaLevel == 1
             ? Constants.Strings.winnerText
             : Constants.Strings.prizeText
         let benefit = viewModel.isBVI ? "БВИ" : "100 баллов"
-        benefitLabel.text = "\(viewModel.minClass) класс | \(diploma) | \(benefit)"
+        let grade = viewModel.minClass.map { "\($0) класс" } ?? "Класс в условиях"
+        benefitLabel.text = viewModel.admissionRule?.summary ?? "\(grade) | \(diploma) | \(benefit)"
         shimmerLayer.isHidden = true
         shimmerLayer.stopAnimating()
         shimmerLayer.removeAllConstraints()
@@ -158,7 +159,7 @@ class OlympiadTableViewCell: UICellWithFavoriteButton {
     
     func configure(with viewModel: DiplomaViewModel) {
         nameLabel.text = viewModel.olympiadName
-        let level = "\(String(repeating: "I", count: viewModel.olympiadLevel)) уровень"
+        let level = viewModel.olympiadLevel > 0 ? "\(String(repeating: "I", count: viewModel.olympiadLevel)) уровень" : "Уровень в условиях"
         levelAndProfileLabel.text = "\(level) | \(viewModel.olympiadProfile)"
         let diploma = viewModel.level == 1
             ? Constants.Strings.winnerText

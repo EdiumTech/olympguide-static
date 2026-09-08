@@ -1,3 +1,5 @@
+import Foundation
+
 //
 //  ProgramShortModel.swift
 //  olympguide
@@ -9,15 +11,17 @@ struct ProgramShortModel : Codable {
     let programID: Int
     let name: String
     let field: String
-    let budgetPlaces: Int
-    let paidPlaces: Int
-    let cost: Int
+    let budgetPlaces: Int?
+    let paidPlaces: Int?
+    let cost: Int?
     let requiredSubjects: [String]
     let optionalSubjects: [String]?
     var like: Bool
     let link: String
+    var admissionMetadata: ProgramAdmissionMetadata? = nil
     
     enum CodingKeys : String, CodingKey {
+        case admissionMetadata = "admission_metadata"
         case programID = "program_id"
         case budgetPlaces = "budget_places"
         case paidPlaces = "paid_places"
@@ -26,6 +30,14 @@ struct ProgramShortModel : Codable {
         case optionalSubjects = "optional_subjects"
     }
     
+    var quantities: ProgramQuantities {
+        ProgramQuantities(
+            budgetPlaces: admissionMetadata?.placesKnown == false ? nil : budgetPlaces,
+            paidPlaces: admissionMetadata?.placesKnown == false ? nil : paidPlaces,
+            cost: admissionMetadata?.costKnown == false ? nil : cost
+        )
+    }
+
     func toViewModel() -> ProgramViewModel {
         ProgramViewModel(
             programID: programID,
@@ -36,7 +48,9 @@ struct ProgramShortModel : Codable {
             cost: cost,
             like: like,
             requiredSubjects: requiredSubjects,
-            optionalSubjects: optionalSubjects
+            optionalSubjects: optionalSubjects,
+            placesKnown: admissionMetadata?.placesKnown ?? true,
+            costKnown: admissionMetadata?.costKnown ?? true
         )
     }
 }
@@ -48,5 +62,36 @@ extension ProgramShortModel : Equatable {
 
     static func == (lhs: ProgramShortModel, rhs: ProgramViewModel) -> Bool {
         lhs.programID == rhs.programID
+    }
+}
+
+
+struct ProgramAdmissionMetadata: Codable {
+    let placesKnown: Bool
+    let costKnown: Bool
+    enum CodingKeys: String, CodingKey {
+        case placesKnown = "places_known"
+        case costKnown = "cost_known"
+    }
+}
+
+
+/// Shared presentation for both program list cells and the initial/detail refresh.
+/// Nil means unknown; an explicitly recorded zero remains visible as zero.
+struct ProgramQuantities {
+    let budgetPlaces: Int?
+    let paidPlaces: Int?
+    let cost: Int?
+
+    static let unknown = ProgramQuantities(budgetPlaces: nil, paidPlaces: nil, cost: nil)
+    var budgetText: String { budgetPlaces.map { String($0) } ?? "Нет данных" }
+    var paidText: String { paidPlaces.map { String($0) } ?? "Нет данных" }
+    var costText: String {
+        guard let cost = cost else { return "Нет данных" }
+        let formatter = NumberFormatter()
+        formatter.locale = Locale(identifier: "ru_RU")
+        formatter.numberStyle = .decimal
+        formatter.groupingSeparator = " "
+        return "\(formatter.string(from: NSNumber(value: cost)) ?? String(cost)) ₽/год"
     }
 }

@@ -9,16 +9,18 @@ struct ProgramModel : Codable {
     let programID: Int
     let name: String
     let field: String
-    let budgetPlaces: Int
-    let paidPlaces: Int
-    let cost: Int
+    let budgetPlaces: Int?
+    let paidPlaces: Int?
+    let cost: Int?
     let requiredSubjects: [String]
     let optionalSubjects: [String]
     var like: Bool
     let university: UniversityModel
     let link: String
+    var admissionMetadata: ProgramAdmissionMetadata? = nil
     
     enum CodingKeys : String, CodingKey {
+        case admissionMetadata = "admission_metadata"
         case programID = "program_id"
         case budgetPlaces = "budget_places"
         case paidPlaces = "paid_places"
@@ -38,7 +40,8 @@ struct ProgramModel : Codable {
             requiredSubjects: requiredSubjects,
             optionalSubjects: optionalSubjects,
             like: like,
-            link: link
+            link: link,
+            admissionMetadata: admissionMetadata
         )
     }
 }

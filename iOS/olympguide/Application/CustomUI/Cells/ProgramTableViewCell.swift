@@ -141,9 +141,9 @@ final class ProgramTableViewCell: UICellWithFavoriteButton {
             width: nil
         )
         
-        budgtetLabel.setBoldText(String(viewModel.budgetPlaces))
-        paidLabel.setBoldText(String(viewModel.paidPlaces))
-        costLabel.setBoldText("\(formatNumber(viewModel.cost)) ₽/год")
+        budgtetLabel.setBoldText(viewModel.quantities.budgetText)
+        paidLabel.setBoldText(viewModel.quantities.paidText)
+        costLabel.setBoldText(viewModel.quantities.costText)
         subjectsStack.configure(
             requiredSubjects: viewModel.requiredSubjects,
             optionalSubjects: viewModel.optionalSubjects ?? [],

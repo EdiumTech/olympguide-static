@@ -49,6 +49,7 @@ final class InformationAboutProgramStack: UIStackView {
         university: UniversityModel,
         filterSortView: FilterSortView
     ) {
+        self.program = nil
         self.university = university
         programNameLabel.text = name
         codeLabel.text = code
@@ -132,9 +133,7 @@ final class InformationAboutProgramStack: UIStackView {
         pinToPrevious(11)
         
         budgtetLabel.setText(regular: "Бюджетных мест  ")
-        if let budgetPlaced = program?.budgetPlaces {
-            budgtetLabel.setBoldText(String(budgetPlaced))
-        }
+        budgtetLabel.setBoldText((program?.quantities ?? .unknown).budgetText)
         
         addArrangedSubview(budgtetLabel)
     }
@@ -143,9 +142,7 @@ final class InformationAboutProgramStack: UIStackView {
         pinToPrevious(7)
         
         paidLabel.setText(regular: "Платных мест  ")
-        if let paidPlaces = program?.paidPlaces {
-            paidLabel.setBoldText(String(paidPlaces))
-        }
+        paidLabel.setBoldText((program?.quantities ?? .unknown).paidText)
         
         addArrangedSubview(paidLabel)
     }
@@ -154,9 +151,7 @@ final class InformationAboutProgramStack: UIStackView {
         pinToPrevious(7)
         
         costLabel.setText(regular: "Стоимость  ")
-        if let cost = program?.cost {
-            costLabel.setBoldText(formatNumber(cost))
-        }
+        costLabel.setBoldText((program?.quantities ?? .unknown).costText)
         
         addArrangedSubview(costLabel)
     }
@@ -232,13 +227,14 @@ final class InformationAboutProgramStack: UIStackView {
     }
     
     func setInformation(_ program: ProgramShortModel) {
+        self.program = program
         let link = program.link
             .replacingOccurrences(of: "https://www.", with: "")
             .replacingOccurrences(of: "https://", with: "")
         webSiteButton.setTitle(link, for: .normal)
-        budgtetLabel.setBoldText(String(program.budgetPlaces))
-        paidLabel.setBoldText(String(program.paidPlaces))
-        costLabel.setBoldText(formatNumber(program.cost))
+        budgtetLabel.setBoldText(program.quantities.budgetText)
+        paidLabel.setBoldText(program.quantities.paidText)
+        costLabel.setBoldText(program.quantities.costText)
         subjectsStack.configure(
             requiredSubjects: program.requiredSubjects,
             optionalSubjects: program.optionalSubjects ?? [],

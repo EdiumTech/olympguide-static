@@ -12,6 +12,14 @@ extension UIStackView {
         with benefit: ProgramWithBenefitsViewModel.BenefitInformationViewModel
     ) {
         self.arrangedSubviews.forEach { $0.removeFromSuperview() }
+        if let rule = benefit.admissionRule {
+            let label = UILabel()
+            label.numberOfLines = 0
+            label.font = .preferredFont(forTextStyle: .subheadline)
+            label.text = rule.summary + " · Подробнее"
+            addArrangedSubview(label)
+            return
+        }
         
         self.distribution = .fillEqually
         self.spacing = 3
@@ -23,7 +31,7 @@ extension UIStackView {
         let minclassLabel = UILabel()
         minclassLabel.textColor = .black
         minclassLabel.font = FontManager.shared.font(weight: .regular, size: 15)
-        minclassLabel.text = "\(benefit.minClass) класс"
+        minclassLabel.text = benefit.minClass.map { "\($0) класс" } ?? "Условия"
         minclassLabel.layer.cornerRadius = 8
         minclassLabel.backgroundColor = UIColor(hex: "#E0E8FE")
         minclassLabel.textAlignment = .center
@@ -32,7 +40,7 @@ extension UIStackView {
         let minDiplomaLevelLabel = UILabel()
         minDiplomaLevelLabel.textColor = .black
         minDiplomaLevelLabel.font = FontManager.shared.font(weight: .regular, size: 15)
-        minDiplomaLevelLabel.text = benefit.minDiplomaLevel == 1 ? "Побед." : "Приз."
+        minDiplomaLevelLabel.text = benefit.minDiplomaLevel.map { $0 == 1 ? "Побед." : "Приз." } ?? "Диплом"
         minDiplomaLevelLabel.layer.cornerRadius = 8
         minDiplomaLevelLabel.backgroundColor = UIColor(hex: "#E0E8FE")
         minDiplomaLevelLabel.textAlignment = .center

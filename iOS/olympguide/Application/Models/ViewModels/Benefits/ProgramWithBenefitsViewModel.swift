@@ -14,12 +14,14 @@ class ProgramWithBenefitsViewModel {
     }
     
     struct BenefitInformationViewModel {
-        let minClass: Int
-        let minDiplomaLevel: Int
+        let minClass: Int?
+        let minDiplomaLevel: Int?
         let isBVI: Bool
         
         let confirmationSubjects: [BenefitModel.ConfirmationSubject]?
         let fullScoreSubjects: [String]?
+        var admissionRule: AdmissionRule? = nil
+        var sourceRelation: String? = nil
     }
     
     let program: Program
