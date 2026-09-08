@@ -135,3 +135,12 @@ expect(partiallyKnown.quantities.budgetText == "25" && partiallyKnown.quantities
 expect(partiallyKnown.quantities.costText == "350 000 ₽/год", "Format confirmed tuition")
 expect(ProgramQuantities.unknown.costText == "Нет данных", "Initial loading view has no fake zero")
 print("Program quantity checks passed")
+
+let semesterProgram = try decodeProgram(#""budget_places":52,"paid_places":35,"cost":265000,"admission_metadata":{"places_known":true,"cost_known":true,"cost_period":"semester","places_note":"Места на общий набор: 01.03.02","study_form":"очная","admission_year":2026,"quantity_notes":["Осенний семестр"],"quantity_evidence":{"cost":{"source_url":"https://example.org/fees.pdf","locator":"page=7"}}}"#)
+expect(semesterProgram.quantities.costText == "265 000 ₽/семестр", "Semester fees are never labeled as annual")
+expect(semesterProgram.toViewModel().quantities.costText == semesterProgram.quantities.costText, "List and detail retain the price period")
+expect(semesterProgram.quantities.budgetText == "52*", "Shared competition places are marked")
+expect(semesterProgram.quantities.detailText.contains("Осенний семестр"), "Retain source qualifications")
+expect(semesterProgram.toViewModel().admissionMetadata?.quantityEvidence?["cost"]?.sourceURL == "https://example.org/fees.pdf", "Source survives model conversion")
+let budgetOnly = try decodeProgram(#""budget_places":36,"paid_places":0,"cost":null"#)
+expect(budgetOnly.quantities.costText == "Нет платного набора", "No paid intake is not free tuition")
