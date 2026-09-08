@@ -121,7 +121,7 @@ class OlympiadTableViewCell: UICellWithFavoriteButton {
         isFaforiteButtonVisible: Bool = true
     ) {
         nameLabel.text = viewModel.name
-        levelAndProfileLabel.text = viewModel.level > 0 ? "\(viewModel.level) уровень | \(viewModel.profile)" : viewModel.profile
+        levelAndProfileLabel.text = viewModel.level.isEmpty ? viewModel.profile : "\(viewModel.level) уровень | \(viewModel.profile)"
         benefitLabel.text = nil
         shimmerLayer.isHidden = true
         shimmerLayer.stopAnimating()

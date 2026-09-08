@@ -61,9 +61,12 @@ class ProfileViewController: UIViewController {
     
     private let tableView = UITableView(frame: .zero, style: .plain)
     private var cancellables = Set<AnyCancellable>()
+    private var didSetInitialContentOffset = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        extendedLayoutIncludesOpaqueBars = true
         
         configureNavigationBar()
         configureTableView()
@@ -84,10 +87,30 @@ class ProfileViewController: UIViewController {
             }.store(in: &cancellables)
         
     }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+        guard !didSetInitialContentOffset else { return }
+        didSetInitialContentOffset = true
+        DispatchQueue.main.async { [weak self] in
+            guard let self else { return }
+            tableView.layoutIfNeeded()
+            tableView.setContentOffset(
+                CGPoint(x: 0, y: -tableView.adjustedContentInset.top),
+                animated: false
+            )
+        }
+    }
     
     private func configureNavigationBar() {
         navigationItem.title = Constants.Strings.profileTitle
-        navigationItem.largeTitleDisplayMode = .always
+        if #available(iOS 26.0, *) {
+            navigationItem.largeTitle = Constants.Strings.profileTitle
+            navigationItem.largeTitleDisplayMode = .inline
+        } else {
+            navigationItem.largeTitleDisplayMode = .always
+        }
     }
     
     private func configureTableView() {
