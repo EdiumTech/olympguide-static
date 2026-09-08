@@ -7,6 +7,7 @@ an unconditional offer for each code mentioned in the text.
 import hashlib
 import json
 import re
+import sys
 from collections import defaultdict
 from pathlib import Path
 
@@ -34,7 +35,7 @@ def explicit_codes(scope):
 
 
 class Catalog:
-    def __init__(self, path=DEFAULT_CATALOG):
+    def __init__(self, path=DEFAULT_CATALOG, *, quantities=True):
         self.path = Path(path)
         source = json.loads(self.path.read_text(encoding="utf-8"))
         self.sources = {s["id"]: s for s in source["sources"]}
@@ -162,6 +163,15 @@ class Catalog:
                     entity["field_count"] = len({p["field_id"] for p in self.programs.values() if p["university_id"] == key and p["field_id"]})
                     entity["group_count"] = sum(p["university_id"] == key and p["kind"] == "group" for p in self.programs.values())
                     entity["unit_count"] = sum(u["university_id"] == key and not u["parent_id"] for u in self.units.values())
+        self.quantity_data = None
+        quantity_path = self.path.parent.parent / '2026-quantities'
+        if quantities and (quantity_path / 'catalog.json').exists():
+            sys.path.insert(0, str(ROOT.parent / 'data_loader'))
+            from admissions.quantity_catalog import load, MANIFEST
+            self.quantity_data = load(target=quantity_path, programs=self.programs)
+            release = json.loads(MANIFEST.read_text(encoding='utf-8'))['release_tag']
+            for q in self.quantity_data['programs']:
+                self.programs[q['id']].update(q, quantity_release=release)
         self.bootstrap = {
             "admission_year": source["admission_year"], "collected_on": source["collected_on"],
             "rule_count": len(self.rules), "source_count": len(self.sources),
@@ -170,6 +180,7 @@ class Catalog:
             "olympiads": sorted(self.olympiads.values(), key=lambda x: normalized(x["name"])),
             "fields": sorted(self.fields.values(), key=lambda x: x["code"]),
             "programs": sorted(self.programs.values(), key=lambda x: (x["field_id"] or "zz", normalized(x["name"]))),
+            "quantity_coverage": self.quantity_data['coverage'] if self.quantity_data else None,
         }
 
     def query(self, params):

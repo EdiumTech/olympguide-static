@@ -15,6 +15,8 @@ def main():
     download = commands.add_parser("download", help="Download the verified 2026 release snapshot")
     download.add_argument("--archive", type=Path, help="Use a previously downloaded ZIP")
     download.add_argument("--output", type=Path, default=SNAPSHOT)
+    quantities = commands.add_parser("download-quantities", help="Download verified 2026 tuition and places")
+    quantities.add_argument("--archive", type=Path)
     load = commands.add_parser("load")
     load.add_argument("--database", required=True, type=Path)
     sql = commands.add_parser("export-sql")
@@ -25,6 +27,10 @@ def main():
     query.add_argument("--benefit", choices=("bvi", "100_points"))
     query.add_argument("--limit", type=int, default=20)
     args = parser.parse_args()
+    if args.command == "download-quantities":
+        from .quantity_catalog import download as download_quantities
+        print(f"Verified quantities: {download_quantities(archive=args.archive)}")
+        return
     if args.command == "download":
         from .download import install
         try:
