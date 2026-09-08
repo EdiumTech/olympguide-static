@@ -1,5 +1,7 @@
 # docker data
 data/
+!web/data/
+!web/data/fields.json
 
 # Environment files
 .env
@@ -88,8 +90,20 @@ test-output/
 *.pdf
 *.csv
 
+# Reproducible official admissions sources belong to the versioned dataset.
+!data_loader/admissions/snapshots/*/sources/*.pdf
+!data_loader/admissions/snapshots/*/organization/sources/*.pdf
+/tmp/
+data_loader/admissions/staging/
+data_loader/admissions/output/
+data_loader/admissions/snapshots/*/sources/*_sample.png
+*.sqlite
+*.sqlite3
+*.db
+
 __pycache__/
 
 /.venv/
 *.xcconfig
 iOS/Config/Secrets.xcconfig
+!iOS/Config/App.xcconfig

@@ -1,0 +1,39 @@
+{
+  "admission_year": 2026,
+  "collected_on": "2026-09-06",
+  "source_count": 94,
+  "pdf_count": 82,
+  "rule_count": 7891,
+  "by_university": {
+    "hse": {
+      "rsosh": 3246,
+      "vsosh": 627
+    },
+    "itmo": {
+      "rsosh": 233,
+      "vsosh": 9
+    },
+    "bmstu": {
+      "rsosh": 2543,
+      "vsosh": 49
+    },
+    "mipt": {
+      "rsosh": 532,
+      "vsosh": 71,
+      "international": 59
+    },
+    "mephi": {
+      "rsosh": 220,
+      "vsosh": 16
+    },
+    "mai": {
+      "rsosh": 217,
+      "vsosh": 24,
+      "international": 7
+    },
+    "msal": {
+      "rsosh": 33,
+      "vsosh": 5
+    }
+  }
+}

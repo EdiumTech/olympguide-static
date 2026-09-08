@@ -1,0 +1,6 @@
+iOS/**/*.sh text eol=lf
+iOS/**/*.xcconfig text eol=lf
+iOS/**/*.pbxproj text eol=lf
+
+# Preserve original source bytes and the SHA-256 hashes recorded in manifests.
+data_loader/admissions/snapshots/** -text

@@ -1,0 +1,610 @@
+{
+  "schema_version": 1,
+  "admission_year": 2026,
+  "sources": [
+    {
+      "id": "mipt_places",
+      "university": "mipt",
+      "url": "https://pk.mipt.ru/bachelor/2026_places/",
+      "resolved_url": "https://pk.mipt.ru/bachelor/2026_places/",
+      "title": "Направления подготовки и количество мест",
+      "retrieved_at": "2026-09-06T16:51:48.911400+00:00",
+      "sha256": "43df0318e2cc639cca5020637835a4278b8075927e2efabed040a1bb059d5ce8",
+      "file": "sources/mipt_places.html"
+    }
+  ],
+  "programs": [
+    {
+      "id": "85c15f37b8c5f195584a",
+      "university_id": "mipt",
+      "admission_year": 2026,
+      "name": "Фундаментальная математика",
+      "field_id": "01.03.01",
+      "field_name": "Математика",
+      "school": "ВШМ",
+      "competition_group": "Фундаментальная математика",
+      "rule_scope": "ВШМ",
+      "kind": "program",
+      "education_level": "Базовое высшее образование",
+      "source_id": "mipt_places",
+      "source_url": "https://pk.mipt.ru/bachelor/2026_places/",
+      "source_rows": [
+        5
+      ],
+      "rule_relation": "school_conditions"
+    },
+    {
+      "id": "62f90d49f68660efaea1",
+      "university_id": "mipt",
+      "admission_year": 2026,
+      "name": "Прикладная математика и информатика",
+      "field_id": "01.03.02",
+      "field_name": "Прикладная математика и информатика",
+      "school": "ФПМИ",
+      "competition_group": "Прикладная математика и информатика",
+      "rule_scope": "ФПМИ",
+      "kind": "program",
+      "education_level": "Базовое высшее образование",
+      "source_id": "mipt_places",
+      "source_url": "https://pk.mipt.ru/bachelor/2026_places/",
+      "source_rows": [
+        7
+      ],
+      "rule_relation": "school_conditions"
+    },
+    {
+      "id": "8bcf47186417fb06bd00",
+      "university_id": "mipt",
+      "admission_year": 2026,
+      "name": "Математика",
+      "field_id": "01.03.02",
+      "field_name": "Прикладная математика и информатика",
+      "school": "ФПМИ",
+      "competition_group": "Прикладная математика и информатика",
+      "rule_scope": "ФПМИ",
+      "kind": "program",
+      "education_level": "Базовое высшее образование",
+      "source_id": "mipt_places",
+      "source_url": "https://pk.mipt.ru/bachelor/2026_places/",
+      "source_rows": [
+        8
+      ],
+      "rule_relation": "school_conditions"
+    },
+    {
+      "id": "e476097f1e6f5e92b88e",
+      "university_id": "mipt",
+      "admission_year": 2026,
+      "name": "Анализ данных в экономике",
+      "field_id": "01.03.02",
+      "field_name": "Прикладная математика и информатика",
+      "school": "ФПМИ",
+      "competition_group": "Прикладная математика и информатика",
+      "rule_scope": "ФПМИ",
+      "kind": "program",
+      "education_level": "Базовое высшее образование",
+      "source_id": "mipt_places",
+      "source_url": "https://pk.mipt.ru/bachelor/2026_places/",
+      "source_rows": [
+        9
+      ],
+      "rule_relation": "school_conditions"
+    },
+    {
+      "id": "1c2f22cb42ddfd376c41",
+      "university_id": "mipt",
+      "admission_year": 2026,
+      "name": "Информатика",
+      "field_id": "01.03.02",
+      "field_name": "Прикладная математика и информатика",
+      "school": "ФПМИ",
+      "competition_group": "Прикладная математика и информатика",
+      "rule_scope": "ФПМИ",
+      "kind": "program",
+      "education_level": "Базовое высшее образование",
+      "source_id": "mipt_places",
+      "source_url": "https://pk.mipt.ru/bachelor/2026_places/",
+      "source_rows": [
+        10
+      ],
+      "rule_relation": "school_conditions"
+    },
+    {
+      "id": "7ef63d8138e04d599a55",
+      "university_id": "mipt",
+      "admission_year": 2026,
+      "name": "AI360: Передовые методы искусственного интеллекта",
+      "field_id": "01.03.02",
+      "field_name": "Прикладная математика и информатика",
+      "school": "ФПМИ",
+      "competition_group": "Прикладная математика и информатика",
+      "rule_scope": "ФПМИ",
+      "kind": "program",
+      "education_level": "Базовое высшее образование",
+      "source_id": "mipt_places",
+      "source_url": "https://pk.mipt.ru/bachelor/2026_places/",
+      "source_rows": [
+        11
+      ],
+      "rule_relation": "school_conditions"
+    },
+    {
+      "id": "d4ba8754656ec7970803",
+      "university_id": "mipt",
+      "admission_year": 2026,
+      "name": "Computer Science/Информатика",
+      "field_id": "01.03.02",
+      "field_name": "Прикладная математика и информатика",
+      "school": "ФПМИ",
+      "competition_group": "Computer Science for foreign citizens",
+      "rule_scope": "ФПМИ",
+      "kind": "program",
+      "education_level": "Базовое высшее образование",
+      "source_id": "mipt_places",
+      "source_url": "https://pk.mipt.ru/bachelor/2026_places/",
+      "source_rows": [
+        12
+      ],
+      "rule_relation": "school_conditions"
+    },
+    {
+      "id": "d82241805825ef17d07d",
+      "university_id": "mipt",
+      "admission_year": 2026,
+      "name": "Радиотехника и компьютерные технологии",
+      "field_id": "03.03.01",
+      "field_name": "Прикладные математика и физика",
+      "school": "ФРКТ",
+      "competition_group": "Радиотехника и компьютерные технологии",
+      "rule_scope": "ФРКТ",
+      "kind": "program",
+      "education_level": "Базовое высшее образование",
+      "source_id": "mipt_places",
+      "source_url": "https://pk.mipt.ru/bachelor/2026_places/",
+      "source_rows": [
+        14,
+        15,
+        16,
+        17
+      ],
+      "rule_relation": "school_conditions"
+    },
+    {
+      "id": "997f9b996fe2cf19e700",
+      "university_id": "mipt",
+      "admission_year": 2026,
+      "name": "Общая и прикладная физика",
+      "field_id": "03.03.01",
+      "field_name": "Прикладные математика и физика",
+      "school": "ЛФИ",
+      "competition_group": "Общая и прикладная физика",
+      "rule_scope": "ЛФИ",
+      "kind": "program",
+      "education_level": "Базовое высшее образование",
+      "source_id": "mipt_places",
+      "source_url": "https://pk.mipt.ru/bachelor/2026_places/",
+      "source_rows": [
+        18
+      ],
+      "rule_relation": "school_conditions"
+    },
+    {
+      "id": "dc5d4c624163fb36d7fe",
+      "university_id": "mipt",
+      "admission_year": 2026,
+      "name": "Геокосмические науки и технологии",
+      "field_id": "03.03.01",
+      "field_name": "Прикладные математика и физика",
+      "school": "ФАКТ",
+      "competition_group": "Геокосмические науки и технологии",
+      "rule_scope": "ФАКТ",
+      "kind": "program",
+      "education_level": "Базовое высшее образование",
+      "source_id": "mipt_places",
+      "source_url": "https://pk.mipt.ru/bachelor/2026_places/",
+      "source_rows": [
+        19,
+        20,
+        21,
+        22,
+        23,
+        24
+      ],
+      "rule_relation": "school_conditions"
+    },
+    {
+      "id": "ec71ca26d28c715b6e4d",
+      "university_id": "mipt",
+      "admission_year": 2026,
+      "name": "Авиационные технологии",
+      "field_id": "03.03.01",
+      "field_name": "Прикладные математика и физика",
+      "school": "ПИШ ФАЛТ",
+      "competition_group": "Авиационные технологии и автономные транспортные системы",
+      "rule_scope": "ПИШ ФАЛТ",
+      "kind": "program",
+      "education_level": "Базовое высшее образование",
+      "source_id": "mipt_places",
+      "source_url": "https://pk.mipt.ru/bachelor/2026_places/",
+      "source_rows": [
+        25,
+        26,
+        27,
+        28
+      ],
+      "rule_relation": "school_conditions"
+    },
+    {
+      "id": "84bfd46a90fbf5d9ec13",
+      "university_id": "mipt",
+      "admission_year": 2026,
+      "name": "Беспилотные авиационные системы",
+      "field_id": "03.03.01",
+      "field_name": "Прикладные математика и физика",
+      "school": "ПИШ ФАЛТ",
+      "competition_group": "Авиационные технологии и автономные транспортные системы",
+      "rule_scope": "ПИШ ФАЛТ",
+      "kind": "program",
+      "education_level": "Базовое высшее образование",
+      "source_id": "mipt_places",
+      "source_url": "https://pk.mipt.ru/bachelor/2026_places/",
+      "source_rows": [
+        29,
+        30,
+        31,
+        32
+      ],
+      "rule_relation": "school_conditions"
+    },
+    {
+      "id": "468fef091359d2204895",
+      "university_id": "mipt",
+      "admission_year": 2026,
+      "name": "Физика перспективных технологий: альтернативная энергетика, научное программирование и функциональные материалы",
+      "field_id": "03.03.01",
+      "field_name": "Прикладные математика и физика",
+      "school": "ФЭФМ",
+      "competition_group": "Физика перспективных технологий",
+      "rule_scope": "ФЭФМ",
+      "kind": "program",
+      "education_level": "Базовое высшее образование",
+      "source_id": "mipt_places",
+      "source_url": "https://pk.mipt.ru/bachelor/2026_places/",
+      "source_rows": [
+        33
+      ],
+      "rule_relation": "school_conditions"
+    },
+    {
+      "id": "6570a70318d271bad855",
+      "university_id": "mipt",
+      "admission_year": 2026,
+      "name": "Физика перспективных технологий: электроника и квантовые технологии",
+      "field_id": "03.03.01",
+      "field_name": "Прикладные математика и физика",
+      "school": "ФЭФМ",
+      "competition_group": "Физика перспективных технологий",
+      "rule_scope": "ФЭФМ",
+      "kind": "program",
+      "education_level": "Базовое высшее образование",
+      "source_id": "mipt_places",
+      "source_url": "https://pk.mipt.ru/bachelor/2026_places/",
+      "source_rows": [
+        34
+      ],
+      "rule_relation": "school_conditions"
+    },
+    {
+      "id": "115899fcabddc5b5f083",
+      "university_id": "mipt",
+      "admission_year": 2026,
+      "name": "Биофизика и биоинформатика (ФБМФ)",
+      "field_id": "03.03.01",
+      "field_name": "Прикладные математика и физика",
+      "school": "ФБМФ, ВШБИ",
+      "competition_group": "Биофизика и биоинформатика",
+      "rule_scope": "ФБМФ/ ВШБИ",
+      "kind": "program",
+      "education_level": "Базовое высшее образование",
+      "source_id": "mipt_places",
+      "source_url": "https://pk.mipt.ru/bachelor/2026_places/",
+      "source_rows": [
+        35
+      ],
+      "rule_relation": "school_conditions"
+    },
+    {
+      "id": "5025ba76a613077e39ad",
+      "university_id": "mipt",
+      "admission_year": 2026,
+      "name": "Биоинженерия и биотехнология (ВШБИ)",
+      "field_id": "03.03.01",
+      "field_name": "Прикладные математика и физика",
+      "school": "ФБМФ, ВШБИ",
+      "competition_group": "Биофизика и биоинформатика",
+      "rule_scope": "ФБМФ/ ВШБИ",
+      "kind": "program",
+      "education_level": "Базовое высшее образование",
+      "source_id": "mipt_places",
+      "source_url": "https://pk.mipt.ru/bachelor/2026_places/",
+      "source_rows": [
+        36
+      ],
+      "rule_relation": "school_conditions"
+    },
+    {
+      "id": "b9253fa961ae4489d7bb",
+      "university_id": "mipt",
+      "admission_year": 2026,
+      "name": "Природоподобные технологии и биомиметический дизайн материалов и систем",
+      "field_id": "03.03.01",
+      "field_name": "Прикладные математика и физика",
+      "school": "КНТ",
+      "competition_group": "Природоподобные, плазменные и ядерные технологии",
+      "rule_scope": "КНТ",
+      "kind": "program",
+      "education_level": "Базовое высшее образование",
+      "source_id": "mipt_places",
+      "source_url": "https://pk.mipt.ru/bachelor/2026_places/",
+      "source_rows": [
+        37
+      ],
+      "rule_relation": "school_conditions"
+    },
+    {
+      "id": "78f0527b14a8b0d3dc6a",
+      "university_id": "mipt",
+      "admission_year": 2026,
+      "name": "Междисциплинарные исследования на установках класса «мегасайенс»",
+      "field_id": "03.03.01",
+      "field_name": "Прикладные математика и физика",
+      "school": "КНТ",
+      "competition_group": "Природоподобные, плазменные и ядерные технологии",
+      "rule_scope": "КНТ",
+      "kind": "program",
+      "education_level": "Базовое высшее образование",
+      "source_id": "mipt_places",
+      "source_url": "https://pk.mipt.ru/bachelor/2026_places/",
+      "source_rows": [
+        38
+      ],
+      "rule_relation": "school_conditions"
+    },
+    {
+      "id": "ec6b35b312f4cdda4162",
+      "university_id": "mipt",
+      "admission_year": 2026,
+      "name": "Компьютерные технологии и вычислительная техника",
+      "field_id": "09.03.01",
+      "field_name": "Информатика и вычислительная техника",
+      "school": "ФРКТ",
+      "competition_group": "Компьютерные технологии и вычислительная техника",
+      "rule_scope": "ФРКТ",
+      "kind": "program",
+      "education_level": "Базовое высшее образование",
+      "source_id": "mipt_places",
+      "source_url": "https://pk.mipt.ru/bachelor/2026_places/",
+      "source_rows": [
+        40,
+        41,
+        42
+      ],
+      "rule_relation": "school_conditions"
+    },
+    {
+      "id": "75647fcc2a696f9239dd",
+      "university_id": "mipt",
+      "admission_year": 2026,
+      "name": "Программная инженерия",
+      "field_id": "09.03.01",
+      "field_name": "Информатика и вычислительная техника",
+      "school": "ПИШ ФАЛТ",
+      "competition_group": "Программная инженерия и компьютерные технологии",
+      "rule_scope": "ПИШ ФАЛТ",
+      "kind": "program",
+      "education_level": "Базовое высшее образование",
+      "source_id": "mipt_places",
+      "source_url": "https://pk.mipt.ru/bachelor/2026_places/",
+      "source_rows": [
+        43,
+        44,
+        45,
+        46,
+        47
+      ],
+      "rule_relation": "school_conditions"
+    },
+    {
+      "id": "07a93c6d5e56a39652d8",
+      "university_id": "mipt",
+      "admission_year": 2026,
+      "name": "Системное программирование и прикладная математика",
+      "field_id": "09.03.01",
+      "field_name": "Информатика и вычислительная техника",
+      "school": "ФПМИ",
+      "competition_group": "Системное программирование и прикладная математика",
+      "rule_scope": "ФПМИ",
+      "kind": "program",
+      "education_level": "Базовое высшее образование",
+      "source_id": "mipt_places",
+      "source_url": "https://pk.mipt.ru/bachelor/2026_places/",
+      "source_rows": [
+        48
+      ],
+      "rule_relation": "school_conditions"
+    },
+    {
+      "id": "5567a2b55f8094ff6e91",
+      "university_id": "mipt",
+      "admission_year": 2026,
+      "name": "Естественные и компьютерные науки",
+      "field_id": "09.03.01",
+      "field_name": "Информатика и вычислительная техника",
+      "school": "ФПМИ",
+      "competition_group": "Естественные и компьютерные науки",
+      "rule_scope": "ФПМИ",
+      "kind": "program",
+      "education_level": "Базовое высшее образование",
+      "source_id": "mipt_places",
+      "source_url": "https://pk.mipt.ru/bachelor/2026_places/",
+      "source_rows": [
+        49
+      ],
+      "rule_relation": "school_conditions"
+    },
+    {
+      "id": "32e41d2fd5ac47293fbd",
+      "university_id": "mipt",
+      "admission_year": 2026,
+      "name": "Математическое моделирование и теория управления",
+      "field_id": "09.03.01",
+      "field_name": "Информатика и вычислительная техника",
+      "school": "ФПМИ",
+      "competition_group": "Математическое моделирование и теория управления",
+      "rule_scope": "ФПМИ",
+      "kind": "program",
+      "education_level": "Базовое высшее образование",
+      "source_id": "mipt_places",
+      "source_url": "https://pk.mipt.ru/bachelor/2026_places/",
+      "source_rows": [
+        50,
+        51
+      ],
+      "rule_relation": "school_conditions"
+    },
+    {
+      "id": "7f6675005b2af60d52ba",
+      "university_id": "mipt",
+      "admission_year": 2026,
+      "name": "Разработка программно-информационных систем",
+      "field_id": "09.03.04",
+      "field_name": "Программная инженерия",
+      "school": "ВШПИ",
+      "competition_group": "Программная инженерия",
+      "rule_scope": "ВШПИ",
+      "kind": "program",
+      "education_level": "Базовое высшее образование",
+      "source_id": "mipt_places",
+      "source_url": "https://pk.mipt.ru/bachelor/2026_places/",
+      "source_rows": [
+        53
+      ],
+      "rule_relation": "school_conditions"
+    },
+    {
+      "id": "d44e1b475b66c23441da",
+      "university_id": "mipt",
+      "admission_year": 2026,
+      "name": "Физика перспективных технологий: микро- и наноэлектроника",
+      "field_id": "11.03.04",
+      "field_name": "Электроника и наноэлектроника",
+      "school": "ФЭФМ",
+      "competition_group": "Электроника и наноэлектроника",
+      "rule_scope": "ФЭФМ",
+      "kind": "program",
+      "education_level": "Базовое высшее образование",
+      "source_id": "mipt_places",
+      "source_url": "https://pk.mipt.ru/bachelor/2026_places/",
+      "source_rows": [
+        55,
+        56
+      ],
+      "rule_relation": "school_conditions"
+    },
+    {
+      "id": "cede5fcdd9f0bf08f8ab",
+      "university_id": "mipt",
+      "admission_year": 2026,
+      "name": "Техническая физика космических летательных аппаратов",
+      "field_id": "16.03.01",
+      "field_name": "Техническая физика",
+      "school": "ФАКТ",
+      "competition_group": "Техническая физика",
+      "rule_scope": "ФАКТ",
+      "kind": "program",
+      "education_level": "Базовое высшее образование",
+      "source_id": "mipt_places",
+      "source_url": "https://pk.mipt.ru/bachelor/2026_places/",
+      "source_rows": [
+        58
+      ],
+      "rule_relation": "school_conditions"
+    },
+    {
+      "id": "d61607a110c5c7e81328",
+      "university_id": "mipt",
+      "admission_year": 2026,
+      "name": "Биотехнология (ФБМФ)",
+      "field_id": "19.03.01",
+      "field_name": "Биотехнология",
+      "school": "ФБМФ, ВШБИ",
+      "competition_group": "Биотехнология",
+      "rule_scope": "ФБМФ/ ВШБИ",
+      "kind": "program",
+      "education_level": "Базовое высшее образование",
+      "source_id": "mipt_places",
+      "source_url": "https://pk.mipt.ru/bachelor/2026_places/",
+      "source_rows": [
+        60
+      ],
+      "rule_relation": "school_conditions"
+    },
+    {
+      "id": "3eb35121bf87253699b3",
+      "university_id": "mipt",
+      "admission_year": 2026,
+      "name": "Биоинженерия и биотехнология (ВШБИ)",
+      "field_id": "19.03.01",
+      "field_name": "Биотехнология",
+      "school": "ФБМФ, ВШБИ",
+      "competition_group": "Биотехнология",
+      "rule_scope": "ФБМФ/ ВШБИ",
+      "kind": "program",
+      "education_level": "Базовое высшее образование",
+      "source_id": "mipt_places",
+      "source_url": "https://pk.mipt.ru/bachelor/2026_places/",
+      "source_rows": [
+        61
+      ],
+      "rule_relation": "school_conditions"
+    },
+    {
+      "id": "904bdd61fdb96d60e2d3",
+      "university_id": "mipt",
+      "admission_year": 2026,
+      "name": "Управление инновациями в бизнесе (сетевая программа МШУ «СКОЛКОВО» )",
+      "field_id": "27.03.03",
+      "field_name": "Системный анализ и управление",
+      "school": "ФБВТ",
+      "competition_group": "Управление инновациями в бизнесе",
+      "rule_scope": "ФБВТ",
+      "kind": "program",
+      "education_level": "Базовое высшее образование",
+      "source_id": "mipt_places",
+      "source_url": "https://pk.mipt.ru/bachelor/2026_places/",
+      "source_rows": [
+        63
+      ],
+      "rule_relation": "school_conditions"
+    },
+    {
+      "id": "b010dbdcb56def777f08",
+      "university_id": "mipt",
+      "admission_year": 2026,
+      "name": "Управление инновациями в бизнесе (сетевая программа МШУ «СКОЛКОВО» )",
+      "field_id": "38.03.01",
+      "field_name": "Экономика",
+      "school": "ФБВТ",
+      "competition_group": "Управление инновациями в бизнесе",
+      "rule_scope": "ФБВТ",
+      "kind": "program",
+      "education_level": "Базовое высшее образование",
+      "source_id": "mipt_places",
+      "source_url": "https://pk.mipt.ru/bachelor/2026_places/",
+      "source_rows": [
+        65
+      ],
+      "rule_relation": "school_conditions"
+    }
+  ]
+}

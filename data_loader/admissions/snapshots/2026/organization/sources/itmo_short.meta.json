@@ -1,0 +1,9 @@
+{
+  "id": "itmo_short",
+  "university": "itmo",
+  "url": "https://abitlk.itmo.ru/api/v1/programs/short?languages=&priceFrom=&priceTo=&title=&lang=ru&degree=bachelor&limit=100&page=1",
+  "resolved_url": "https://abitlk.itmo.ru/api/v1/programs/short?languages=&priceFrom=&priceTo=&title=&lang=ru&degree=bachelor&limit=100&page=1",
+  "retrieved_at": "2026-09-06T21:53:14.374405+00:00",
+  "sha256": "d6bc5fd47428861b22020b9e3d1ad15c5d66567225eab984fa008e7f7aaefc03",
+  "file": "itmo_short.json"
+}

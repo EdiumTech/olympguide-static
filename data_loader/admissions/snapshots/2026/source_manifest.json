@@ -1,0 +1,942 @@
+[
+  {
+    "id": "bmstu",
+    "university": "bmstu",
+    "url": "https://bmstu.ru/documents",
+    "resolved_url": "https://bmstu.ru/documents",
+    "title": "",
+    "retrieved_at": "2026-09-06T15:15:13.632574+00:00",
+    "sha256": "53d2ed89cb8174e8d9aaf2934c97b52b297ff43ad99d8e4c64f50de7a9cd676d",
+    "file": "sources/bmstu.html"
+  },
+  {
+    "id": "bmstu_1088",
+    "university": "bmstu",
+    "url": "https://api.www.bmstu.ru/file/122151/download",
+    "resolved_url": "https://api.www.bmstu.ru/file/122151/download",
+    "title": "Приложение 5.5. Соответствие для Международной олимпиады школьников",
+    "retrieved_at": "2026-09-06T15:19:24.789346+00:00",
+    "sha256": "d70e0bd66e233d458b4ce1d37856f1460781fdc988a68b66be231cce1e7a0266",
+    "file": "sources/bmstu_1088.pdf"
+  },
+  {
+    "id": "bmstu_189",
+    "university": "bmstu",
+    "url": "https://api.www.bmstu.ru/file/122219/download",
+    "resolved_url": "https://api.www.bmstu.ru/file/122219/download",
+    "title": "Приложение 5. Порядок предоставления особых прав победителям и призёрам олимпиад школьников",
+    "retrieved_at": "2026-09-06T15:19:24.359874+00:00",
+    "sha256": "e644901c8bdcec1105952c59aad7cc42f7968f035b9a4f85de99e010b4debb56",
+    "file": "sources/bmstu_189.pdf"
+  },
+  {
+    "id": "bmstu_190",
+    "university": "bmstu",
+    "url": "https://api.www.bmstu.ru/file/124777/download",
+    "resolved_url": "https://api.www.bmstu.ru/file/124777/download",
+    "title": "Приложение 5.1. Особое право приёма БВИ (г. Москва)",
+    "retrieved_at": "2026-09-06T15:19:24.442155+00:00",
+    "sha256": "f76eb91353b83c0fdf7773fffa768c5d9fde69ade6ff94bb3192f70b29f47941",
+    "file": "sources/bmstu_190.pdf"
+  },
+  {
+    "id": "bmstu_201",
+    "university": "bmstu",
+    "url": "https://api.www.bmstu.ru/file/122149/download",
+    "resolved_url": "https://api.www.bmstu.ru/file/122149/download",
+    "title": "Приложение 5.4. Соответствие для Всероссийской олимпиады школьников",
+    "retrieved_at": "2026-09-06T15:19:24.273176+00:00",
+    "sha256": "3302e26b3b0e0ddff42326a5c3d02063f5fcc111485e9fd8c91020df79c2af90",
+    "file": "sources/bmstu_201.pdf"
+  },
+  {
+    "id": "bmstu_315",
+    "university": "bmstu",
+    "url": "https://api.www.bmstu.ru/file/122150/download",
+    "resolved_url": "https://api.www.bmstu.ru/file/122150/download",
+    "title": "Приложение 5.3 Соответствие олимпиад для 100 баллов ",
+    "retrieved_at": "2026-09-06T15:19:24.616151+00:00",
+    "sha256": "3a59ad1e5d900f4e8bb67e58ef3e8a0421d52666f02cfa9c09abb6747ded2c6f",
+    "file": "sources/bmstu_315.pdf"
+  },
+  {
+    "id": "hse",
+    "university": "hse",
+    "url": "https://ba.hse.ru/bolimp",
+    "resolved_url": "https://ba.hse.ru/bolimp",
+    "title": "Абитуриентам бакалавриата – Национальный исследовательский университет «Высшая школа экономики»",
+    "retrieved_at": "2026-09-06T15:15:10.765741+00:00",
+    "sha256": "6d3b671816e66bc5343cd934119ff6a318808598423854870f95ba59d255ae4e",
+    "file": "sources/hse.html"
+  },
+  {
+    "id": "hse_1120646356",
+    "university": "hse",
+    "url": "https://ba.hse.ru/mirror/pubs/share/1120646356",
+    "resolved_url": "https://ba.hse.ru/mirror/pubs/share/1120646356",
+    "title": "Математика",
+    "retrieved_at": "2026-09-06T15:20:20.294042+00:00",
+    "sha256": "187a60323ba0636fcfa60ac2805914cf5f8e3161683cb6a400c67f8e8f2ac204",
+    "file": "sources/hse_1120646356.pdf"
+  },
+  {
+    "id": "hse_1120646358",
+    "university": "hse",
+    "url": "https://ba.hse.ru/mirror/pubs/share/1120646358",
+    "resolved_url": "https://ba.hse.ru/mirror/pubs/share/1120646358",
+    "title": "Совместный бакалавриат НИУ ВШЭ и Центра педагогического мастерства",
+    "retrieved_at": "2026-09-06T15:20:20.294042+00:00",
+    "sha256": "25477360777644988c602a84bab982ac26ca481a8c2a7ea443de43951007a501",
+    "file": "sources/hse_1120646358.pdf"
+  },
+  {
+    "id": "hse_1120646366",
+    "university": "hse",
+    "url": "https://ba.hse.ru/mirror/pubs/share/1120646366",
+    "resolved_url": "https://ba.hse.ru/mirror/pubs/share/1120646366",
+    "title": "Прикладная математика и информатика",
+    "retrieved_at": "2026-09-06T15:20:20.388249+00:00",
+    "sha256": "6b35f2ed7a8fb8109a4521d8bb1a707391b776df9eabf4a891daadf7feb85a08",
+    "file": "sources/hse_1120646366.pdf"
+  },
+  {
+    "id": "hse_1120646393",
+    "university": "hse",
+    "url": "https://ba.hse.ru/mirror/pubs/share/1120646393",
+    "resolved_url": "https://ba.hse.ru/mirror/pubs/share/1120646393",
+    "title": "Компьютерные науки и анализ данных (онлайн)",
+    "retrieved_at": "2026-09-06T15:20:23.278347+00:00",
+    "sha256": "7468bd6af78d3f20a9750479c588c5588dd3a865fc62f90fd15fcb9f73fa0623",
+    "file": "sources/hse_1120646393.pdf"
+  },
+  {
+    "id": "hse_1120646404",
+    "university": "hse",
+    "url": "https://ba.hse.ru/mirror/pubs/share/1120646404",
+    "resolved_url": "https://ba.hse.ru/mirror/pubs/share/1120646404",
+    "title": "Прикладная математика",
+    "retrieved_at": "2026-09-06T15:20:23.525773+00:00",
+    "sha256": "2424ddc6f3459db54404d38f1f42358872ddff1bdaf6450bd7f1dc7deffed57d",
+    "file": "sources/hse_1120646404.pdf"
+  },
+  {
+    "id": "hse_1120646407",
+    "university": "hse",
+    "url": "https://ba.hse.ru/mirror/pubs/share/1120646407",
+    "resolved_url": "https://ba.hse.ru/mirror/pubs/share/1120646407",
+    "title": "Физика",
+    "retrieved_at": "2026-09-06T15:20:23.929449+00:00",
+    "sha256": "86ae34aea97ddbe75bcc02e9bc29b5ec8ae28a0ae54aa8fc45de22facc36e588",
+    "file": "sources/hse_1120646407.pdf"
+  },
+  {
+    "id": "hse_1120646459",
+    "university": "hse",
+    "url": "https://ba.hse.ru/mirror/pubs/share/1120646459",
+    "resolved_url": "https://ba.hse.ru/mirror/pubs/share/1120646459",
+    "title": "География глобальных изменений и геоинформационные технологии",
+    "retrieved_at": "2026-09-06T15:20:27.497467+00:00",
+    "sha256": "515f59a5f9830b7ebd4188027e3ae7cfc3aa8e1d3c4e5cbc5f31d9f5639649d4",
+    "file": "sources/hse_1120646459.pdf"
+  },
+  {
+    "id": "hse_1120646598",
+    "university": "hse",
+    "url": "https://ba.hse.ru/mirror/pubs/share/1120646598",
+    "resolved_url": "https://ba.hse.ru/mirror/pubs/share/1120646598",
+    "title": "Информатика и вычислительная техника",
+    "retrieved_at": "2026-09-06T15:20:29.801087+00:00",
+    "sha256": "87de9a90f4c815dea54a900cd3fd5ed83835503366ed0e340536fda0da5b3c33",
+    "file": "sources/hse_1120646598.pdf"
+  },
+  {
+    "id": "hse_1120646612",
+    "university": "hse",
+    "url": "https://ba.hse.ru/mirror/pubs/share/1120646612",
+    "resolved_url": "https://ba.hse.ru/mirror/pubs/share/1120646612",
+    "title": "Программная инженерия",
+    "retrieved_at": "2026-09-06T15:20:30.118763+00:00",
+    "sha256": "c768b94367e40e5ed1e905baf5e48508b4de9d8ab19544e5945d3d088bead8de",
+    "file": "sources/hse_1120646612.pdf"
+  },
+  {
+    "id": "hse_1120646625",
+    "university": "hse",
+    "url": "https://ba.hse.ru/mirror/pubs/share/1120646625",
+    "resolved_url": "https://ba.hse.ru/mirror/pubs/share/1120646625",
+    "title": "Дизайн и разработка информационных продуктов",
+    "retrieved_at": "2026-09-06T15:20:30.305057+00:00",
+    "sha256": "f56fa9b2571cb6f4a04133a0966020b4c30fac4b904e67889dc8e55f52ea6ffe",
+    "file": "sources/hse_1120646625.pdf"
+  },
+  {
+    "id": "hse_1120646643",
+    "university": "hse",
+    "url": "https://ba.hse.ru/mirror/pubs/share/1120646643",
+    "resolved_url": "https://ba.hse.ru/mirror/pubs/share/1120646643",
+    "title": "Разработка игр и цифровых продуктов",
+    "retrieved_at": "2026-09-06T15:20:31.438712+00:00",
+    "sha256": "9b5f0f950ab83fc48fae3e57ac19a8c13199b700fc19c6a17929e31b3cbbf4cf",
+    "file": "sources/hse_1120646643.pdf"
+  },
+  {
+    "id": "hse_1120646648",
+    "university": "hse",
+    "url": "https://ba.hse.ru/mirror/pubs/share/1120646648",
+    "resolved_url": "https://ba.hse.ru/mirror/pubs/share/1120646648",
+    "title": "Проектирование интеллектуальных робототехнических систем",
+    "retrieved_at": "2026-09-06T15:20:33.318543+00:00",
+    "sha256": "ccf17602f4d1155062c0865201b312fe6086abb166ee99532b1f3ebaad8b5f93",
+    "file": "sources/hse_1120646648.pdf"
+  },
+  {
+    "id": "hse_1120646650",
+    "university": "hse",
+    "url": "https://ba.hse.ru/mirror/pubs/share/1120646650",
+    "resolved_url": "https://ba.hse.ru/mirror/pubs/share/1120646650",
+    "title": "Информационная безопасность",
+    "retrieved_at": "2026-09-06T15:20:34.420931+00:00",
+    "sha256": "af890a3e7ae212e165f2cd12b8bde0920892a60df41ebce9ae4660d9fa44812c",
+    "file": "sources/hse_1120646650.pdf"
+  },
+  {
+    "id": "hse_1120646677",
+    "university": "hse",
+    "url": "https://ba.hse.ru/mirror/pubs/share/1120646677",
+    "resolved_url": "https://ba.hse.ru/mirror/pubs/share/1120646677",
+    "title": "Компьютерная безопасность",
+    "retrieved_at": "2026-09-06T15:20:34.946530+00:00",
+    "sha256": "31ebd0f71ca3f2e673a8b007e332bf77de77d1862d7fe7ec9287c12b5aa49e56",
+    "file": "sources/hse_1120646677.pdf"
+  },
+  {
+    "id": "hse_1120646741",
+    "university": "hse",
+    "url": "https://ba.hse.ru/mirror/pubs/share/1120646741",
+    "resolved_url": "https://ba.hse.ru/mirror/pubs/share/1120646741",
+    "title": "Цифровые технологии и телекоммуникации",
+    "retrieved_at": "2026-09-06T15:20:35.570034+00:00",
+    "sha256": "a8404457e32b7ca5856f9e62513a23338e40eefe5a02c6c42972d5690c560731",
+    "file": "sources/hse_1120646741.pdf"
+  },
+  {
+    "id": "hse_1120646779",
+    "university": "hse",
+    "url": "https://ba.hse.ru/mirror/pubs/share/1120646779",
+    "resolved_url": "https://ba.hse.ru/mirror/pubs/share/1120646779",
+    "title": "Управление технологическими инновациями",
+    "retrieved_at": "2026-09-06T15:20:36.285706+00:00",
+    "sha256": "617613ab5c6a03dd94727df502d167c01c27effd286a5ea4e5182583db64a4d1",
+    "file": "sources/hse_1120646779.pdf"
+  },
+  {
+    "id": "hse_1120646785",
+    "university": "hse",
+    "url": "https://ba.hse.ru/mirror/pubs/share/1120646785",
+    "resolved_url": "https://ba.hse.ru/mirror/pubs/share/1120646785",
+    "title": "Психология",
+    "retrieved_at": "2026-09-06T15:20:39.910668+00:00",
+    "sha256": "c65f862da189809dcac36a40c8141b3ac5a95d3a3de2d63128629cf342b7b9ad",
+    "file": "sources/hse_1120646785.pdf"
+  },
+  {
+    "id": "hse_1120653672",
+    "university": "hse",
+    "url": "https://ba.hse.ru/mirror/pubs/share/1120653672",
+    "resolved_url": "https://ba.hse.ru/mirror/pubs/share/1120653672",
+    "title": "Юриспруденция",
+    "retrieved_at": "2026-09-06T15:20:51.020241+00:00",
+    "sha256": "5c2900810574787304eb99c58330feea709a6cccc716548b03abd7d702552ed9",
+    "file": "sources/hse_1120653672.pdf"
+  },
+  {
+    "id": "hse_1120658689",
+    "university": "hse",
+    "url": "https://ba.hse.ru/mirror/pubs/share/1120658689",
+    "resolved_url": "https://ba.hse.ru/mirror/pubs/share/1120658689",
+    "title": "Юриспруденция: цифровой юрист",
+    "retrieved_at": "2026-09-06T15:20:51.020241+00:00",
+    "sha256": "06ffaba9794f318457664a41a0dcf758e54f3ee127190069977e95bb4e77969e",
+    "file": "sources/hse_1120658689.pdf"
+  },
+  {
+    "id": "hse_1120658729",
+    "university": "hse",
+    "url": "https://ba.hse.ru/mirror/pubs/share/1120658729",
+    "resolved_url": "https://ba.hse.ru/mirror/pubs/share/1120658729",
+    "title": "Политология",
+    "retrieved_at": "2026-09-06T15:20:52.796107+00:00",
+    "sha256": "4997b65e45b013e6fda2ba221a667de140ecdac81508388434256155faecaf01",
+    "file": "sources/hse_1120658729.pdf"
+  },
+  {
+    "id": "hse_1120658757",
+    "university": "hse",
+    "url": "https://ba.hse.ru/mirror/pubs/share/1120658757",
+    "resolved_url": "https://ba.hse.ru/mirror/pubs/share/1120658757",
+    "title": "Международные отношения",
+    "retrieved_at": "2026-09-06T15:20:52.874274+00:00",
+    "sha256": "05e66976218f3f32fb77daf6b91279a36ec838bccb2693d46134aac2be13be02",
+    "file": "sources/hse_1120658757.pdf"
+  },
+  {
+    "id": "hse_1120658808",
+    "university": "hse",
+    "url": "https://ba.hse.ru/mirror/pubs/share/1120658808",
+    "resolved_url": "https://ba.hse.ru/mirror/pubs/share/1120658808",
+    "title": "Международная программа «Международные отношения и глобальные исследования» (реализуется на английском языке)",
+    "retrieved_at": "2026-09-06T15:20:53.000081+00:00",
+    "sha256": "68b3308345745d43ee0c0b72fb0f1a4ba27a7d1c1de2061274243e3380c398a6",
+    "file": "sources/hse_1120658808.pdf"
+  },
+  {
+    "id": "hse_1120658914",
+    "university": "hse",
+    "url": "https://ba.hse.ru/mirror/pubs/share/1120658914",
+    "resolved_url": "https://ba.hse.ru/mirror/pubs/share/1120658914",
+    "title": "Международная программа «Международные отношения и глобальные исследования» (реализуется на английском языке)",
+    "retrieved_at": "2026-09-06T15:20:53.779773+00:00",
+    "sha256": "9d389b4720b92ee4be23d11051b268b235885c90e2a1eabc580ada6fe665ef92",
+    "file": "sources/hse_1120658914.pdf"
+  },
+  {
+    "id": "hse_1120658929",
+    "university": "hse",
+    "url": "https://ba.hse.ru/mirror/pubs/share/1120658929",
+    "resolved_url": "https://ba.hse.ru/mirror/pubs/share/1120658929",
+    "title": "Реклама и связи с общественностью",
+    "retrieved_at": "2026-09-06T15:20:55.247459+00:00",
+    "sha256": "b5d32aefed746ececd973e7735f5da1cca7e2aaf6d63d9af76ad8a8a3e63eadb",
+    "file": "sources/hse_1120658929.pdf"
+  },
+  {
+    "id": "hse_1120658935",
+    "university": "hse",
+    "url": "https://ba.hse.ru/mirror/pubs/share/1120658935",
+    "resolved_url": "https://ba.hse.ru/mirror/pubs/share/1120658935",
+    "title": "Стратегия и продюсирование в коммуникациях",
+    "retrieved_at": "2026-09-06T15:20:55.619891+00:00",
+    "sha256": "251524ee50a8455641bc2785ad9c982fc7e60fc51d29298b7d7f36c687d2acef",
+    "file": "sources/hse_1120658935.pdf"
+  },
+  {
+    "id": "hse_1120658981",
+    "university": "hse",
+    "url": "https://ba.hse.ru/mirror/pubs/share/1120658981",
+    "resolved_url": "https://ba.hse.ru/mirror/pubs/share/1120658981",
+    "title": "Журналистика",
+    "retrieved_at": "2026-09-06T15:20:55.810273+00:00",
+    "sha256": "4afebab37da23d348a0caedfe271a98a74ced58a1031c5ebd7cf537f76bb848f",
+    "file": "sources/hse_1120658981.pdf"
+  },
+  {
+    "id": "hse_1120658985",
+    "university": "hse",
+    "url": "https://ba.hse.ru/mirror/pubs/share/1120658985",
+    "resolved_url": "https://ba.hse.ru/mirror/pubs/share/1120658985",
+    "title": "Медиакоммуникации",
+    "retrieved_at": "2026-09-06T15:20:56.603168+00:00",
+    "sha256": "0097b5f2e7b7ebe8dae94f286a0a4dea5826a1745e40ecc0757547b037923194",
+    "file": "sources/hse_1120658985.pdf"
+  },
+  {
+    "id": "hse_1120659054",
+    "university": "hse",
+    "url": "https://ba.hse.ru/mirror/pubs/share/1120659054",
+    "resolved_url": "https://ba.hse.ru/mirror/pubs/share/1120659054",
+    "title": "Реклама и связи с общественностью",
+    "retrieved_at": "2026-09-06T15:20:56.620046+00:00",
+    "sha256": "09c1f15b5089e39fcd1fd0a44c9cd7ae593d86d7e149d30866ae4ace9c1e1bd2",
+    "file": "sources/hse_1120659054.pdf"
+  },
+  {
+    "id": "hse_1120659749",
+    "university": "hse",
+    "url": "https://ba.hse.ru/mirror/pubs/share/1120659749",
+    "resolved_url": "https://ba.hse.ru/mirror/pubs/share/1120659749",
+    "title": "Фундаментальная и компьютерная лингвистика",
+    "retrieved_at": "2026-09-06T15:20:57.342262+00:00",
+    "sha256": "a57096383044f8c401af19bfe4890dcc79fb6c9f0efab35f656b6ef20b9923e5",
+    "file": "sources/hse_1120659749.pdf"
+  },
+  {
+    "id": "hse_1120659774",
+    "university": "hse",
+    "url": "https://ba.hse.ru/mirror/pubs/share/1120659774",
+    "resolved_url": "https://ba.hse.ru/mirror/pubs/share/1120659774",
+    "title": "Практическая философия",
+    "retrieved_at": "2026-09-06T15:20:58.676530+00:00",
+    "sha256": "69bb932a1719d22d8337d0b9fbdd8d0c62692b317c013f6ae064dbdca44ee1b5",
+    "file": "sources/hse_1120659774.pdf"
+  },
+  {
+    "id": "hse_1120659833",
+    "university": "hse",
+    "url": "https://ba.hse.ru/mirror/pubs/share/1120659833",
+    "resolved_url": "https://ba.hse.ru/mirror/pubs/share/1120659833",
+    "title": "Современное искусство",
+    "retrieved_at": "2026-09-06T15:20:59.040107+00:00",
+    "sha256": "500fbff6319a629ae912278da84ebb23bc56f6e902575ce42fb8f8cccee2e8b2",
+    "file": "sources/hse_1120659833.pdf"
+  },
+  {
+    "id": "hse_1120659923",
+    "university": "hse",
+    "url": "https://ba.hse.ru/mirror/pubs/share/1120659923",
+    "resolved_url": "https://ba.hse.ru/mirror/pubs/share/1120659923",
+    "title": "Культурология",
+    "retrieved_at": "2026-09-06T15:21:00.447745+00:00",
+    "sha256": "ed0bedf08cd62dccf52bf317aa975295c7451d59fe3d590502f2c8cc35a84229",
+    "file": "sources/hse_1120659923.pdf"
+  },
+  {
+    "id": "hse_1120659970",
+    "university": "hse",
+    "url": "https://ba.hse.ru/mirror/pubs/share/1120659970",
+    "resolved_url": "https://ba.hse.ru/mirror/pubs/share/1120659970",
+    "title": "Дизайн",
+    "retrieved_at": "2026-09-06T15:21:00.447745+00:00",
+    "sha256": "4cc054cff536977a0b46a9198682bb175289dd427499496759363e23d3879e82",
+    "file": "sources/hse_1120659970.pdf"
+  },
+  {
+    "id": "hse_1120660000",
+    "university": "hse",
+    "url": "https://ba.hse.ru/mirror/pubs/share/1120660000",
+    "resolved_url": "https://ba.hse.ru/mirror/pubs/share/1120660000",
+    "title": "Мода",
+    "retrieved_at": "2026-09-06T15:21:00.939446+00:00",
+    "sha256": "0cf2ed03ed09e46989944b595a2afe295b98c334c63481c3ce907d7eeec6833a",
+    "file": "sources/hse_1120660000.pdf"
+  },
+  {
+    "id": "hse_1120660014",
+    "university": "hse",
+    "url": "https://ba.hse.ru/mirror/pubs/share/1120660014",
+    "resolved_url": "https://ba.hse.ru/mirror/pubs/share/1120660014",
+    "title": "Разработка игр и цифровых продуктов",
+    "retrieved_at": "2026-09-06T15:21:01.452239+00:00",
+    "sha256": "5e07211e08b7e0ed56a986e57f224ff6ca6114af5e87617da0c979e2cfece995",
+    "file": "sources/hse_1120660014.pdf"
+  },
+  {
+    "id": "hse_1120660047",
+    "university": "hse",
+    "url": "https://ba.hse.ru/mirror/pubs/share/1120660047",
+    "resolved_url": "https://ba.hse.ru/mirror/pubs/share/1120660047",
+    "title": "Востоковедение",
+    "retrieved_at": "2026-09-06T15:21:01.765870+00:00",
+    "sha256": "ec375fe32183b7da1b23026d86f628205d63989f1432a64d6baf6207a1bee486",
+    "file": "sources/hse_1120660047.pdf"
+  },
+  {
+    "id": "hse_1120660079",
+    "university": "hse",
+    "url": "https://ba.hse.ru/mirror/pubs/share/1120660079",
+    "resolved_url": "https://ba.hse.ru/mirror/pubs/share/1120660079",
+    "title": "Арабский мир и Христианский Восток",
+    "retrieved_at": "2026-09-06T15:21:01.836964+00:00",
+    "sha256": "fb8d94bda6fbc0b9aa0ff65f97917ae6b92b9ce262856c02b1c85867de31b553",
+    "file": "sources/hse_1120660079.pdf"
+  },
+  {
+    "id": "hse_1120660113",
+    "university": "hse",
+    "url": "https://ba.hse.ru/mirror/pubs/share/1120660113",
+    "resolved_url": "https://ba.hse.ru/mirror/pubs/share/1120660113",
+    "title": "Иран и Центральная Азия",
+    "retrieved_at": "2026-09-06T15:21:02.170430+00:00",
+    "sha256": "21e36c4c0ec03bc75abd2df06ecbb0202dc989ce12342c31f76f9352e3f9296c",
+    "file": "sources/hse_1120660113.pdf"
+  },
+  {
+    "id": "hse_1120660116",
+    "university": "hse",
+    "url": "https://ba.hse.ru/mirror/pubs/share/1120660116",
+    "resolved_url": "https://ba.hse.ru/mirror/pubs/share/1120660116",
+    "title": "Китай: язык, культура, общество",
+    "retrieved_at": "2026-09-06T15:21:02.743818+00:00",
+    "sha256": "9d542496a226bad4c7fee0b9d90310a97e7c0e0009ea6a29edd6c902a4c7e717",
+    "file": "sources/hse_1120660116.pdf"
+  },
+  {
+    "id": "hse_1120942518",
+    "university": "hse",
+    "url": "https://ba.hse.ru/mirror/pubs/share/1120942518",
+    "resolved_url": "https://ba.hse.ru/mirror/pubs/share/1120942518",
+    "title": "История искусств",
+    "retrieved_at": "2026-09-06T15:21:00.099044+00:00",
+    "sha256": "a10006a22bfc7a145cf5e02690403e5e2b2dbed0db52d9aae63d8666832f5532",
+    "file": "sources/hse_1120942518.pdf"
+  },
+  {
+    "id": "hse_1131719515",
+    "university": "hse",
+    "url": "https://ba.hse.ru/mirror/pubs/share/1131719515",
+    "resolved_url": "https://ba.hse.ru/mirror/pubs/share/1131719515",
+    "title": "Бизнес-информатика",
+    "retrieved_at": "2026-09-06T15:20:48.567575+00:00",
+    "sha256": "b1f14053cab0bb7a8b541f77512bc1f1c9669ec2c169c33bbe740b31309a9771",
+    "file": "sources/hse_1131719515.pdf"
+  },
+  {
+    "id": "hse_1131719544",
+    "university": "hse",
+    "url": "https://ba.hse.ru/mirror/pubs/share/1131719544",
+    "resolved_url": "https://ba.hse.ru/mirror/pubs/share/1131719544",
+    "title": "Государственное и муниципальное управление",
+    "retrieved_at": "2026-09-06T15:20:47.888355+00:00",
+    "sha256": "42c3cc9ef8a10e66f25ba49a04c6716754b369055e00e98c2313b7844e2fb7b9",
+    "file": "sources/hse_1131719544.pdf"
+  },
+  {
+    "id": "hse_1131719552",
+    "university": "hse",
+    "url": "https://ba.hse.ru/mirror/pubs/share/1131719552",
+    "resolved_url": "https://ba.hse.ru/mirror/pubs/share/1131719552",
+    "title": "Девелопмент и городское планирование",
+    "retrieved_at": "2026-09-06T15:20:29.404424+00:00",
+    "sha256": "dbbf723013e87cf0335f1a6cd114b93d461856351889c5967dc3a82ec870354c",
+    "file": "sources/hse_1131719552.pdf"
+  },
+  {
+    "id": "hse_1131719595",
+    "university": "hse",
+    "url": "https://ba.hse.ru/mirror/pubs/share/1131719595",
+    "resolved_url": "https://ba.hse.ru/mirror/pubs/share/1131719595",
+    "title": "История",
+    "retrieved_at": "2026-09-06T15:20:58.387110+00:00",
+    "sha256": "4dfc685b2c884e749534c0a04287ee766ceef641b7fcae6f0e9159dc2047c752",
+    "file": "sources/hse_1131719595.pdf"
+  },
+  {
+    "id": "hse_1131719600",
+    "university": "hse",
+    "url": "https://ba.hse.ru/mirror/pubs/share/1131719600",
+    "resolved_url": "https://ba.hse.ru/mirror/pubs/share/1131719600",
+    "title": "Иностранные языки и межкультурная коммуникация",
+    "retrieved_at": "2026-09-06T15:20:57.072611+00:00",
+    "sha256": "b29e33760f7f4e89a9385344b34ae1e93a11bfdb7300ae4a0d942134dd82365d",
+    "file": "sources/hse_1131719600.pdf"
+  },
+  {
+    "id": "hse_1131719615",
+    "university": "hse",
+    "url": "https://ba.hse.ru/mirror/pubs/share/1131719615",
+    "resolved_url": "https://ba.hse.ru/mirror/pubs/share/1131719615",
+    "title": "Программа двух дипломов НИУ ВШЭ и Университета Кёнхи «Экономика и политика в Азии» (реализуется на английском языке)",
+    "retrieved_at": "2026-09-06T15:20:51.638255+00:00",
+    "sha256": "a0c28d7d3c42d0e3aa186ab10fcdee08285a9640003d13843f46761b05d0c220",
+    "file": "sources/hse_1131719615.pdf"
+  },
+  {
+    "id": "hse_1131719635",
+    "university": "hse",
+    "url": "https://ba.hse.ru/mirror/pubs/share/1131719635",
+    "resolved_url": "https://ba.hse.ru/mirror/pubs/share/1131719635",
+    "title": "Программа двух дипломов НИУ ВШЭ и Университета Кёнхи «Экономика и политика в Азии» (реализуется на английском языке)",
+    "retrieved_at": "2026-09-06T15:20:55.179781+00:00",
+    "sha256": "0fccfe67a8d37ea0cede6ddf11bec7787d2e1fdfc4bd39c35865464aeb91943d",
+    "file": "sources/hse_1131719635.pdf"
+  },
+  {
+    "id": "hse_1131719655",
+    "university": "hse",
+    "url": "https://ba.hse.ru/mirror/pubs/share/1131719655",
+    "resolved_url": "https://ba.hse.ru/mirror/pubs/share/1131719655",
+    "title": null,
+    "retrieved_at": "2026-09-06T15:29:12.666783+00:00",
+    "sha256": "2d483bd7cd3072c1eb0621d7659a2ba05fde658ec657efd031ec6f78a7f8cf4f",
+    "file": "sources/hse_1131719655.pdf"
+  },
+  {
+    "id": "hse_1131719657",
+    "university": "hse",
+    "url": "https://ba.hse.ru/mirror/pubs/share/1131719657",
+    "resolved_url": "https://ba.hse.ru/mirror/pubs/share/1131719657",
+    "title": "Маркетинг и рыночная аналитика",
+    "retrieved_at": "2026-09-06T15:20:45.527039+00:00",
+    "sha256": "5e0dcc319a1dcf009a632427b2fb116a1b28c86dbc83f0f286a456ba5655a9eb",
+    "file": "sources/hse_1131719657.pdf"
+  },
+  {
+    "id": "hse_1131719659",
+    "university": "hse",
+    "url": "https://ba.hse.ru/mirror/pubs/share/1131719659",
+    "resolved_url": "https://ba.hse.ru/mirror/pubs/share/1131719659",
+    "title": "Международный бизнес (реализуется на английском языке)",
+    "retrieved_at": "2026-09-06T15:20:46.629507+00:00",
+    "sha256": "42cfd00f9dc228e7fb920daca625c244d877c0222496f86474a00829e6ba17ca",
+    "file": "sources/hse_1131719659.pdf"
+  },
+  {
+    "id": "hse_1131719661",
+    "university": "hse",
+    "url": "https://ba.hse.ru/mirror/pubs/share/1131719661",
+    "resolved_url": "https://ba.hse.ru/mirror/pubs/share/1131719661",
+    "title": "Международная программа по экономике и финансам",
+    "retrieved_at": "2026-09-06T15:20:43.020358+00:00",
+    "sha256": "f96596b553743956a19a251eef48785dc1d975fd3bf00ebaa8bdd394232d1079",
+    "file": "sources/hse_1131719661.pdf"
+  },
+  {
+    "id": "hse_1131719673",
+    "university": "hse",
+    "url": "https://ba.hse.ru/mirror/pubs/share/1131719673",
+    "resolved_url": "https://ba.hse.ru/mirror/pubs/share/1131719673",
+    "title": "Мировая экономика",
+    "retrieved_at": "2026-09-06T15:20:43.145368+00:00",
+    "sha256": "d245ade41b97fa68ddaae9284c488de02604b1bd000244996e7853e67f3b14f7",
+    "file": "sources/hse_1131719673.pdf"
+  },
+  {
+    "id": "hse_1131719684",
+    "university": "hse",
+    "url": "https://ba.hse.ru/mirror/pubs/share/1131719684",
+    "resolved_url": "https://ba.hse.ru/mirror/pubs/share/1131719684",
+    "title": "Прикладной анализ данных",
+    "retrieved_at": "2026-09-06T15:20:20.748067+00:00",
+    "sha256": "165630abe10043cce0735c2f52049202131fa508f95428523f193d771e339223",
+    "file": "sources/hse_1131719684.pdf"
+  },
+  {
+    "id": "hse_1131719689",
+    "university": "hse",
+    "url": "https://ba.hse.ru/mirror/pubs/share/1131719689",
+    "resolved_url": "https://ba.hse.ru/mirror/pubs/share/1131719689",
+    "title": "Совместная программа по экономике НИУ ВШЭ и РЭШ",
+    "retrieved_at": "2026-09-06T15:20:40.111919+00:00",
+    "sha256": "f93a2411edb5a712d577d14cd0cc93f8fa198d59d6b6d72f204bf033e14f1269",
+    "file": "sources/hse_1131719689.pdf"
+  },
+  {
+    "id": "hse_1131719718",
+    "university": "hse",
+    "url": "https://ba.hse.ru/mirror/pubs/share/1131719718",
+    "resolved_url": "https://ba.hse.ru/mirror/pubs/share/1131719718",
+    "title": "Современная филология",
+    "retrieved_at": "2026-09-06T15:20:56.848097+00:00",
+    "sha256": "f4b79cc2300295ef59961b16797f7156564fe2cfb45b62267065ca0ad53e0649",
+    "file": "sources/hse_1131719718.pdf"
+  },
+  {
+    "id": "hse_1131719722",
+    "university": "hse",
+    "url": "https://ba.hse.ru/mirror/pubs/share/1131719722",
+    "resolved_url": "https://ba.hse.ru/mirror/pubs/share/1131719722",
+    "title": "Социология",
+    "retrieved_at": "2026-09-06T15:20:51.019239+00:00",
+    "sha256": "75a6b29059109f850f2b87d5af70ce769b9b2b439b3d8ef352d87b89197bd5e9",
+    "file": "sources/hse_1131719722.pdf"
+  },
+  {
+    "id": "hse_1131719744",
+    "university": "hse",
+    "url": "https://ba.hse.ru/mirror/pubs/share/1131719744",
+    "resolved_url": "https://ba.hse.ru/mirror/pubs/share/1131719744",
+    "title": "Технологии анализа данных в бизнесе",
+    "retrieved_at": "2026-09-06T15:20:49.720972+00:00",
+    "sha256": "1bfe4132ba9dbdd3623e69b05f10527acc173f4da91bddefda6826ffabc96317",
+    "file": "sources/hse_1131719744.pdf"
+  },
+  {
+    "id": "hse_1131719753",
+    "university": "hse",
+    "url": "https://ba.hse.ru/mirror/pubs/share/1131719753",
+    "resolved_url": "https://ba.hse.ru/mirror/pubs/share/1131719753",
+    "title": "Управление бизнесом",
+    "retrieved_at": "2026-09-06T15:20:45.823320+00:00",
+    "sha256": "b4d69701db1ff44b5ba76b500031641d12f37b285ab345997d7964d380dbf3a4",
+    "file": "sources/hse_1131719753.pdf"
+  },
+  {
+    "id": "hse_1131719764",
+    "university": "hse",
+    "url": "https://ba.hse.ru/mirror/pubs/share/1131719764",
+    "resolved_url": "https://ba.hse.ru/mirror/pubs/share/1131719764",
+    "title": "Управление цифровым продуктом",
+    "retrieved_at": "2026-09-06T15:20:48.911167+00:00",
+    "sha256": "1652f3f8209fb603ecd97b143020054ccaf2c07f2b117f1cab47b6da92be5d45",
+    "file": "sources/hse_1131719764.pdf"
+  },
+  {
+    "id": "hse_1131719776",
+    "university": "hse",
+    "url": "https://ba.hse.ru/mirror/pubs/share/1131719776",
+    "resolved_url": "https://ba.hse.ru/mirror/pubs/share/1131719776",
+    "title": "Экономика и анализ данных",
+    "retrieved_at": "2026-09-06T15:20:41.963409+00:00",
+    "sha256": "64860585c22eefe6491c30ae3564efe41b93f0dac27da61f4250da27dd4f841c",
+    "file": "sources/hse_1131719776.pdf"
+  },
+  {
+    "id": "hse_1131719805",
+    "university": "hse",
+    "url": "https://ba.hse.ru/mirror/pubs/share/1131719805",
+    "resolved_url": "https://ba.hse.ru/mirror/pubs/share/1131719805",
+    "title": "Экономика",
+    "retrieved_at": "2026-09-06T15:20:40.002759+00:00",
+    "sha256": "c9e0f4e1e644473334e700a2782fb4bcd08533ca6d1d4334a4a7ccb824d8a770",
+    "file": "sources/hse_1131719805.pdf"
+  },
+  {
+    "id": "hse_1131719808",
+    "university": "hse",
+    "url": "https://ba.hse.ru/mirror/pubs/share/1131719808",
+    "resolved_url": "https://ba.hse.ru/mirror/pubs/share/1131719808",
+    "title": "Экономический анализ (онлайн)",
+    "retrieved_at": "2026-09-06T15:20:44.856926+00:00",
+    "sha256": "07199806d4afe687d1e982a079fa92aec1450059afa199d3cd3d223898b97910",
+    "file": "sources/hse_1131719808.pdf"
+  },
+  {
+    "id": "hse_1131719831",
+    "university": "hse",
+    "url": "https://ba.hse.ru/mirror/pubs/share/1131719831",
+    "resolved_url": "https://ba.hse.ru/mirror/pubs/share/1131719831",
+    "title": "Экономика и статистика",
+    "retrieved_at": "2026-09-06T15:20:42.761670+00:00",
+    "sha256": "714e1bf8b94da2f2460ce010f5c0e67a3c7623cf1520736949fea976f4c9f60d",
+    "file": "sources/hse_1131719831.pdf"
+  },
+  {
+    "id": "hse_1170753533",
+    "university": "hse",
+    "url": "https://ba.hse.ru/mirror/pubs/share/1170753533",
+    "resolved_url": "https://ba.hse.ru/mirror/pubs/share/1170753533",
+    "title": "Химия",
+    "retrieved_at": "2026-09-06T15:20:24.461376+00:00",
+    "sha256": "858469dc567f1c168ccfe1764bebc1d666976bdc1c10ddf91c7c56cb7a0c6d66",
+    "file": "sources/hse_1170753533.pdf"
+  },
+  {
+    "id": "hse_1170753538",
+    "university": "hse",
+    "url": "https://ba.hse.ru/mirror/pubs/share/1170753538",
+    "resolved_url": "https://ba.hse.ru/mirror/pubs/share/1170753538",
+    "title": "Химия новых материалов",
+    "retrieved_at": "2026-09-06T15:20:26.982393+00:00",
+    "sha256": "152f493d5272f00b4ba1586846cf9390209abb05b4a20fe169cdd77b08c49840",
+    "file": "sources/hse_1170753538.pdf"
+  },
+  {
+    "id": "hse_1170753540",
+    "university": "hse",
+    "url": "https://ba.hse.ru/mirror/pubs/share/1170753540",
+    "resolved_url": "https://ba.hse.ru/mirror/pubs/share/1170753540",
+    "title": "Клеточная и молекулярная биотехнология",
+    "retrieved_at": "2026-09-06T15:20:28.133570+00:00",
+    "sha256": "727652b8d9c20bcf1f66a9bee48086e8c65ca9c951c0672b067532c7fc9bfd44",
+    "file": "sources/hse_1170753540.pdf"
+  },
+  {
+    "id": "hse_1170753547",
+    "university": "hse",
+    "url": "https://ba.hse.ru/mirror/pubs/share/1170753547",
+    "resolved_url": "https://ba.hse.ru/mirror/pubs/share/1170753547",
+    "title": "Когнитивная нейробиология",
+    "retrieved_at": "2026-09-06T15:20:28.967624+00:00",
+    "sha256": "26236a7ec59df22219f84247c86c137aed1c6662a1c83fee6948cf0f23742a72",
+    "file": "sources/hse_1170753547.pdf"
+  },
+  {
+    "id": "hse_vsosh",
+    "university": "hse",
+    "url": "https://ba.hse.ru/olimp",
+    "resolved_url": "https://ba.hse.ru/olimp",
+    "title": "Абитуриентам бакалавриата – Национальный исследовательский университет «Высшая школа экономики»",
+    "retrieved_at": "2026-09-06T15:40:17.590077+00:00",
+    "sha256": "2b606e2905c71c12ce690053d6265fc786f41dbeb4aebc997417bf8b701a612f",
+    "file": "sources/hse_vsosh.html"
+  },
+  {
+    "id": "itmo",
+    "university": "itmo",
+    "url": "https://abit.itmo.ru/bachelor/",
+    "resolved_url": "https://abit.itmo.ru/bachelor",
+    "title": "Поступление на бакалавриат ИТМО 2026-2027 | Санкт-Петербург",
+    "retrieved_at": "2026-09-06T15:15:10.914704+00:00",
+    "sha256": "8defbff18c023ac46eeac842919279e30a4c5b1689383d26f18da62c9ac047a9",
+    "file": "sources/itmo.html"
+  },
+  {
+    "id": "itmo_100",
+    "university": "itmo",
+    "url": "https://abit.itmo.ru/file_storage/file/pages/82/rsosh_100_2026.pdf",
+    "resolved_url": "https://abit.itmo.ru/file_storage/file/pages/82/rsosh_100.pdf",
+    "title": null,
+    "retrieved_at": "2026-09-06T15:15:51.981184+00:00",
+    "sha256": "7e3d0bb67e7160f6646221324e421b06c5e1fc8c8938e5f9da743358525e1410",
+    "file": "sources/itmo_100.pdf"
+  },
+  {
+    "id": "itmo_bvi",
+    "university": "itmo",
+    "url": "https://abit.itmo.ru/file_storage/file/pages/82/rsosh_bvi_2026.pdf",
+    "resolved_url": "https://abit.itmo.ru/file_storage/file/pages/82/rsosh_bvi.pdf",
+    "title": null,
+    "retrieved_at": "2026-09-06T15:15:51.389882+00:00",
+    "sha256": "0520ccbdcfd09f79611a196423427e82725126472001232261f2b6f0d4e465d4",
+    "file": "sources/itmo_bvi.pdf"
+  },
+  {
+    "id": "itmo_vsosh",
+    "university": "itmo",
+    "url": "https://abit.itmo.ru/file_storage/file/pages/82/vsosh_2026.pdf",
+    "resolved_url": "https://abit.itmo.ru/file_storage/file/pages/82/vsosh.pdf",
+    "title": null,
+    "retrieved_at": "2026-09-06T15:40:18.011039+00:00",
+    "sha256": "ed4c8c7f4545f49ed117491a05e59697caa406c84bcddc12271cdde92a136659",
+    "file": "sources/itmo_vsosh.pdf"
+  },
+  {
+    "id": "mai",
+    "university": "mai",
+    "url": "https://priem.mai.ru/base/bvi/",
+    "resolved_url": "https://priem.mai.ru/base/bvi/",
+    "title": "Поступление без вступительных испытаний",
+    "retrieved_at": "2026-09-06T15:17:17.757298+00:00",
+    "sha256": "3c0c0060f4d6bd27b4b85129ae048928f988a005d384706ed119050f5c4e88fa",
+    "file": "sources/mai.html"
+  },
+  {
+    "id": "mai_olympiads",
+    "university": "mai",
+    "url": "https://files.mai.ru/doc/к_приказу_Об_объявлении_набора_№3_орг_от_20_01_2026_Приложение_7.pdf",
+    "resolved_url": "https://files.mai.ru/doc/%D0%BA_%D0%BF%D1%80%D0%B8%D0%BA%D0%B0%D0%B7%D1%83_%D0%9E%D0%B1_%D0%BE%D0%B1%D1%8A%D1%8F%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B8_%D0%BD%D0%B0%D0%B1%D0%BE%D1%80%D0%B0_%E2%84%963_%D0%BE%D1%80%D0%B3_%D0%BE%D1%82_20_01_2026_%D0%9F%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_7.pdf",
+    "title": "Приложение 7. Перечень олимпиад школьников, 2026",
+    "retrieved_at": "2026-09-06T15:19:25.443864+00:00",
+    "sha256": "b61450f63a1aabcf21ff556bc490e31f8a373814439028a1fb222b10b3476869",
+    "file": "sources/mai_olympiads.pdf"
+  },
+  {
+    "id": "mephi",
+    "university": "mephi",
+    "url": "https://admission.mephi.ru/admission/baccalaureate-and-specialty/rules",
+    "resolved_url": "https://admission.mephi.ru/admission/baccalaureate-and-specialty/rules",
+    "title": "Информация о правилах приёма на программы бакалавриата и специалитета | Приемная комиссия НИЯУ МИФИ",
+    "retrieved_at": "2026-09-06T15:15:12.202764+00:00",
+    "sha256": "fbad0f48df7a71db738962396f9fe959a4362037c4b1cfbccc0f8d3d334db3d0",
+    "file": "sources/mephi.html"
+  },
+  {
+    "id": "mephi_documents",
+    "university": "mephi",
+    "url": "https://admission.mephi.ru/admission/baccalaureate-and-specialty/documents",
+    "resolved_url": "https://admission.mephi.ru/admission/baccalaureate-and-specialty/documents",
+    "title": "Основные документы | Приемная комиссия НИЯУ МИФИ",
+    "retrieved_at": "2026-09-06T15:40:19.206352+00:00",
+    "sha256": "33056e0c34134aafcdcd60b3e8e2adcdab6cdc4241d748ae740d8392767c086e",
+    "file": "sources/mephi_documents.html"
+  },
+  {
+    "id": "mephi_olympiads",
+    "university": "mephi",
+    "url": "https://admission.mephi.ru/content/public/uploads/documents/2026/main_doc/19._osobye_prava_moskva_2026_last_1.pdf",
+    "resolved_url": "https://admission.mephi.ru/content/public/uploads/documents/2026/main_doc/19._osobye_prava_moskva_2026_last_1.pdf",
+    "title": null,
+    "retrieved_at": "2026-09-06T15:18:25.105921+00:00",
+    "sha256": "94c570016d4c2a45c63249e4baea4319b14f1550aebe89350b55f180adf35c73",
+    "file": "sources/mephi_olympiads.pdf"
+  },
+  {
+    "id": "mephi_rights",
+    "university": "mephi",
+    "url": "https://admission.mephi.ru/content/public/uploads/documents/2026/main_doc/18._informaciya_ob_osobyh_pravah_2026.pdf",
+    "resolved_url": "https://admission.mephi.ru/content/public/uploads/documents/2026/main_doc/18._informaciya_ob_osobyh_pravah_2026.pdf",
+    "title": null,
+    "retrieved_at": "2026-09-06T15:18:24.299395+00:00",
+    "sha256": "49fa733ecae17b8e37e5c6f435f9b2d97784a8a6d4b85bc5cc9d97e8664d9a80",
+    "file": "sources/mephi_rights.pdf"
+  },
+  {
+    "id": "mephi_vsosh_100",
+    "university": "mephi",
+    "url": "https://admission.mephi.ru/content/public/uploads/documents/2026/main_doc/vosh_sootvetstvie_2026_osoboe_preimushchestvo_19_yanvarya.pdf",
+    "resolved_url": "https://admission.mephi.ru/content/public/uploads/documents/2026/main_doc/vosh_sootvetstvie_2026_osoboe_preimushchestvo_19_yanvarya.pdf",
+    "title": null,
+    "retrieved_at": "2026-09-06T15:41:13.142971+00:00",
+    "sha256": "580712b1caea1e6f1e59e3a292ed06ca0f54612679b0b873b9d0c40f724e124b",
+    "file": "sources/mephi_vsosh_100.pdf"
+  },
+  {
+    "id": "mephi_vsosh_bvi",
+    "university": "mephi",
+    "url": "https://admission.mephi.ru/content/public/uploads/documents/2026/main_doc/vosh_sootvetstvie_2026_bvi_proekt_19_yanvarya.pdf",
+    "resolved_url": "https://admission.mephi.ru/content/public/uploads/documents/2026/main_doc/vosh_sootvetstvie_2026_bvi_proekt_19_yanvarya.pdf",
+    "title": null,
+    "retrieved_at": "2026-09-06T15:41:12.615892+00:00",
+    "sha256": "f9b8df54e503e7f94b3e5326130e74a81b7558af1ee6782864c6a9e049252508",
+    "file": "sources/mephi_vsosh_bvi.pdf"
+  },
+  {
+    "id": "mephi_winners",
+    "university": "mephi",
+    "url": "https://admission.mephi.ru/admission/baccalaureate-and-specialty/specials/winners",
+    "resolved_url": "https://admission.mephi.ru/admission/baccalaureate-and-specialty/specials/winners",
+    "title": "Победителям и призерам олимпиад | Приемная комиссия НИЯУ МИФИ",
+    "retrieved_at": "2026-09-06T15:15:51.555644+00:00",
+    "sha256": "e897f81250ef70199e6cb4ba5f0cda07fe22be55a0dd50731fd255218e0823e4",
+    "file": "sources/mephi_winners.html"
+  },
+  {
+    "id": "mipt",
+    "university": "mipt",
+    "url": "https://pk.mipt.ru/bachelor/2026_olympiads/",
+    "resolved_url": "https://pk.mipt.ru/bachelor/2026_olympiads/",
+    "title": "Засчитываемые олимпиады",
+    "retrieved_at": "2026-09-06T15:15:11.104422+00:00",
+    "sha256": "c597e5b8cc2863a87fe7240a7db6f13525a0905873e8837e3556cbe7fdb1eca6",
+    "file": "sources/mipt.html"
+  },
+  {
+    "id": "mipt_places",
+    "university": "mipt",
+    "url": "https://pk.mipt.ru/bachelor/2026_places/",
+    "resolved_url": "https://pk.mipt.ru/bachelor/2026_places/",
+    "title": "Направления подготовки и количество мест",
+    "retrieved_at": "2026-09-06T16:51:48.911400+00:00",
+    "sha256": "43df0318e2cc639cca5020637835a4278b8075927e2efabed040a1bb059d5ce8",
+    "file": "sources/mipt_places.html"
+  },
+  {
+    "id": "msal",
+    "university": "msal",
+    "url": "https://msal.ru/content/abiturientam/",
+    "resolved_url": "https://msal.ru/content/abiturientam/",
+    "title": "Поступление",
+    "retrieved_at": "2026-09-06T15:15:13.825706+00:00",
+    "sha256": "aa409a16748ff1f17e5b963f533c9f3498bfa487559a5c8cbc4e110696593bf4",
+    "file": "sources/msal.html"
+  },
+  {
+    "id": "msal_olympiads",
+    "university": "msal",
+    "url": "https://msal.ru/upload/iblock/171/88npfmyd2daqb253bc3wic6uaf659v8k.pdf",
+    "resolved_url": "https://msal.ru/upload/iblock/171/88npfmyd2daqb253bc3wic6uaf659v8k.pdf",
+    "title": null,
+    "retrieved_at": "2026-09-06T15:18:23.419733+00:00",
+    "sha256": "25f17cfebc86573a805d0dbf2c4c3c24efbc05597cb60e45112bc17e32bc7ea3",
+    "file": "sources/msal_olympiads.pdf"
+  },
+  {
+    "id": "msal_rights",
+    "university": "msal",
+    "url": "https://msal.ru/upload/iblock/d8a/050mi8j75rdmogtttoh118ikvg1b711c.pdf",
+    "resolved_url": "https://msal.ru/upload/iblock/d8a/050mi8j75rdmogtttoh118ikvg1b711c.pdf",
+    "title": null,
+    "retrieved_at": "2026-09-06T15:18:24.174008+00:00",
+    "sha256": "c367a0edac45b8828a883a946bdca3efe4f1e0dc18385570fa8ae6d313ded2d7",
+    "file": "sources/msal_rights.pdf"
+  },
+  {
+    "id": "msal_rules",
+    "university": "msal",
+    "url": "https://msal.ru/content/abiturientam/priemnaya-kampaniya/bakalavriat-spetsialitet/",
+    "resolved_url": "https://msal.ru/content/abiturientam/priemnaya-kampaniya/bakalavriat-spetsialitet/",
+    "title": "БАКАЛАВРИАТ / СПЕЦИАЛИТЕТ",
+    "retrieved_at": "2026-09-06T15:16:26.844595+00:00",
+    "sha256": "e8f3c16d35c288f4b219c4c28ca036f9f6192c30fc50d2ea3dcf9f2ab69be24a",
+    "file": "sources/msal_rules.html"
+  }
+]

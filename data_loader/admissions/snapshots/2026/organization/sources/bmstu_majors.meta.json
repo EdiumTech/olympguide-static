@@ -1,0 +1,9 @@
+{
+  "id": "bmstu_majors",
+  "university": "bmstu",
+  "url": "https://api.www.bmstu.ru/majors/baccalaureate-and-specialty?offset=0&limit=200",
+  "resolved_url": "https://api.www.bmstu.ru/majors/baccalaureate-and-specialty?offset=0&limit=200",
+  "retrieved_at": "2026-09-06T22:02:57.846481+00:00",
+  "sha256": "6fa9e2c53f17beac7b00bd8b010822a098b46bb16b62468541c62b745b776d06",
+  "file": "bmstu_majors.json"
+}

@@ -3,8 +3,6 @@ import requests
 from dotenv import load_dotenv
 import logging
 
-from hse_loader.load_files import response
-
 logger = logging.getLogger(__name__)
 
 load_dotenv()
