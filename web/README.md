@@ -12,6 +12,7 @@
 python -m data_loader.admissions download
 python -m data_loader.admissions download-quantities
 python -m data_loader.admissions.personal download
+python -m data_loader.admissions.rsosh download
 python web/server.py
 ```
 
@@ -137,3 +138,7 @@ python -m unittest discover -s web/tests -v
 
 Сбор, проверка и воспроизведение описаны в
 `data_loader/admissions/ORGANIZATION.md`.
+
+Олимпиады: отдельный каталог РСОШ 2026/2027, пока со статусом проекта.
+Стипендии: кнопка «Стипендии и поддержка» в верхней части страницы вуза.
+[Источники, импорт и ограничения](../data_loader/admissions/RSOSH.md).

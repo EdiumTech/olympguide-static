@@ -176,12 +176,27 @@ class Catalog:
         if personal and (self.path.parent.parent / "2026-personal/catalog.json").is_file():
             from admissions.personal import load as load_personal
             self.personal_data = load_personal(self.path.parent.parent / "2026-personal")
+        registry_path = self.path.parent.parent / "rsosh-2026-2027"
+        self.registry_data = None
+        registry_entries = []
+        if (registry_path / "catalog.json").is_file():
+            sys.path.insert(0, str(ROOT.parent / "data_loader"))
+            from admissions.rsosh import load as load_registry
+            self.registry_data = load_registry(registry_path)
+            registry_entries = [dict(e, profiles=[e["profile"]], levels=["I" * e["level"]],
+                                aliases=[], university_ids=[], benefit_types=[], rule_count=0)
+                                for e in self.registry_data["olympiads"]]
+            for contact in self.registry_data["contacts"]:
+                if contact["university_key"] in self.universities:
+                    self.universities[contact["university_key"]].update(email=contact["email"], contact_metadata=contact)
         self.bootstrap = {
             "admission_year": source["admission_year"], "collected_on": source["collected_on"],
             "rule_count": len(self.rules), "source_count": len(self.sources),
             "universities": list(self.universities.values()),
             "units": list(self.units.values()),
-            "olympiads": sorted(self.olympiads.values(), key=lambda x: normalized(x["name"])),
+            "olympiads": sorted(registry_entries, key=lambda x: (normalized(x["name"]), normalized(x["profile"]))),
+            "historical_olympiads": sorted(self.olympiads.values(), key=lambda x: normalized(x["name"])),
+            "olympiad_registry": {k: v for k, v in self.registry_data.items() if k not in ("olympiads", "contacts")} if self.registry_data else None,
             "fields": sorted(self.fields.values(), key=lambda x: x["code"]),
             "programs": sorted(self.programs.values(), key=lambda x: (x["field_id"] or "zz", normalized(x["name"]))),
             "scholarships": self.personal_data["scholarships"] if self.personal_data else [],

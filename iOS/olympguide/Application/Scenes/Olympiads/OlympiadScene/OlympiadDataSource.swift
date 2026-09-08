@@ -20,6 +20,7 @@ class UniWithProgramsWithBenefits {
 enum ProgramWithBenefitItem {
     case header(UniWithProgramsWithBenefits, Int)
     case cell(ProgramWithBenefitsViewModel, IndexPath)
+    case empty
 }
 
 final class OlympiadDataSource: NSObject, UITableViewDelegate {
@@ -34,6 +35,7 @@ final class OlympiadDataSource: NSObject, UITableViewDelegate {
         for (grouIndex, group) in groups.enumerated() {
             result.append(.header(group, grouIndex))
             guard group.isExpanded else { continue }
+            if group.programs.isEmpty { result.append(.empty) }
             for (programIndex, program) in group.programs.enumerated() {
                 autoreleasepool {
                     let indexParh = IndexPath(row: programIndex, section: grouIndex)
@@ -77,6 +79,15 @@ extension OlympiadDataSource: UITableViewDataSource {
         let item = programItems[indexPath.row]
         
         switch item {
+        case .empty:
+            let cell = UITableViewCell(style: .default, reuseIdentifier: nil)
+            var content = cell.defaultContentConfiguration()
+            content.text = "Программы с подтверждённой связью с этой олимпиадой по выбранным условиям не найдены."
+            content.textProperties.numberOfLines = 0
+            content.textProperties.color = .secondaryLabel
+            cell.contentConfiguration = content
+            cell.selectionStyle = .none
+            return cell
         case .header(let group, _):
             return configureHeader(tableView, cellForRowAt: indexPath, group: group)
         case .cell(let program, let realIndexPath):
@@ -157,6 +168,7 @@ extension OlympiadDataSource: UITableViewDataSource {
         let item = programItems[indexPath.row]
         
         switch item {
+        case .empty: return
         case .header(let group, let section):
             toggleSection(
                 at: indexPath,
@@ -180,7 +192,7 @@ extension OlympiadDataSource: UITableViewDataSource {
         
         if group.isExpanded {
             group.isExpanded = false
-            let programsCount = group.programs.count
+            let programsCount = max(1, group.programs.count)
             var indexPathsToDelete: [IndexPath] = []
             if programsCount > 0 {
                 for i in 1...programsCount {
@@ -208,7 +220,7 @@ extension OlympiadDataSource: UITableViewDataSource {
                 }
                 tableView.beginUpdates()
                 group.isExpanded = true
-                let programsCount = group.programs.count
+                let programsCount = max(1, group.programs.count)
                 
                 var indexPathsToInsert: [IndexPath] = []
                 
@@ -224,7 +236,7 @@ extension OlympiadDataSource: UITableViewDataSource {
                 tableView.reloadRows(at: [indexPath], with: .none)
                 tableView.endUpdates()
                 return true
-            case .cell:
+            case .cell, .empty:
                 continue
             }
         }

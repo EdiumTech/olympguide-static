@@ -163,9 +163,18 @@ extension OlympiadsViewController {
         let headerContainer = UIView()
         headerContainer.backgroundColor = .white
         
+        let seasonLabel = UILabel()
+        seasonLabel.text = "РСОШ 2026/2027 · Проект перечня"
+        seasonLabel.numberOfLines = 0
+        seasonLabel.font = .preferredFont(forTextStyle: .subheadline)
+        seasonLabel.textColor = .secondaryLabel
+        headerContainer.addSubview(seasonLabel)
+        seasonLabel.pinTop(to: headerContainer.topAnchor, 8)
+        seasonLabel.pinLeft(to: headerContainer.leadingAnchor, 20)
+        seasonLabel.pinRight(to: headerContainer.trailingAnchor, 20)
         headerContainer.addSubview(filterSortView)
         
-        filterSortView.pinTop(to: headerContainer.topAnchor, Constants.Dimensions.tableViewTopMargin)
+        filterSortView.pinTop(to: seasonLabel.bottomAnchor, Constants.Dimensions.tableViewTopMargin)
         filterSortView.pinLeft(to: headerContainer.leadingAnchor)
         filterSortView.pinRight(to: headerContainer.trailingAnchor)
         filterSortView.pinBottom(to: headerContainer.bottomAnchor, 10)
