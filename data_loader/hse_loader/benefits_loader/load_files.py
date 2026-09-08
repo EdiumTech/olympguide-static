@@ -2,6 +2,7 @@ import os
 import requests
 from bs4 import BeautifulSoup
 import logging
+from urllib.parse import urljoin
 from logging_config.setup_logging import setup_logging
 
 setup_logging()
@@ -26,13 +27,13 @@ def get_links():
     soup = BeautifulSoup(response.text, "html.parser")
 
     # Ищем все строки таблицы
-    for row in soup.select("table.bordered tr"):
+    for row in soup.select("table.olympiad-table tr, table.bordered tr"):
         subject_link = row.select_one("td:nth-of-type(2) a")
-        pdf_link = row.select_one("td:nth-of-type(3) a.mceDataFile")
+        pdf_link = row.select_one("td:nth-of-type(3) a[data-hse-file], td:nth-of-type(3) a.mceDataFile")
 
         if subject_link and pdf_link:
             subject_path = subject_link.get_text(strip=True) + ".pdf"
-            file_url = BASE_URL + pdf_link["href"]
+            file_url = urljoin(BASE_URL, pdf_link["href"])
             links.append(LinkWithName(link=file_url, path=subject_path))
 
     return links
