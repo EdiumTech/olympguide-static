@@ -61,10 +61,12 @@ final class OlympiadsViewController: UIViewController, WithSearchButton {
     lazy var filterSortView: FilterSortView = FilterSortView()
     
     var olympiads: [OlympiadViewModel] = []
+    private var didSetInitialContentOffset = false
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        extendedLayoutIncludesOpaqueBars = true
         setupFilterItems()
         setupDataSource()
         
@@ -73,6 +75,21 @@ final class OlympiadsViewController: UIViewController, WithSearchButton {
         loadOlympiads()
         
         setupAuthBindings()
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+        guard !didSetInitialContentOffset else { return }
+        didSetInitialContentOffset = true
+        DispatchQueue.main.async { [weak self] in
+            guard let self else { return }
+            tableView.layoutIfNeeded()
+            tableView.setContentOffset(
+                CGPoint(x: 0, y: -tableView.adjustedContentInset.top),
+                animated: false
+            )
+        }
     }
     
     private func loadOlympiads() {
@@ -100,6 +117,12 @@ extension OlympiadsViewController {
     
     private func configureNavigationBar() {
         navigationItem.title = Constants.Strings.olympiadsTitle
+        if #available(iOS 26.0, *) {
+            navigationItem.largeTitle = Constants.Strings.olympiadsTitle
+            navigationItem.largeTitleDisplayMode = .inline
+        } else {
+            navigationItem.largeTitleDisplayMode = .always
+        }
         
         let backItem = UIBarButtonItem(
             title: Constants.Strings.backButtonTitle,

@@ -18,6 +18,7 @@ final class ProgramTableViewCell: UICellWithFavoriteButton {
     private let budgtetLabel: UIInformationLabel = UIInformationLabel()
     private let paidLabel: UIInformationLabel = UIInformationLabel()
     private let costLabel: UIInformationLabel = UIInformationLabel()
+    private let quantityNoteLabel = UILabel()
     private let subjectsStack: TagsContainerView = TagsContainerView()
     private let separatorLine: UIView = UIView()
     
@@ -52,6 +53,7 @@ final class ProgramTableViewCell: UICellWithFavoriteButton {
         configureBudgetLabel()
         configurePaidLabel()
         configureCostLabel()
+        configureQuantityNoteLabel()
         configureSubjectsStack()
         configureSeparatorLine()
     }
@@ -111,12 +113,24 @@ final class ProgramTableViewCell: UICellWithFavoriteButton {
         
         costLabel.pinTop(to: paidLabel.bottomAnchor, Constants.Dimensions.spacing)
         costLabel.pinLeft(to: contentView.leadingAnchor, leftConstraint)
+        costLabel.pinRight(to: contentView.trailingAnchor, Common.Dimensions.horizontalMargin)
+        costLabel.numberOfLines = 0
+    }
+
+    private func configureQuantityNoteLabel() {
+        quantityNoteLabel.font = FontManager.shared.font(for: .additionalInformation)
+        quantityNoteLabel.textColor = .secondaryLabel
+        quantityNoteLabel.numberOfLines = 0
+        contentView.addSubview(quantityNoteLabel)
+        quantityNoteLabel.pinTop(to: costLabel.bottomAnchor, Constants.Dimensions.spacing)
+        quantityNoteLabel.pinLeft(to: contentView.leadingAnchor, leftConstraint)
+        quantityNoteLabel.pinRight(to: contentView.trailingAnchor, Common.Dimensions.horizontalMargin)
     }
     
     private func configureSubjectsStack() {
         contentView.addSubview(subjectsStack)
         
-        subjectsStack.pinTop(to: costLabel.bottomAnchor, Constants.Dimensions.blocksSpacing)
+        subjectsStack.pinTop(to: quantityNoteLabel.bottomAnchor, Constants.Dimensions.blocksSpacing)
         subjectsStack.pinLeft(to: contentView.leadingAnchor, leftConstraint)
         subjectsStack.pinRight(to: contentView.trailingAnchor, 20)
     }
@@ -141,9 +155,10 @@ final class ProgramTableViewCell: UICellWithFavoriteButton {
             width: nil
         )
         
-        budgtetLabel.setBoldText(String(viewModel.budgetPlaces))
-        paidLabel.setBoldText(String(viewModel.paidPlaces))
-        costLabel.setBoldText("\(formatNumber(viewModel.cost)) ₽/год")
+        budgtetLabel.setBoldText(viewModel.quantities.budgetText)
+        paidLabel.setBoldText(viewModel.quantities.paidText)
+        costLabel.setBoldText(viewModel.quantities.costText)
+        quantityNoteLabel.text = viewModel.quantities.summaryText
         subjectsStack.configure(
             requiredSubjects: viewModel.requiredSubjects,
             optionalSubjects: viewModel.optionalSubjects ?? [],

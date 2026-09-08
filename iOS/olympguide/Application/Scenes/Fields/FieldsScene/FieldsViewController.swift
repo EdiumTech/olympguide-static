@@ -57,10 +57,12 @@ class FieldsViewController: UIViewController, WithSearchButton {
     lazy var filterSortView: FilterSortView = FilterSortView()
     
     var fields: [GroupOfFieldsViewModel] = []
+    private var didSetInitialContentOffset = false
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        extendedLayoutIncludesOpaqueBars = true
         setupFilterItems()
         configureUI()
         loadFields()
@@ -75,6 +77,21 @@ class FieldsViewController: UIViewController, WithSearchButton {
         
         if #available(iOS 15.0, *) {
             tableView.sectionHeaderTopPadding = 0
+        }
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+        guard !didSetInitialContentOffset else { return }
+        didSetInitialContentOffset = true
+        DispatchQueue.main.async { [weak self] in
+            guard let self else { return }
+            tableView.layoutIfNeeded()
+            tableView.setContentOffset(
+                CGPoint(x: 0, y: -tableView.adjustedContentInset.top),
+                animated: false
+            )
         }
     }
     
@@ -102,6 +119,12 @@ extension FieldsViewController {
     
     private func configureNavigationBar() {
         navigationItem.title = Constants.Strings.fieldsTitle
+        if #available(iOS 26.0, *) {
+            navigationItem.largeTitle = Constants.Strings.fieldsTitle
+            navigationItem.largeTitleDisplayMode = .inline
+        } else {
+            navigationItem.largeTitleDisplayMode = .always
+        }
         
         if let navigationController = self.navigationController as? NavigationBarViewController {
             navigationController.searchButtonPressed = { [weak self] _ in

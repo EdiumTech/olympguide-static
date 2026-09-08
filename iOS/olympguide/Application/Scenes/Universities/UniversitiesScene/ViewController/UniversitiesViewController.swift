@@ -63,10 +63,13 @@ class UniversitiesViewController : UIViewController, WithSearchButton {
     
     var universities: [UniversityViewModel] = []
     private var cancellables = Set<AnyCancellable>()
+    private var didSetInitialContentOffset = false
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        extendedLayoutIncludesOpaqueBars = true
         
         setupFilterItems()
         setupDataSource()
@@ -77,6 +80,21 @@ class UniversitiesViewController : UIViewController, WithSearchButton {
         setupAuthBindings()
         
         loadUniversities()
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+        guard !didSetInitialContentOffset else { return }
+        didSetInitialContentOffset = true
+        DispatchQueue.main.async { [weak self] in
+            guard let self else { return }
+            tableView.layoutIfNeeded()
+            tableView.setContentOffset(
+                CGPoint(x: 0, y: -tableView.adjustedContentInset.top),
+                animated: false
+            )
+        }
     }
     
     func loadUniversities() {
@@ -115,6 +133,12 @@ extension UniversitiesViewController {
         navigationItem.backBarButtonItem = backItem
         
         navigationItem.title = Constants.Strings.universitiesTitle
+        if #available(iOS 26.0, *) {
+            navigationItem.largeTitle = Constants.Strings.universitiesTitle
+            navigationItem.largeTitleDisplayMode = .inline
+        } else {
+            navigationItem.largeTitleDisplayMode = .always
+        }
         
         guard let navigationController = self.navigationController as? NavigationBarViewController else {return}
         navigationController.searchButtonPressed = { [weak self] sender in

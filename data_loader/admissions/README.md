@@ -181,3 +181,8 @@ python -m unittest discover -s admissions/tests -v
 [МИФИ](https://admission.mephi.ru/admission/baccalaureate-and-specialty/specials/winners),
 [МАИ](https://priem.mai.ru/base/bvi/),
 [МГЮА](https://msal.ru/content/abiturientam/priemnaya-kampaniya/bakalavriat-spetsialitet/).
+
+
+Стипендии, календарь и проверка личных дипломов: [PERSONAL.md](PERSONAL.md).
+Дополнение хранится отдельным Release, не смешивает учебный год с годом приёма
+и сохраняет неизвестные условия для ручной проверки.

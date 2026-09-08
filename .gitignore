@@ -21,6 +21,7 @@ DerivedData/
 *.xcodeproj/xcuserdata/
 xcdebugger/
 *.xcconfig
+!iOS/Config/App.xcconfig
 
 
 # Build artifacts

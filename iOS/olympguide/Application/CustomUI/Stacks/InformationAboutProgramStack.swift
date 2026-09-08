@@ -18,6 +18,8 @@ final class InformationAboutProgramStack: UIStackView {
     private let budgtetLabel: UIInformationLabel = UIInformationLabel()
     private let paidLabel: UIInformationLabel = UIInformationLabel()
     private let costLabel: UIInformationLabel = UIInformationLabel()
+    private let quantityDetailsLabel = UILabel()
+    private let quantitySourcesStack = UIStackView()
     private let subjectsStack: TagsContainerView = TagsContainerView()
     
     private var program: ProgramShortModel?
@@ -49,6 +51,7 @@ final class InformationAboutProgramStack: UIStackView {
         university: UniversityModel,
         filterSortView: FilterSortView
     ) {
+        self.program = nil
         self.university = university
         programNameLabel.text = name
         codeLabel.text = code
@@ -64,6 +67,9 @@ final class InformationAboutProgramStack: UIStackView {
         configureBudgetLabel()
         configurePaidLabel()
         configureCostLabel()
+        configureQuantityDetails()
+        addCalendarButton(programID: { [weak self] in self?.program?.programID })
+        addScholarshipsButton(universityID: university?.universityID, program: { [weak self] in self?.program?.programID })
         configureSubjectsStack()
         configureBenefitsLabel()
         configureLastSpace()
@@ -132,9 +138,7 @@ final class InformationAboutProgramStack: UIStackView {
         pinToPrevious(11)
         
         budgtetLabel.setText(regular: "Бюджетных мест  ")
-        if let budgetPlaced = program?.budgetPlaces {
-            budgtetLabel.setBoldText(String(budgetPlaced))
-        }
+        budgtetLabel.setBoldText((program?.quantities ?? .unknown).budgetText)
         
         addArrangedSubview(budgtetLabel)
     }
@@ -143,9 +147,7 @@ final class InformationAboutProgramStack: UIStackView {
         pinToPrevious(7)
         
         paidLabel.setText(regular: "Платных мест  ")
-        if let paidPlaces = program?.paidPlaces {
-            paidLabel.setBoldText(String(paidPlaces))
-        }
+        paidLabel.setBoldText((program?.quantities ?? .unknown).paidText)
         
         addArrangedSubview(paidLabel)
     }
@@ -153,10 +155,9 @@ final class InformationAboutProgramStack: UIStackView {
     private func configureCostLabel() {
         pinToPrevious(7)
         
+        costLabel.numberOfLines = 0
         costLabel.setText(regular: "Стоимость  ")
-        if let cost = program?.cost {
-            costLabel.setBoldText(formatNumber(cost))
-        }
+        costLabel.setBoldText((program?.quantities ?? .unknown).costText)
         
         addArrangedSubview(costLabel)
     }
@@ -166,6 +167,40 @@ final class InformationAboutProgramStack: UIStackView {
         formatter.numberStyle = .decimal
         formatter.groupingSeparator = " "
         return "\(formatter.string(from: NSNumber(value: number)) ?? "\(number)") ₽/год"
+    }
+
+    private func configureQuantityDetails() {
+        pinToPrevious(11)
+        quantityDetailsLabel.numberOfLines = 0
+        quantityDetailsLabel.font = FontManager.shared.font(for: .additionalInformation)
+        quantityDetailsLabel.textColor = .secondaryLabel
+        addArrangedSubview(quantityDetailsLabel)
+        quantitySourcesStack.axis = .vertical
+        quantitySourcesStack.spacing = 6
+        addArrangedSubview(quantitySourcesStack)
+        refreshQuantityDetails()
+    }
+
+    private func refreshQuantityDetails() {
+        quantityDetailsLabel.text = program?.quantities.detailText
+        quantityDetailsLabel.isHidden = quantityDetailsLabel.text?.isEmpty != false
+        quantitySourcesStack.arrangedSubviews.forEach { $0.removeFromSuperview() }
+        let names = ["budget_places": "Источник бюджетных мест", "paid_places": "Источник платных мест", "cost": "Источник стоимости"]
+        for key in ["budget_places", "paid_places", "cost"] {
+            guard let source = program?.admissionMetadata?.quantityEvidence?[key],
+                  let address = source.sourceURL, let url = URL(string: address), url.scheme == "https" else { continue }
+            let button = UIClosureButton()
+            button.setTitle(names[key], for: .normal)
+            button.setTitleColor(.systemBlue, for: .normal)
+            button.titleLabel?.font = FontManager.shared.font(for: .additionalInformation)
+            button.contentHorizontalAlignment = .left
+            button.action = { [weak self] in
+                guard let controller = self?.findViewController() else { return }
+                controller.present(SFSafariViewController(url: url), animated: true)
+            }
+            quantitySourcesStack.addArrangedSubview(button)
+        }
+        quantitySourcesStack.isHidden = quantitySourcesStack.arrangedSubviews.isEmpty
     }
     
     private func configureSubjectsStack() {
@@ -232,13 +267,15 @@ final class InformationAboutProgramStack: UIStackView {
     }
     
     func setInformation(_ program: ProgramShortModel) {
+        self.program = program
         let link = program.link
             .replacingOccurrences(of: "https://www.", with: "")
             .replacingOccurrences(of: "https://", with: "")
         webSiteButton.setTitle(link, for: .normal)
-        budgtetLabel.setBoldText(String(program.budgetPlaces))
-        paidLabel.setBoldText(String(program.paidPlaces))
-        costLabel.setBoldText(formatNumber(program.cost))
+        budgtetLabel.setBoldText(program.quantities.budgetText)
+        paidLabel.setBoldText(program.quantities.paidText)
+        costLabel.setBoldText(program.quantities.costText)
+        refreshQuantityDetails()
         subjectsStack.configure(
             requiredSubjects: program.requiredSubjects,
             optionalSubjects: program.optionalSubjects ?? [],

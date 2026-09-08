@@ -1,0 +1,6 @@
+// Shared settings for local builds and Xcode Cloud, Debug and Release.
+#include? "Secrets.xcconfig"
+
+// Keep the public API address after the optional file so legacy settings cannot
+// send a new build to the old server. $() prevents // from starting a comment.
+BASE_URL = https:/$()/api.olympguide.ru/api/v1
