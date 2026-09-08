@@ -110,3 +110,28 @@ let legacyJSON = #"{"min_class":10,"min_diploma_level":3,"is_bvi":true}"#.data(u
 let legacyBenefit = try JSONDecoder().decode(BenefitModel.self, from: legacyJSON)
 expect(legacyBenefit.minClass == 10 && legacyBenefit.admissionRule == nil, "Continue decoding legacy benefits")
 print("Admission response checks passed")
+
+
+func decodeProgram(_ quantities: String) throws -> ProgramShortModel {
+    let json = """
+    {"program_id":1,"name":"Test","field":"01.03.01","required_subjects":[],"optional_subjects":[],"like":false,"link":"https://example.org",\(quantities)}
+    """
+    return try JSONDecoder().decode(ProgramShortModel.self, from: Data(json.utf8))
+}
+let unknownProgram = try decodeProgram(#""budget_places":null,"paid_places":null,"cost":null"#)
+expect(unknownProgram.quantities.budgetText == "Нет данных", "Null budget places are unknown")
+expect(unknownProgram.quantities.paidText == "Нет данных", "Null paid places are unknown")
+expect(unknownProgram.quantities.costText == "Нет данных", "Unknown tuition has no currency suffix")
+expect(unknownProgram.toViewModel().quantities.costText == "Нет данных", "List and detail agree")
+let oldUnknownProgram = try decodeProgram(#""budget_places":0,"paid_places":0,"cost":0,"admission_metadata":{"places_known":false,"cost_known":false}"#)
+expect(oldUnknownProgram.quantities.budgetText == "Нет данных", "Retain compatibility with old flagged placeholders")
+expect(oldUnknownProgram.toViewModel().quantities.costText == "Нет данных", "Flags also apply to the list")
+let knownZero = try decodeProgram(#""budget_places":0,"paid_places":12,"cost":0"#)
+expect(knownZero.quantities.budgetText == "0", "Confirmed zero is not unknown")
+expect(knownZero.quantities.paidText == "12", "Keep known places")
+expect(knownZero.quantities.costText == "0 ₽/год", "Keep confirmed zero price")
+let partiallyKnown = try decodeProgram(#""budget_places":25,"paid_places":null,"cost":350000"#)
+expect(partiallyKnown.quantities.budgetText == "25" && partiallyKnown.quantities.paidText == "Нет данных", "Independent quantities")
+expect(partiallyKnown.quantities.costText == "350 000 ₽/год", "Format confirmed tuition")
+expect(ProgramQuantities.unknown.costText == "Нет данных", "Initial loading view has no fake zero")
+print("Program quantity checks passed")

@@ -9,22 +9,30 @@ class ProgramViewModel {
     let programID: Int
     let name: String
     let code: String
-    let budgetPlaces: Int
-    let paidPlaces: Int
-    let cost: Int
+    let budgetPlaces: Int?
+    let paidPlaces: Int?
+    let cost: Int?
     let placesKnown: Bool
     let costKnown: Bool
     var like: Bool
     let requiredSubjects: [String]
     let optionalSubjects: [String]?
     
+    var quantities: ProgramQuantities {
+        ProgramQuantities(
+            budgetPlaces: placesKnown ? budgetPlaces : nil,
+            paidPlaces: placesKnown ? paidPlaces : nil,
+            cost: costKnown ? cost : nil
+        )
+    }
+
     init(
         programID: Int,
         name: String,
         code: String,
-        budgetPlaces: Int,
-        paidPlaces: Int,
-        cost: Int,
+        budgetPlaces: Int?,
+        paidPlaces: Int?,
+        cost: Int?,
         like: Bool,
         requiredSubjects: [String],
         optionalSubjects: [String]?,

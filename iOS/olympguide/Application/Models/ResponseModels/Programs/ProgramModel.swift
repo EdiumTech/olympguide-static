@@ -9,9 +9,9 @@ struct ProgramModel : Codable {
     let programID: Int
     let name: String
     let field: String
-    let budgetPlaces: Int
-    let paidPlaces: Int
-    let cost: Int
+    let budgetPlaces: Int?
+    let paidPlaces: Int?
+    let cost: Int?
     let requiredSubjects: [String]
     let optionalSubjects: [String]
     var like: Bool
