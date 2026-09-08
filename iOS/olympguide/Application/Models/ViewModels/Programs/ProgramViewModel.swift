@@ -14,6 +14,7 @@ class ProgramViewModel {
     let cost: Int?
     let placesKnown: Bool
     let costKnown: Bool
+    let admissionMetadata: ProgramAdmissionMetadata?
     var like: Bool
     let requiredSubjects: [String]
     let optionalSubjects: [String]?
@@ -22,7 +23,8 @@ class ProgramViewModel {
         ProgramQuantities(
             budgetPlaces: placesKnown ? budgetPlaces : nil,
             paidPlaces: placesKnown ? paidPlaces : nil,
-            cost: costKnown ? cost : nil
+            cost: costKnown ? cost : nil,
+            metadata: admissionMetadata
         )
     }
 
@@ -37,7 +39,8 @@ class ProgramViewModel {
         requiredSubjects: [String],
         optionalSubjects: [String]?,
         placesKnown: Bool = true,
-        costKnown: Bool = true
+        costKnown: Bool = true,
+        admissionMetadata: ProgramAdmissionMetadata? = nil
     ) {
         self.programID = programID
         self.name = name
@@ -47,6 +50,7 @@ class ProgramViewModel {
         self.cost = cost
         self.placesKnown = placesKnown
         self.costKnown = costKnown
+        self.admissionMetadata = admissionMetadata
         self.like = like
         self.requiredSubjects = requiredSubjects
         self.optionalSubjects = optionalSubjects

@@ -18,6 +18,8 @@ final class InformationAboutProgramStack: UIStackView {
     private let budgtetLabel: UIInformationLabel = UIInformationLabel()
     private let paidLabel: UIInformationLabel = UIInformationLabel()
     private let costLabel: UIInformationLabel = UIInformationLabel()
+    private let quantityDetailsLabel = UILabel()
+    private let quantitySourcesStack = UIStackView()
     private let subjectsStack: TagsContainerView = TagsContainerView()
     
     private var program: ProgramShortModel?
@@ -65,6 +67,7 @@ final class InformationAboutProgramStack: UIStackView {
         configureBudgetLabel()
         configurePaidLabel()
         configureCostLabel()
+        configureQuantityDetails()
         configureSubjectsStack()
         configureBenefitsLabel()
         configureLastSpace()
@@ -150,6 +153,7 @@ final class InformationAboutProgramStack: UIStackView {
     private func configureCostLabel() {
         pinToPrevious(7)
         
+        costLabel.numberOfLines = 0
         costLabel.setText(regular: "Стоимость  ")
         costLabel.setBoldText((program?.quantities ?? .unknown).costText)
         
@@ -161,6 +165,40 @@ final class InformationAboutProgramStack: UIStackView {
         formatter.numberStyle = .decimal
         formatter.groupingSeparator = " "
         return "\(formatter.string(from: NSNumber(value: number)) ?? "\(number)") ₽/год"
+    }
+
+    private func configureQuantityDetails() {
+        pinToPrevious(11)
+        quantityDetailsLabel.numberOfLines = 0
+        quantityDetailsLabel.font = FontManager.shared.font(for: .additionalInformation)
+        quantityDetailsLabel.textColor = .secondaryLabel
+        addArrangedSubview(quantityDetailsLabel)
+        quantitySourcesStack.axis = .vertical
+        quantitySourcesStack.spacing = 6
+        addArrangedSubview(quantitySourcesStack)
+        refreshQuantityDetails()
+    }
+
+    private func refreshQuantityDetails() {
+        quantityDetailsLabel.text = program?.quantities.detailText
+        quantityDetailsLabel.isHidden = quantityDetailsLabel.text?.isEmpty != false
+        quantitySourcesStack.arrangedSubviews.forEach { $0.removeFromSuperview() }
+        let names = ["budget_places": "Источник бюджетных мест", "paid_places": "Источник платных мест", "cost": "Источник стоимости"]
+        for key in ["budget_places", "paid_places", "cost"] {
+            guard let source = program?.admissionMetadata?.quantityEvidence?[key],
+                  let address = source.sourceURL, let url = URL(string: address), url.scheme == "https" else { continue }
+            let button = UIClosureButton()
+            button.setTitle(names[key], for: .normal)
+            button.setTitleColor(.systemBlue, for: .normal)
+            button.titleLabel?.font = FontManager.shared.font(for: .additionalInformation)
+            button.contentHorizontalAlignment = .left
+            button.action = { [weak self] in
+                guard let controller = self?.findViewController() else { return }
+                controller.present(SFSafariViewController(url: url), animated: true)
+            }
+            quantitySourcesStack.addArrangedSubview(button)
+        }
+        quantitySourcesStack.isHidden = quantitySourcesStack.arrangedSubviews.isEmpty
     }
     
     private func configureSubjectsStack() {
@@ -235,6 +273,7 @@ final class InformationAboutProgramStack: UIStackView {
         budgtetLabel.setBoldText(program.quantities.budgetText)
         paidLabel.setBoldText(program.quantities.paidText)
         costLabel.setBoldText(program.quantities.costText)
+        refreshQuantityDetails()
         subjectsStack.configure(
             requiredSubjects: program.requiredSubjects,
             optionalSubjects: program.optionalSubjects ?? [],
