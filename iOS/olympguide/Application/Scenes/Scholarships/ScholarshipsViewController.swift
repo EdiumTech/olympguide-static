@@ -3,8 +3,12 @@ import SafariServices
 
 final class ScholarshipsViewController: UITableViewController {
     private let query: [URLQueryItem]
+    private let universityID: Int?
+    private let isProgramScope: Bool
     private var scholarships: [Scholarship] = []
     init(universityID: Int? = nil, programID: Int? = nil) {
+        self.universityID = universityID
+        self.isProgramScope = programID != nil
         query = [universityID.map { URLQueryItem(name: "university_id", value: String($0)) },
                  programID.map { URLQueryItem(name: "program_id", value: String($0)) }].compactMap { $0 }
         super.init(style: .insetGrouped)
@@ -13,6 +17,11 @@ final class ScholarshipsViewController: UITableViewController {
     required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
     override func viewDidLoad() {
         super.viewDidLoad()
+        if isProgramScope, let universityID {
+            navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Все выплаты вуза", primaryAction: UIAction { [weak self] _ in
+                self?.navigationController?.pushViewController(ScholarshipsViewController(universityID: universityID), animated: true)
+            })
+        }
         refreshControl = UIRefreshControl()
         refreshControl?.addTarget(self, action: #selector(load), for: .valueChanged)
         load()
@@ -71,7 +80,14 @@ final class ScholarshipsViewController: UITableViewController {
 extension UIStackView {
     func addScholarshipsButton(universityID: Int? = nil, program: @escaping () -> Int? = { nil }) {
         let button = UIClosureButton()
-        button.setTitle("Стипендии и поддержка →", for: .normal)
+        if let previous = arrangedSubviews.last { setCustomSpacing(18, after: previous) }
+        var configuration = UIButton.Configuration.tinted()
+        configuration.title = "Стипендии и поддержка"
+        configuration.image = UIImage(systemName: "rublesign.circle")
+        configuration.imagePadding = 10
+        configuration.contentInsets = NSDirectionalEdgeInsets(top: 14, leading: 14, bottom: 14, trailing: 14)
+        configuration.cornerStyle = .medium
+        button.configuration = configuration
         button.setTitleColor(.systemBlue, for: .normal)
         button.titleLabel?.font = .preferredFont(forTextStyle: .body)
         button.titleLabel?.numberOfLines = 0
@@ -81,5 +97,6 @@ extension UIStackView {
                 ScholarshipsViewController(universityID: universityID, programID: program()), animated: true)
         }
         addArrangedSubview(button)
+        setCustomSpacing(18, after: button)
     }
 }

@@ -147,7 +147,7 @@ class OlympiadTableViewCell: UICellWithFavoriteButton {
             : Constants.Strings.prizeText
         let benefit = viewModel.isBVI ? "БВИ" : "100 баллов"
         let grade = viewModel.minClass.map { "\($0) класс" } ?? "Класс в условиях"
-        benefitLabel.text = viewModel.admissionRule?.summary ?? "\(grade) | \(diploma) | \(benefit)"
+        benefitLabel.text = "\(grade) | \(viewModel.minDiplomaLevel == nil ? "Диплом в условиях" : diploma) | \(viewModel.admissionRule?.benefitTitle ?? benefit)"
         shimmerLayer.isHidden = true
         shimmerLayer.stopAnimating()
         shimmerLayer.removeAllConstraints()

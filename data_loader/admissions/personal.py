@@ -151,6 +151,8 @@ def export_sql(data):
             literal(evaluation['id'])+',2026,'+literal(evaluation['rule_id'])+','+literal(payload)+','+expected+');')
     if data.get('evaluations'):
         sql.append("DO $$ BEGIN IF EXISTS(SELECT 1 FROM olympguide.admission_evaluation e JOIN olympguide.admission_rule r ON r.admission_year=e.admission_year AND r.id=e.rule_id WHERE e.admission_year=2026 AND e.source_payload<>r.payload) THEN RAISE EXCEPTION 'Eligibility source mismatch'; END IF; END $$;")
+    from .rsosh import calendar_registry_sql
+    sql.append(calendar_registry_sql())
     sql.append('COMMIT;')
     return '\n'.join(sql)
 

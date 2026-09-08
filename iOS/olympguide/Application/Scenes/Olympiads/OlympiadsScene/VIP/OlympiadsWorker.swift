@@ -34,11 +34,16 @@ final class OlympiadsWorker : OlympiadsWorkerLogic {
             method: .get,
             queryItems: queryItems,
             body: nil,
-            shouldCache: true
+            shouldCache: false
         ) { (result: Result<[OlympiadModel]?, NetworkError>) in
             switch result {
             case .success(let olympiads):
-                completion(.success(olympiads ?? []))
+                let rows = olympiads ?? []
+                guard rows.allSatisfy({ $0.academicYear == "2026/2027" && (1...3).contains($0.level) && !$0.profile.isEmpty }) else {
+                    completion(.failure(NSError(domain: "OlympGuide", code: 409, userInfo: [NSLocalizedDescriptionKey: "Каталог РСОШ 2026/2027 ещё не обновлён на сервере. Попробуйте позже."])))
+                    return
+                }
+                completion(.success(rows))
             case .failure(let error):
                 completion(.failure(error))
             }

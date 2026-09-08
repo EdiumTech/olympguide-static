@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "kind": "rsosh",
+  "academic_year": "2026/2027",
+  "status": "draft",
+  "checked_on": "2026-09-08",
+  "release_tag": "rsosh-2026-2027-draft-20260908",
+  "archive": {
+    "url": "https://github.com/EdiumTech/olympguide-static/releases/download/rsosh-2026-2027-draft-20260908/rsosh-2026-2027-draft-20260908.zip",
+    "bytes": 93925,
+    "sha256": "2c0cca0fd8c3190c8d93f4d9304ad9c915a3f553794b10fd531fd31802a59dec"
+  },
+  "files": [
+    {
+      "path": "catalog.json",
+      "bytes": 388369,
+      "sha256": "9f672f54776422754041ee857ab6d3c2ad44e8a8c463493ec824e139ef97d800"
+    },
+    {
+      "path": "sources/project.docx",
+      "bytes": 66847,
+      "sha256": "d46ee188fe03f46740c0c1e69c241b032b12e67d3b6b27acd88a57f89b3cf897"
+    }
+  ]
+}

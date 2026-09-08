@@ -7,6 +7,7 @@ TEST_DIR=$(mktemp -d "${TMPDIR:-/tmp}/olympguide-network.XXXXXX")
 trap 'rm -f "$TEST_DIR/network-tests"; rmdir "$TEST_DIR"' EXIT
 
 swiftc -swift-version 5 \
+    "$APP_DIR/Models/ExternalWebLink.swift" \
     "$APP_DIR/Network/APIConfiguration.swift" \
     "$APP_DIR/Network/HTTPResponseDecoder.swift" \
     "$APP_DIR/Errors/NetworkError.swift" \

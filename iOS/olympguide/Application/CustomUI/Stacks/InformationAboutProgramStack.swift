@@ -10,7 +10,7 @@ import SafariServices
 
 final class InformationAboutProgramStack: UIStackView {
     var searchButtonAction: (() -> Void)?
-    var link: String?
+    private var websiteURL: URL?
     
     private let codeLabel: UILabel = UILabel()
     private let programNameLabel: UILabel = UILabel()
@@ -18,8 +18,6 @@ final class InformationAboutProgramStack: UIStackView {
     private let budgtetLabel: UIInformationLabel = UIInformationLabel()
     private let paidLabel: UIInformationLabel = UIInformationLabel()
     private let costLabel: UIInformationLabel = UIInformationLabel()
-    private let quantityDetailsLabel = UILabel()
-    private let quantitySourcesStack = UIStackView()
     private let subjectsStack: TagsContainerView = TagsContainerView()
     
     private var program: ProgramShortModel?
@@ -61,23 +59,21 @@ final class InformationAboutProgramStack: UIStackView {
     func configureUI(_ filterSortView: FilterSortView) {
         setupSelf()
         configureUniversityView()
+        addCalendarButton(programID: { [weak self] in self?.program?.programID })
+        addScholarshipsButton(universityID: university?.universityID, program: { [weak self] in self?.program?.programID })
         configureCodeLabel()
         configureProgramNameLabel()
         configureWebButton()
         configureBudgetLabel()
         configurePaidLabel()
         configureCostLabel()
-        configureQuantityDetails()
-        addCalendarButton(programID: { [weak self] in self?.program?.programID })
-        addScholarshipsButton(universityID: university?.universityID, program: { [weak self] in self?.program?.programID })
-        configureSubjectsStack()
         configureBenefitsLabel()
         configureLastSpace()
         configureFilterSortView(filterSortView)
     }
     
     private func setupSelf() {
-        arrangedSubviews.forEach { removeArrangedSubview($0) }
+        arrangedSubviews.forEach { $0.removeFromSuperview() }
         axis = .vertical
         alignment = .fill
         distribution = .fill
@@ -124,13 +120,8 @@ final class InformationAboutProgramStack: UIStackView {
         pinToPrevious(5)
         addArrangedSubview(webSiteButton)
         
-        if var link = program?.link {
-            link = link.replacingOccurrences(of: "https://www.", with: "")
-                .replacingOccurrences(of: "https://", with: "")
-            
-            webSiteButton.setTitle(link, for: .normal)
-        }
-        
+        updateWebsite()
+
         webSiteButton.addTarget(self, action: #selector(openWebPage), for: .touchUpInside)
     }
     
@@ -169,40 +160,6 @@ final class InformationAboutProgramStack: UIStackView {
         return "\(formatter.string(from: NSNumber(value: number)) ?? "\(number)") ₽/год"
     }
 
-    private func configureQuantityDetails() {
-        pinToPrevious(11)
-        quantityDetailsLabel.numberOfLines = 0
-        quantityDetailsLabel.font = FontManager.shared.font(for: .additionalInformation)
-        quantityDetailsLabel.textColor = .secondaryLabel
-        addArrangedSubview(quantityDetailsLabel)
-        quantitySourcesStack.axis = .vertical
-        quantitySourcesStack.spacing = 6
-        addArrangedSubview(quantitySourcesStack)
-        refreshQuantityDetails()
-    }
-
-    private func refreshQuantityDetails() {
-        quantityDetailsLabel.text = program?.quantities.detailText
-        quantityDetailsLabel.isHidden = quantityDetailsLabel.text?.isEmpty != false
-        quantitySourcesStack.arrangedSubviews.forEach { $0.removeFromSuperview() }
-        let names = ["budget_places": "Источник бюджетных мест", "paid_places": "Источник платных мест", "cost": "Источник стоимости"]
-        for key in ["budget_places", "paid_places", "cost"] {
-            guard let source = program?.admissionMetadata?.quantityEvidence?[key],
-                  let address = source.sourceURL, let url = URL(string: address), url.scheme == "https" else { continue }
-            let button = UIClosureButton()
-            button.setTitle(names[key], for: .normal)
-            button.setTitleColor(.systemBlue, for: .normal)
-            button.titleLabel?.font = FontManager.shared.font(for: .additionalInformation)
-            button.contentHorizontalAlignment = .left
-            button.action = { [weak self] in
-                guard let controller = self?.findViewController() else { return }
-                controller.present(SFSafariViewController(url: url), animated: true)
-            }
-            quantitySourcesStack.addArrangedSubview(button)
-        }
-        quantitySourcesStack.isHidden = quantitySourcesStack.arrangedSubviews.isEmpty
-    }
-    
     private func configureSubjectsStack() {
         pinToPrevious(11)
         
@@ -268,14 +225,10 @@ final class InformationAboutProgramStack: UIStackView {
     
     func setInformation(_ program: ProgramShortModel) {
         self.program = program
-        let link = program.link
-            .replacingOccurrences(of: "https://www.", with: "")
-            .replacingOccurrences(of: "https://", with: "")
-        webSiteButton.setTitle(link, for: .normal)
+        updateWebsite()
         budgtetLabel.setBoldText(program.quantities.budgetText)
         paidLabel.setBoldText(program.quantities.paidText)
         costLabel.setBoldText(program.quantities.costText)
-        refreshQuantityDetails()
         subjectsStack.configure(
             requiredSubjects: program.requiredSubjects,
             optionalSubjects: program.optionalSubjects ?? [],
@@ -283,13 +236,19 @@ final class InformationAboutProgramStack: UIStackView {
         )
     }
     
+    private func updateWebsite() {
+        websiteURL = ExternalWebLink.url(program?.link)
+        webSiteButton.setTitle("Страница программы", for: .normal)
+        webSiteButton.setTitleColor(.systemBlue, for: .normal)
+        webSiteButton.isHidden = websiteURL == nil
+    }
+
     @objc func openWebPage(sender: UIButton) {
         guard
             let currentVC = self.findViewController(),
-            let link = sender.currentTitle
+            let url = websiteURL
         else { return }
         
-        guard let url = URL(string: "https://\(link)") else { return }
         let safariVC = SFSafariViewController(url: url)
         safariVC.modalPresentationStyle = .pageSheet
         currentVC.present(safariVC, animated: true, completion: nil)

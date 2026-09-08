@@ -2,6 +2,11 @@ import UIKit
 
 struct PersonalOlympiad: Decodable {
     let olympiad_id: Int; let name: String; let profile: String; let category: String
+    var academic_year: String? = nil; var registry_status: String? = nil; var admission_year: Int? = nil
+    var seasonTitle: String {
+        if let year = academic_year { return year + (registry_status == "draft" ? " · Проект перечня" : "") }
+        return admission_year.map { "Каталог правил приёма " + String($0) } ?? "Архив"
+    }
 }
 struct PersonalCatalog: Decodable { let olympiads: [PersonalOlympiad] }
 
@@ -28,6 +33,7 @@ final class PersonalOlympiadPicker: UITableViewController, UISearchResultsUpdati
         let cell = UITableViewCell(style:.subtitle,reuseIdentifier:nil), o = rows[indexPath.row]
         cell.textLabel?.text = o.name; cell.textLabel?.numberOfLines = 0
         cell.detailTextLabel?.text = o.profile + " · " + (o.category == "rsosh" ? "Перечневая" : o.category == "vsosh" ? "ВсОШ" : "Международная")
+        cell.detailTextLabel?.text = (cell.detailTextLabel?.text ?? "") + " · " + o.seasonTitle
         cell.detailTextLabel?.numberOfLines = 0; return cell
     }
     override func tableView(_ tableView:UITableView,didSelectRowAt indexPath:IndexPath) {

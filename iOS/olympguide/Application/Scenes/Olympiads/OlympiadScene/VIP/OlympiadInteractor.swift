@@ -19,6 +19,7 @@ final class OlympiadInteractor : OlympiadDataStore {
     var universities: [UniversityModel]?
     var allUniversities: [UniversityModel]?
     var programs: [[ProgramWithBenefitsModel]]?
+    private var catalogueVersion = UUID()
     var olympiadId: Int?
     var isFavorite: Bool?
     
@@ -29,22 +30,25 @@ final class OlympiadInteractor : OlympiadDataStore {
 
 extension OlympiadInteractor : OlympiadBusinessLogic {
     func loadUniversities(with request: Olympiad.LoadUniversities.Request) {
+        catalogueVersion = UUID()
+        let version = catalogueVersion
         self.olympiadId = request.olympiadID
         worker?.fetchUniversities(
             for: request.olympiadID
         ) { [weak self] result in
+            guard let self, self.catalogueVersion == version else { return }
             switch result {
             case .success(let universities):
-                self?.universities = universities
-                if self?.allUniversities == nil {
-                    self?.allUniversities = universities
+                self.universities = universities
+                if self.allUniversities == nil {
+                    self.allUniversities = universities
                 }
-                self?.programs = [[ProgramWithBenefitsModel]] (repeating: [], count: universities.count)
+                self.programs = [[ProgramWithBenefitsModel]] (repeating: [], count: universities.count)
                 let response = Olympiad.LoadUniversities.Response(universities: universities)
-                self?.presenter?.presentLoadUniversities(with: response)
+                self.presenter?.presentLoadUniversities(with: response)
             case .failure(let error):
                 let response = Olympiad.LoadUniversities.Response(error: error)
-                self?.presenter?.presentLoadUniversities(with: response)
+                self.presenter?.presentLoadUniversities(with: response)
             }
         }
     }
@@ -66,6 +70,7 @@ extension OlympiadInteractor : OlympiadBusinessLogic {
 
 extension OlympiadInteractor : BenefitsByProgramsBusinessLogic {
     func loadBenefits(with request: BenefitsByPrograms.Load.Request) {
+        let version = catalogueVersion
         let params: [Param] = request.params.flatMap { key, value in
             value.array
         }
@@ -74,14 +79,18 @@ extension OlympiadInteractor : BenefitsByProgramsBusinessLogic {
             and: request.universityID,
             with: params
         ) { [weak self] result in
+            guard let self, self.catalogueVersion == version,
+                  let universities = self.universities, universities.indices.contains(request.section),
+                  universities[request.section].universityID == request.universityID,
+                  self.programs?.indices.contains(request.section) == true else { return }
             switch result {
             case .success(let programs):
-                self?.programs?[request.section] = programs ?? []
+                self.programs?[request.section] = programs ?? []
                 let response = BenefitsByPrograms.Load.Response(programs: programs ?? [], section: request.section)
-                self?.presenter?.presentLoadBenefits(with: response)
+                self.presenter?.presentLoadBenefits(with: response)
             case .failure(let error):
                 let response = BenefitsByPrograms.Load.Response(error: error)
-                self?.presenter?.presentLoadBenefits(with: response)
+                self.presenter?.presentLoadBenefits(with: response)
             }
         }
     }

@@ -12,15 +12,6 @@ extension UIStackView {
         with benefit: ProgramWithBenefitsViewModel.BenefitInformationViewModel
     ) {
         self.arrangedSubviews.forEach { $0.removeFromSuperview() }
-        if let rule = benefit.admissionRule {
-            let label = UILabel()
-            label.numberOfLines = 0
-            label.font = .preferredFont(forTextStyle: .subheadline)
-            label.text = rule.summary + " · Подробнее"
-            addArrangedSubview(label)
-            return
-        }
-        
         self.distribution = .fillEqually
         self.spacing = 3
         self.alignment = .center
@@ -47,9 +38,11 @@ extension UIStackView {
         minDiplomaLevelLabel.layer.masksToBounds = true
         
         let benefitLabel = UILabel()
+        benefitLabel.adjustsFontSizeToFitWidth = true
+        benefitLabel.minimumScaleFactor = 0.7
         benefitLabel.textColor = .black
         benefitLabel.font = FontManager.shared.font(weight: .regular, size: 15)
-        benefitLabel.text = benefit.isBVI ? "БВИ" : "100б."
+        benefitLabel.text = benefit.admissionRule?.benefitTitle ?? (benefit.isBVI ? "БВИ" : "100б.")
         benefitLabel.layer.cornerRadius = 8
         benefitLabel.backgroundColor = UIColor(hex: "#E0E8FE")
         benefitLabel.textAlignment = .center

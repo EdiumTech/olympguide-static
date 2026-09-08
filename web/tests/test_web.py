@@ -29,6 +29,20 @@ class WebCatalogTests(unittest.TestCase):
         cls.server.server_close()
         cls.worker.join()
 
+    def test_current_registry_is_separate_from_historical_benefit_links(self):
+        c = self.catalog
+        self.assertEqual(len(c.bootstrap["olympiads"]), 303)
+        self.assertEqual(c.bootstrap["olympiad_registry"]["status"], "draft")
+        current = {o["id"] for o in c.bootstrap["olympiads"]}
+        historic = {o["id"] for o in c.bootstrap["historical_olympiads"]}
+        self.assertFalse(current & historic)
+        self.assertTrue(all(o["levels"] and o["profiles"] and o["subjects"] for o in c.bootstrap["olympiads"]))
+        self.assertTrue(all(r["olympiad_id"] in historic for r in c.rules))
+        self.assertEqual(c.universities["bmstu"]["email"], "abiturient@bmstu.ru")
+        first = c.bootstrap["olympiads"][0]
+        from urllib.parse import quote
+        self.assertEqual(self.http.open(self.base + "/olympiads/" + quote(first["id"], safe="")).status, 200)
+
     def test_all_rules_and_links_preserved(self):
         c = self.catalog
         self.assertEqual(len(c.rules), 7891)

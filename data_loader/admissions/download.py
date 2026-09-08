@@ -15,7 +15,10 @@ MANIFEST = ROOT / "releases/2026.json"
 
 def read_manifest(path=MANIFEST):
     data = json.loads(Path(path).read_text(encoding="utf-8"))
-    if data.get("schema_version") != 1 or data.get("admission_year") != 2026:
+    is_admissions = data.get("admission_year") == 2026 and "academic_year" not in data
+    is_registry = (data.get("kind") == "rsosh" and data.get("academic_year") == "2026/2027"
+                   and data.get("status") == "draft" and "admission_year" not in data)
+    if data.get("schema_version") != 1 or not (is_admissions or is_registry):
         raise ValueError("Unsupported release manifest")
     files = data["files"]
     if not files:

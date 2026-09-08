@@ -181,6 +181,7 @@ extension OlympiadViewController {
     
     private func toggleSection(at index: Int) {
         
+        guard groups.indices.contains(index) else { return }
         if !groups[index].isExpanded {
             let request = BenefitsByPrograms.Load.Request(
                 olympiadID: olympiad.olympiadID,
@@ -200,6 +201,16 @@ extension OlympiadViewController : OlympiadDisplayLogic {
             UniWithProgramsWithBenefits(university: $0)
         }
         
+        let message = UILabel()
+        message.text = olympiad.academicYear == nil
+            ? "Программы с подтверждёнными условиями льгот пока не найдены."
+            : "Условия льгот для дипломов этого сезона пока не подтверждены. Программы появятся после проверки правил вузов."
+        message.numberOfLines = 0
+        message.textAlignment = .center
+        message.textColor = .secondaryLabel
+        message.font = .preferredFont(forTextStyle: .body)
+        message.frame = CGRect(x: 20, y: 0, width: tableView.bounds.width - 40, height: 110)
+        tableView.tableFooterView = groups.isEmpty ? message : nil
         informationStackView.searchButton.isEnabled = true
         
         DispatchQueue.main.async { [weak self] in
@@ -216,6 +227,7 @@ extension OlympiadViewController : OlympiadDisplayLogic {
 // MARK: - BenefitsByProgramsDisplayLogic
 extension OlympiadViewController : BenefitsByProgramsDisplayLogic {
     func displayLoadBenefitsResult(with viewModel: BenefitsByPrograms.Load.ViewModel) {
+        guard groups.indices.contains(viewModel.section) else { return }
         groups[viewModel.section].programs = viewModel.benefits
         let id = groups[viewModel.section].university.universityID
         if !dataSource.toggle(to: id, in: tableView) {
