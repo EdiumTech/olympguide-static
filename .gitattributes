@@ -1,0 +1,3 @@
+iOS/**/*.sh text eol=lf
+iOS/**/*.xcconfig text eol=lf
+iOS/**/*.pbxproj text eol=lf
