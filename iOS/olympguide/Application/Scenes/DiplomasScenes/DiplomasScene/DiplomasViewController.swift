@@ -22,6 +22,10 @@ final class DiplomasViewController: UIViewController, WithPlusButton {
         super.viewDidLoad()
         
         configureUI()
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         interactor?.loadDiplomas(with: .init())
     }
     
@@ -40,7 +44,6 @@ final class DiplomasViewController: UIViewController, WithPlusButton {
         guard let navigationController = navigationController as? NavigationBarViewController else { return }
         navigationController.plusButtonPressed = { [weak self] sender in
             self?.router?.routeToAddDiploma()
-            print(1)
         }
     }
     
@@ -62,7 +65,15 @@ final class DiplomasViewController: UIViewController, WithPlusButton {
         v.addSubview(button)
         button.pinLeft(to: v, 20)
         button.pinTop(to: v, 13)
-        button.pinBottom(to: v)
+        let matching = UIButton(type: .system)
+        matching.setTitle("Куда подходят мои дипломы →", for: .normal)
+        v.addSubview(matching)
+        matching.pinLeft(to: v, 20)
+        matching.pinTop(to: button.bottomAnchor, 16)
+        matching.pinBottom(to: v, 12)
+        matching.addAction(UIAction { [weak self] _ in
+            self?.navigationController?.pushViewController(RecommendationsViewController(), animated: true)
+        }, for: .touchUpInside)
         tableView.addHeaderView(v)
         dataSource.register(in: tableView)
         dataSource.viewController = self

@@ -180,8 +180,17 @@ extension FieldViewController : FieldDisplayLogic {
         programs = viewModel.programs
         
         DispatchQueue.main.async { [weak self] in
-            self?.tableView.reloadData()
-            self?.refreshControl.endRefreshing()
+            guard let self else { return }
+            let message = UILabel()
+            message.text = "Вузы с программами по этому направлению не найдены."
+            message.numberOfLines = 0
+            message.textAlignment = .center
+            message.font = .preferredFont(forTextStyle: .body)
+            message.textColor = .secondaryLabel
+            message.frame = CGRect(x: 20, y: 0, width: self.tableView.bounds.width - 40, height: 110)
+            self.tableView.tableFooterView = self.programs.isEmpty ? message : nil
+            self.tableView.reloadData()
+            self.refreshControl.endRefreshing()
         }
     }
 }

@@ -48,6 +48,7 @@ class ProfileViewController: UIViewController {
     let authLabels: [String] = [
         "Личные данные",
         "Мои дипломы",
+        "Мой календарь",
         "Избранные ВУЗы",
         "Избранные программы",
         "Избранные олимпиады",
@@ -350,6 +351,8 @@ extension ProfileViewController : UITableViewDelegate {
             router?.routToFavoriteUniversities()
         case "Избранные программы":
             router?.routToFavoritePrograms()
+        case "Мой календарь":
+            navigationController?.pushViewController(PersonalCalendarViewController(), animated: true)
         case "Мои дипломы":
             router?.routeToDiplomas()
         case "Личные данные":

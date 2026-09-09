@@ -13,6 +13,9 @@ final class InformationAboutUniStack: UIStackView {
     var searchButtonAction: (() -> Void)?
     var segmentChanged: ((_: UISegmentedControl) -> Void)?
     
+    private var websiteURL: URL?
+    private var emailAddress = ""
+
     private let segmentedControl: UISegmentedControl = UISegmentedControl()
     private let webSiteButton: UIInformationButton = UIInformationButton(type: .web)
     private let emailButton: UIInformationButton = UIInformationButton(type: .email)
@@ -35,6 +38,9 @@ final class InformationAboutUniStack: UIStackView {
         configureUniversityView(university)
         configureWebSiteButton()
         configureEmailButton()
+        setEmail(university.email ?? "")
+        setWebPage(university.site ?? "")
+        addScholarshipsButton(universityID: university.universityID)
         configureProgramLabel()
         configureSegmentedControl()
         configureFilterSortView(filterSortView)
@@ -42,7 +48,7 @@ final class InformationAboutUniStack: UIStackView {
     }
     
     private func setupSelf() {
-        arrangedSubviews.forEach { removeArrangedSubview($0) }
+        arrangedSubviews.forEach { $0.removeFromSuperview() }
         axis = .vertical
         alignment = .fill
         distribution = .fill
@@ -103,6 +109,7 @@ final class InformationAboutUniStack: UIStackView {
     
     private func configureSegmentedControl() {
         pinToPrevious(13)
+        segmentedControl.removeAllSegments()
         
         segmentedControl.insertSegment(
             withTitle: "По направлениям",
@@ -145,11 +152,16 @@ final class InformationAboutUniStack: UIStackView {
     }
     
     func setEmail(_ email: String) {
-        emailButton.setTitle(email, for: .normal)
+        emailAddress = email.trimmingCharacters(in: .whitespacesAndNewlines)
+        emailButton.setTitle(emailAddress, for: .normal)
+        emailButton.isHidden = emailAddress.isEmpty
     }
     
     func setWebPage(_ webPage: String) {
-        webSiteButton.setTitle(webPage, for: .normal)
+        websiteURL = ExternalWebLink.url(webPage)
+        webSiteButton.setTitle("Сайт вуза", for: .normal)
+        webSiteButton.setTitleColor(.systemBlue, for: .normal)
+        webSiteButton.isHidden = websiteURL == nil
     }
     
     @objc func segmentChanged(_ sender: UISegmentedControl) {
@@ -159,10 +171,9 @@ final class InformationAboutUniStack: UIStackView {
     @objc func openWebPage(sender: UIButton) {
         guard
             let currentVC = self.findViewController(),
-            let link = sender.currentTitle
+            let url = websiteURL
         else { return }
         
-        guard let url = URL(string: "https://\(link)") else { return }
         let safariVC = SFSafariViewController(url: url)
         safariVC.modalPresentationStyle = .pageSheet
         currentVC.present(safariVC, animated: true, completion: nil)
@@ -186,7 +197,8 @@ extension InformationAboutUniStack : MFMailComposeViewControllerDelegate {
         
         let mailVC = MFMailComposeViewController()
         mailVC.mailComposeDelegate = self
-        mailVC.setToRecipients([sender.currentTitle ?? ""])
+        guard !emailAddress.isEmpty else { return }
+        mailVC.setToRecipients([emailAddress])
         mailVC.setSubject("Вопрос по поступлению")
         mailVC.setMessageBody("Здравствуйте!", isHTML: false)
         

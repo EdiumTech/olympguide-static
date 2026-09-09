@@ -46,10 +46,13 @@ struct AdmissionRule: Codable {
         case values, conditions, location
     }
 
-    var summary: String {
-        let types = benefitTypes.map { $0 == "bvi" ? "БВИ" : "100 баллов" }.joined(separator: " / ")
-        return "Условия \(admissionYear): \(types)"
+    var benefitTitle: String {
+        let names = ["bvi": "БВИ", "100_points": "100 баллов", "full_score": "100 баллов"]
+        let types = benefitTypes.map { names[$0] ?? "Другая льгота" }
+        return types.isEmpty ? "Условия" : types.joined(separator: " / ")
     }
+
+    var summary: String { benefitTitle }
 
     var details: String {
         let titles = [

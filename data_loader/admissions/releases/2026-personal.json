@@ -1,0 +1,302 @@
+{
+  "schema_version": 1,
+  "admission_year": 2026,
+  "release_tag": "personal-2026-20260908",
+  "checked_on": "2026-09-08",
+  "archive": {
+    "url": "https://github.com/EdiumTech/olympguide-static/releases/download/personal-2026-20260908/olympguide-personal-2026-20260908.zip",
+    "bytes": 9363871,
+    "sha256": "2f8990da11520c3e6549779dbaf669b6fac69cb7af89d4cfdc68575ae7171bd1"
+  },
+  "files": [
+    {
+      "path": "catalog.json",
+      "bytes": 30879633,
+      "sha256": "43c94371c9befc5e8a3aa781ff9062f6c4595385fdc0b5799e5fa8fcb39053cf"
+    },
+    {
+      "path": "sources/bmstu-grants.html",
+      "bytes": 275969,
+      "sha256": "d108a6a24d6cd936a62275eacd30e6f7c2b4779ff80b97c05eb188f5f4eb0c3f"
+    },
+    {
+      "path": "sources/bmstu-grants.links.json",
+      "bytes": 2,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    {
+      "path": "sources/bmstu-grants.meta.json",
+      "bytes": 305,
+      "sha256": "7cd5fefb35001ea92cc35503963213029fcd5e8c238292a79cd6870f88810d9d"
+    },
+    {
+      "path": "sources/bmstu-grants.txt",
+      "bytes": 70460,
+      "sha256": "d64fcaad01df68deb0223c84e4fe81eebe0dfadc49b854be5861cca65d0e3adb"
+    },
+    {
+      "path": "sources/bmstu-order.meta.json",
+      "bytes": 362,
+      "sha256": "c5196f950c3d3ff6a4ae9e4fc314f8aecd296deb00fa17c58c4f2cec52dcbea8"
+    },
+    {
+      "path": "sources/bmstu-order.pdf",
+      "bytes": 7959727,
+      "sha256": "0a5884904fc09db26307659d73deed486f650aed1e859a73d6eb4796bc175b06"
+    },
+    {
+      "path": "sources/bmstu-students.html",
+      "bytes": 159515,
+      "sha256": "985de9f984d564ad11669420ae228a93295f432c87a0587dc62d5eba35bd97a1"
+    },
+    {
+      "path": "sources/bmstu-students.links.json",
+      "bytes": 2,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    {
+      "path": "sources/bmstu-students.meta.json",
+      "bytes": 325,
+      "sha256": "743e2ee965846c7ae061935f69c2ef54a0a687122c3fc8cb2fdba776ac1a0e9c"
+    },
+    {
+      "path": "sources/bmstu-students.txt",
+      "bytes": 829,
+      "sha256": "38d9a84ffc6ab55b317e2b2d18c713539ee4b93684fb95f2d6d5b23f9eaea0b7"
+    },
+    {
+      "path": "sources/hse-academic.html",
+      "bytes": 51895,
+      "sha256": "148d557b8e1f7d739583ba5eb10eac4ccce5e3ed40b334621741d79f922e9922"
+    },
+    {
+      "path": "sources/hse-academic.links.json",
+      "bytes": 2389,
+      "sha256": "c9f2783b267c35be64c5e49ca734befa3170ec0948169f104444d746ce77c798"
+    },
+    {
+      "path": "sources/hse-academic.meta.json",
+      "bytes": 318,
+      "sha256": "b28f26514aeb471842072c24a9edde81e530bfa209edbdbc2775c2cba198905d"
+    },
+    {
+      "path": "sources/hse-academic.txt",
+      "bytes": 14321,
+      "sha256": "2f8a4b4f8101fbac18a88bef94a5564d5509c97085f4ec4b69b5ba5516ea23f3"
+    },
+    {
+      "path": "sources/hse-calendar.html",
+      "bytes": 232532,
+      "sha256": "c7333d7c7ba3388946d21afe308ab0bfafe929944dc895f936b990aee44be25c"
+    },
+    {
+      "path": "sources/hse-calendar.links.json",
+      "bytes": 1984,
+      "sha256": "8001ce1bc4788fa640bebc5bc5052319f3feb33759909547eeb292689c66bdc0"
+    },
+    {
+      "path": "sources/hse-calendar.meta.json",
+      "bytes": 286,
+      "sha256": "55b35ccbb407e857f41900a49ec700c99ffb247601027dd48b24bc9a1205c0a7"
+    },
+    {
+      "path": "sources/hse-calendar.txt",
+      "bytes": 45996,
+      "sha256": "21c6fbd2be8cb3762e65c83ee45c75c6c1aaed1ee33af40fef98463c4777969f"
+    },
+    {
+      "path": "sources/hse-medals-order.meta.json",
+      "bytes": 343,
+      "sha256": "546cef965f7010b3b7f9aa489ce9b9dd7ef7d7ad7c4641f93ad665c2c73cc8f0"
+    },
+    {
+      "path": "sources/hse-medals-order.pdf",
+      "bytes": 285639,
+      "sha256": "9ef1643c708fe62332c123cc285bc6ec53262e0536069037f3636ef44a627f49"
+    },
+    {
+      "path": "sources/hse-medals.html",
+      "bytes": 105127,
+      "sha256": "49fba8957aa30a2ffd8b3fff7595edfac7086a794daa0dfc17f8808e3bb35e0f"
+    },
+    {
+      "path": "sources/hse-medals.links.json",
+      "bytes": 661,
+      "sha256": "3b92f12168e951a17b5978c58f85d71b0eae5a8acaf2134b3cae93c828f613e0"
+    },
+    {
+      "path": "sources/hse-medals.meta.json",
+      "bytes": 284,
+      "sha256": "82cead947d9b2d4f960558a736ff3abcadd440484be9a3c1101c14505aeb71d4"
+    },
+    {
+      "path": "sources/hse-medals.txt",
+      "bytes": 7692,
+      "sha256": "6933b251d4bb4e093822afa923bb5a7452d2a032e877fbb260cefb7f83af7b67"
+    },
+    {
+      "path": "sources/itmo-academic.html",
+      "bytes": 149315,
+      "sha256": "527eb33d21cd65cdb5f363c2d7f59c422dd1cc93ab1626d55b6881c6840a93fc"
+    },
+    {
+      "path": "sources/itmo-academic.links.json",
+      "bytes": 1621,
+      "sha256": "81882cc80857e26cb88b11d33e150201be23777cc86be9b962ff3af433e75c98"
+    },
+    {
+      "path": "sources/itmo-academic.meta.json",
+      "bytes": 330,
+      "sha256": "84528ecd67c1914eddca341c11639e7976fdde23f7c87047b37e9a1be5d819f7"
+    },
+    {
+      "path": "sources/itmo-academic.txt",
+      "bytes": 1902,
+      "sha256": "e458cc05444fd3eeb5bfe31c8ab681ae1778548b9a1bb91eaf6597a5a5f9319d"
+    },
+    {
+      "path": "sources/itmo-bachelor.html",
+      "bytes": 1150477,
+      "sha256": "9fcd460b39134884bb7b5c139ff4ad444a5a2d0d6c60ff7a9ab1ee7a4ca53484"
+    },
+    {
+      "path": "sources/itmo-bachelor.links.json",
+      "bytes": 7858,
+      "sha256": "ee71a7c956ffcb913ea69211f70663273817fa70dbbc4b656fb7f219dfc094a9"
+    },
+    {
+      "path": "sources/itmo-bachelor.meta.json",
+      "bytes": 296,
+      "sha256": "c50d30157b3d5cd8e7eec3a8dc71d5ce7e2e72ac7c8927de33f2458bef06ef63"
+    },
+    {
+      "path": "sources/itmo-bachelor.txt",
+      "bytes": 35604,
+      "sha256": "f2b926e4e3ac8dc12221eb928a235445a2c29baf289c4742b824c7abaf1b9347"
+    },
+    {
+      "path": "sources/itmo-family.html",
+      "bytes": 63782,
+      "sha256": "9a2be3d431aa2b5ee671508d60287ab0af76b0dae5850297e809ef44101dc99a"
+    },
+    {
+      "path": "sources/itmo-family.links.json",
+      "bytes": 794,
+      "sha256": "16ab040273faf2a89e530062f3fc70062388b6274158c2a19cd8c06e1d065fd7"
+    },
+    {
+      "path": "sources/itmo-family.meta.json",
+      "bytes": 304,
+      "sha256": "e1915cb6bcfdfafbbac4cb8a8c49b652b21acf5c4b4b4f3e3243dee6100daf40"
+    },
+    {
+      "path": "sources/itmo-family.txt",
+      "bytes": 9832,
+      "sha256": "c032bd75d9d9562a1503c280b41b9d7e6cae8476c6f5dd58e0d0131fc60979a6"
+    },
+    {
+      "path": "sources/mai-grants.indexed.txt",
+      "bytes": 25391,
+      "sha256": "557996e121adf17b04b9ac1501dcf1ed3b619424e268d55dc5b25053275f01a3"
+    },
+    {
+      "path": "sources/mai-grants.meta.json",
+      "bytes": 535,
+      "sha256": "edc9d037c5136398e586aba4c16a30e750870aa17345a2c55cf479e8fd43a649"
+    },
+    {
+      "path": "sources/mephi-grants.html",
+      "bytes": 278895,
+      "sha256": "009f74708d91206fb8ad219e1d2789cbc2ca72e9a7ce84118a36cfbb82273370"
+    },
+    {
+      "path": "sources/mephi-grants.links.json",
+      "bytes": 3769,
+      "sha256": "1c9d13d2dccd9d9abd0f22a5501191001c33992f2574809ce179372e13cb603a"
+    },
+    {
+      "path": "sources/mephi-grants.meta.json",
+      "bytes": 302,
+      "sha256": "1decf15f1dc42df47ad7f83848f48440f304fc6ad9efd71d15e123c6c66ae78d"
+    },
+    {
+      "path": "sources/mephi-grants.txt",
+      "bytes": 42403,
+      "sha256": "5863d89efd83677d60fb67cb324495af8634153b21cef518250b8ac5fdbc0b5d"
+    },
+    {
+      "path": "sources/mephi-support.html",
+      "bytes": 306247,
+      "sha256": "fd2c20787c2e536a4aa0cc1104470d0644b351fb882a698a81202c1412f3c8c2"
+    },
+    {
+      "path": "sources/mephi-support.links.json",
+      "bytes": 4110,
+      "sha256": "f4594d93a59ecb58d1a9569db01228ffb4b738923f4e068eeebf3baeb47fe38b"
+    },
+    {
+      "path": "sources/mephi-support.meta.json",
+      "bytes": 304,
+      "sha256": "f6d34543a5a70834c3b5ffe2d4a261505b317db2c605e4ea25dd7cd8909bbd11"
+    },
+    {
+      "path": "sources/mephi-support.txt",
+      "bytes": 60928,
+      "sha256": "d9b3b1722d310024109fb30a863bee5dece5e42976f09e99bfa6c04a059c911e"
+    },
+    {
+      "path": "sources/mipt-grants.html",
+      "bytes": 68788,
+      "sha256": "76de97473a180cb25559f41bba6bf906c0c73fd2f265ffac2b44059c97732657"
+    },
+    {
+      "path": "sources/mipt-grants.links.json",
+      "bytes": 14240,
+      "sha256": "df83d61f535242d2b07f7f63251857b1fc5a7b43b5a46e8cbea420b963055efe"
+    },
+    {
+      "path": "sources/mipt-grants.meta.json",
+      "bytes": 294,
+      "sha256": "949b95c525271bf3f2f9ca37693ed9286c46eb9d5a9600da28ef27d131e43d87"
+    },
+    {
+      "path": "sources/mipt-grants.txt",
+      "bytes": 15469,
+      "sha256": "d7cd3b4c38ab940a11eec36123c2fee820f945be09203f16a2fcd7f130364370"
+    },
+    {
+      "path": "sources/mipt-spring.meta.json",
+      "bytes": 571,
+      "sha256": "6239cca7a6edf22f17def132ed9a51a35b612156068258e158e5550dceb85acd"
+    },
+    {
+      "path": "sources/mipt-spring.pdf",
+      "bytes": 394117,
+      "sha256": "467b3444a990c3162de23e8306b8f086287c56005d96c08180d9b2f0f54d87b2"
+    },
+    {
+      "path": "sources/msal-grants.html",
+      "bytes": 366932,
+      "sha256": "444cf985be64c9bc853314a63788d91efe005a272c42ce6513932a614f93e02a"
+    },
+    {
+      "path": "sources/msal-grants.links.json",
+      "bytes": 1541,
+      "sha256": "1ab084caff84fd2cfc5253343a84f966cdcab4047b4cb21758c62d8b9cda263d"
+    },
+    {
+      "path": "sources/msal-grants.meta.json",
+      "bytes": 294,
+      "sha256": "5bf0e8d1123ad0b6ad0386ae3881d6504edc752de384a7d7f19e006e65d40ed8"
+    },
+    {
+      "path": "sources/msal-grants.txt",
+      "bytes": 60221,
+      "sha256": "5f6541e1ad6669aadf1122d044998a50aa1c202aae8bf579eae097a69cc0c1c6"
+    }
+  ],
+  "dependencies": {
+    "2026.json": "55cf4b03ede5a28ce3a2e8b3aa7fe2b56f2c283604aa0110ea375ab4d2003841",
+    "2026-quantities.json": "7786f96a5f804cfeceb4bd85330a56591ff77a14ec8e4439ed3e527a562b5742"
+  }
+}

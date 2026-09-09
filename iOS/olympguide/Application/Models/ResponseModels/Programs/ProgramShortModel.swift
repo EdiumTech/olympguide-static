@@ -107,9 +107,8 @@ struct ProgramQuantities {
     var metadata: ProgramAdmissionMetadata? = nil
 
     static let unknown = ProgramQuantities(budgetPlaces: nil, paidPlaces: nil, cost: nil)
-    private var sharedMarker: String { metadata?.placesNote == nil ? "" : "*" }
-    var budgetText: String { budgetPlaces.map { String($0) + sharedMarker } ?? "Нет данных" }
-    var paidText: String { paidPlaces.map { String($0) + sharedMarker } ?? "Нет данных" }
+    var budgetText: String { budgetPlaces.map { String($0) } ?? "Нет данных" }
+    var paidText: String { paidPlaces.map { String($0) } ?? "Нет данных" }
     var summaryText: String {
         var parts: [String] = []
         if let year = metadata?.admissionYear { parts.append("Приём \(year)") }

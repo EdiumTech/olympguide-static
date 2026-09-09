@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SafariServices
 
 final class InformationAboutOlympStack: UIStackView {
     typealias Constants = AllConstants.InformationAboutOlympStack
@@ -33,6 +34,26 @@ final class InformationAboutOlympStack: UIStackView {
         setupSelf()
         configureOlympiadNameLabel()
         configureOlympiadInformation()
+        if let year = olympiad.academicYear {
+            let status = UILabel()
+            status.text = "РСОШ " + year + (olympiad.registryStatus == "draft" ? " · Проект перечня" : "")
+            status.numberOfLines = 0; status.font = .preferredFont(forTextStyle: .subheadline)
+            status.textColor = .secondaryLabel
+            addArrangedSubview(status)
+            if let subjects = olympiad.subjects, subjects != olympiad.profile {
+                let label = UILabel(); label.text = "Предметы и направления: " + subjects
+                label.numberOfLines = 0; label.font = .preferredFont(forTextStyle: .subheadline)
+                addArrangedSubview(label)
+            }
+            let source = UIClosureButton()
+            source.setTitle("Перечень РСОШ", for: .normal); source.setTitleColor(.systemBlue, for: .normal)
+            source.action = { [weak self] in
+                guard let url = URL(string: "https://rsr-olymp.ru/news/123") else { return }
+                self?.findViewController()?.present(SFSafariViewController(url: url), animated: true)
+            }
+            addArrangedSubview(source)
+        }
+        addCalendarButton(olympiadID: olympiad.olympiadID)
         configureProgramsLabel()
         configureFilterSortView(filterSortView)
     }
